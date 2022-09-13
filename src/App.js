@@ -1,3 +1,4 @@
+import React, { useRef, useEffect } from "react";
 import tracks from './tracks';
 
 function Wrapper() {
@@ -23,23 +24,6 @@ function Wrapper() {
   );
 }
 
-function MainLeftBar(props) {
-  return (
-              <nav className="main__nav nav">
-                    <div className="nav__logo logo">
-                        <img className="logo__image" src={props.logoUrl} alt="logo" />
-                    </div>
-
-                    <div className="nav__burger burger">
-                        <span className="burger__line" />
-                        <span className="burger__line" />
-                        <span className="burger__line" />
-                    </div>
-                    <MainLeftBarMenu menuItemMainUrl="http://" menuItemPlayListUrl="http://" menuItemEnterUrl="http://" />
-              </nav>
-  );
-}
-
 function MainLeftBarMenu(props) {
   return (
               <div className="nav__menu menu">
@@ -51,6 +35,34 @@ function MainLeftBarMenu(props) {
               </div>
   );
   
+}
+
+const { useState } = React;
+
+function MainLeftBar(props) {
+
+  const [visible, setVisible] = useState(false);
+
+  const toggleVisibility = () => setVisible(!visible);
+
+  return (
+              <nav className="main__nav nav">
+                    <div className="nav__logo logo">
+                        <img className="logo__image" src={props.logoUrl} alt="logo" />
+                    </div>
+
+                    <div role="presentation" className="nav__burger burger" onClick={toggleVisibility} onKeyDown={toggleVisibility}>
+                    <span className="burger__line" />
+                        <span className="burger__line" />
+                        <span className="burger__line" />
+                    </div>
+                    
+                    {visible && (<MainLeftBarMenu menuItemMainUrl="http://"
+                      menuItemPlayListUrl="http://" menuItemEnterUrl="http://" />
+                      )}
+                    
+              </nav>
+  );
 }
 
 function CentralBlock(props) {
@@ -77,14 +89,101 @@ function CentralBlockTitle(props) {
   
 }
 
-function CentralBlockFilter() {
+function FilterPopupListAuthors(props) {
   return (
+ 
+      <div className="filter__popup-item">
+        {tracks[props.trackNumber].trackAuthorTitle}</div> 
+    );
+  
+  }
+
+  function FilterPopupListAuthorsElementsRender() {
+    const elemCollection = [];
+
+    for (let i = 0; i < tracks.length; i += 1) {
+      
+      const elem = <FilterPopupListAuthors trackNumber={i} key={i}/>
+      elemCollection.push(elem);
+    }
+
+    return (
+            elemCollection
+            );
+           
+  }
+
+  function FilterPopupListYears(props) {
+    return (
+ 
+      <div className="filter__popup-item">
+        {tracks[props.trackNumber].trackYear}</div> 
+    );
+      
+    }
+
+    function FilterPopupListYearsElementsRender() {
+        const elemCollection = [];
+
+        for (let i = 0; i < tracks.length; i += 1) {
+          
+          const elem = <FilterPopupListYears trackNumber={i} key={i}/>
+          elemCollection.push(elem);
+        }
+
+        return (
+          
+                elemCollection
+                );
+               
+      }
+            
+
+function CentralBlockFilter() {
+
+  const [visibleListAuthorsElements, setVisibleListAuthorsElements] = useState(false);
+  const [visibleListYearsElements, setVisibleListYearsElements] = useState(false);
+
+  const toggleVisibilityListAuthorsElements = () => setVisibleListAuthorsElements(!visibleListAuthorsElements);
+  const toggleVisibilityListYearsElements = () => setVisibleListYearsElements(!visibleListYearsElements);
+  
+  const inputRef = useRef();
+  const inputRef2 = useRef();
+
+  const scrollHandler = () => {
+    console.log(inputRef.current.getBoundingClientRect());
+    console.log(inputRef2.current.getBoundingClientRect());
+
+  };
+  useEffect(() => {
+    window.addEventListener("click", scrollHandler, true);
+    return () => {
+      window.removeEventListener("click", scrollHandler, true);
+    };
+  }, []); 
+
+ 
+  return (
+    <>
       <div className="centerblock__filter filter">
           <div className="filter__title">Искать по:</div>
-          <div className="filter__button button-author _btn-text">исполнителю</div>
-          <div className="filter__button button-year _btn-text">году выпуска</div>
-          <div className="filter__button button-genre _btn-text">жанру</div>
+          <div ref={inputRef2} role="presentation" className="filter__button button-author _btn-text"
+           onClick={toggleVisibilityListAuthorsElements} 
+            onKeyDown={toggleVisibilityListAuthorsElements}>исполнителю</div>
+          <div role="presentation" className="filter__button button-year _btn-text"
+           onClick={toggleVisibilityListYearsElements}
+            onKeyDown={toggleVisibilityListYearsElements}>году выпуска</div>
+          <div ref={inputRef} className="filter__button button-genre _btn-text">жанру</div>
       </div>
+
+      {visibleListAuthorsElements && (<div className="centerblock__popup-list">
+      <FilterPopupListAuthorsElementsRender />
+      </div>)}
+
+      {visibleListYearsElements && (<div className="centerblock__popup-list">
+      <FilterPopupListYearsElementsRender />
+      </div>)}
+    </>
   );
   
 }

@@ -218,6 +218,17 @@ body {
   margin-bottom: 51px;
 }
 
+.centerblock__popup-list {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #313131;
+  overflow-y: auto;
+}
+
 .centerblock__content {
   display: -webkit-box;
   display: -ms-flexbox;

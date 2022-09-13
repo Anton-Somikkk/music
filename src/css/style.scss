@@ -222,6 +222,18 @@ body {
         margin-bottom: 51px;
     }
 
+    &__popup-list {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #313131;
+        
+        overflow-y: auto;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;
@@ -763,3 +775,4 @@ body {
         width: 109px;
     }
 }
+
