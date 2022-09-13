@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, {useRef} from "react";
 import tracks from './tracks';
 
 function Wrapper() {
@@ -141,49 +141,54 @@ function FilterPopupListAuthors(props) {
 
 function CentralBlockFilter() {
 
-  const [visibleListAuthorsElements, setVisibleListAuthorsElements] = useState(false);
-  const [visibleListYearsElements, setVisibleListYearsElements] = useState(false);
+  const [visibleListAuthors, setVisibleListAuthors] = useState(false);
+  const [visibleListYears, setVisibleListYears] = useState(false);
+  const listAuthors = useRef(null);
+  // const listYears = useRef(null);
 
-  const toggleVisibilityListAuthorsElements = () => setVisibleListAuthorsElements(!visibleListAuthorsElements);
-  const toggleVisibilityListYearsElements = () => setVisibleListYearsElements(!visibleListYearsElements);
-  
-  const inputRef = useRef();
-  const inputRef2 = useRef();
+  const toggleVisibilityListAuthors = () => {
+    setVisibleListAuthors(!visibleListAuthors);
+    listAuthors.current.classList.add('button-focus');
+  };
+  const toggleVisibilityListYears = () => {
+    setVisibleListYears(!visibleListYears);
+    listAuthors.current.classList.remove('button-focus');
 
-  const scrollHandler = () => {
-    console.log(inputRef.current.getBoundingClientRect());
-    console.log(inputRef2.current.getBoundingClientRect());
 
   };
-  useEffect(() => {
-    window.addEventListener("click", scrollHandler, true);
-    return () => {
-      window.removeEventListener("click", scrollHandler, true);
-    };
-  }, []); 
+  
+  
+  
+  
+    
+    
+  
 
- 
   return (
-    <>
+    
       <div className="centerblock__filter filter">
           <div className="filter__title">Искать по:</div>
-          <div ref={inputRef2} role="presentation" className="filter__button button-author _btn-text"
-           onClick={toggleVisibilityListAuthorsElements} 
-            onKeyDown={toggleVisibilityListAuthorsElements}>исполнителю</div>
+          <div ref={listAuthors} role="presentation" className="filter__button button-author _btn-text"
+           onClick={toggleVisibilityListAuthors} 
+            onKeyDown={toggleVisibilityListAuthors}>исполнителю</div>
           <div role="presentation" className="filter__button button-year _btn-text"
-           onClick={toggleVisibilityListYearsElements}
-            onKeyDown={toggleVisibilityListYearsElements}>году выпуска</div>
-          <div ref={inputRef} className="filter__button button-genre _btn-text">жанру</div>
+           onClick={toggleVisibilityListYears}
+            onKeyDown={toggleVisibilityListYears}>году выпуска</div>
+          <div className="filter__button button-genre _btn-text">жанру</div>
+
+            {visibleListAuthors && (<div className="centerblock__popup-list-authors centerblock__popup-list_overflow">
+        <FilterPopupListAuthorsElementsRender />
+        </div>)}
+
+            {visibleListYears && (<div className="centerblock__popup-list-years centerblock__popup-list_overflow">
+        <FilterPopupListYearsElementsRender />
+        </div>)}
+
       </div>
 
-      {visibleListAuthorsElements && (<div className="centerblock__popup-list">
-      <FilterPopupListAuthorsElementsRender />
-      </div>)}
-
-      {visibleListYearsElements && (<div className="centerblock__popup-list">
-      <FilterPopupListYearsElementsRender />
-      </div>)}
-    </>
+    
+      
+   
   );
   
 }
