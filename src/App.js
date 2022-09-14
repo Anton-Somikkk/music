@@ -96,73 +96,117 @@ function FilterPopupListAuthors(props) {
         {tracks[props.trackNumber].trackAuthorTitle}</div> 
     );
   
-  }
+}
 
-  function FilterPopupListAuthorsElementsRender() {
-    const elemCollection = [];
+function FilterPopupListAuthorsElementsRender() {
+    const elemCollection = [<FilterPopupListAuthors trackNumber={0} key={0}/>];
+    const items = [tracks[0].trackAuthorTitle];
 
-    for (let i = 0; i < tracks.length; i += 1) {
-      
-      const elem = <FilterPopupListAuthors trackNumber={i} key={i}/>
-      elemCollection.push(elem);
+    for (let i = 0; i < tracks.length - 1; i += 1) {
+
+      if (items.indexOf(tracks[i + 1].trackAuthorTitle) < 0) {
+          items.push(tracks[i + 1].trackAuthorTitle);
+          const elem = <FilterPopupListAuthors trackNumber={i + 1} key={i + 1}/>
+          elemCollection.push(elem);
+      }
     }
 
     return (
             elemCollection
-            );
-           
-  }
+            );   
+}
 
-  function FilterPopupListYears(props) {
+function FilterPopupListYears(props) {
     return (
  
       <div className="filter__popup-item">
         {tracks[props.trackNumber].trackYear}</div> 
-    );
-      
-    }
+    );  
+}
 
-    function FilterPopupListYearsElementsRender() {
-        const elemCollection = [];
+function FilterPopupListYearsElementsRender() {
+        const elemCollection = [<FilterPopupListYears trackNumber={0} key={0}/>];
+        const items = [tracks[0].trackYear];
 
-        for (let i = 0; i < tracks.length; i += 1) {
+        for (let i = 0; i < tracks.length - 1; i += 1) {
           
-          const elem = <FilterPopupListYears trackNumber={i} key={i}/>
-          elemCollection.push(elem);
+          if (items.indexOf(tracks[i + 1].trackYear) < 0) {
+              items.push(tracks[i + 1].trackYear); 
+              const elem = <FilterPopupListYears trackNumber={i + 1} key={i + 1}/>
+              elemCollection.push(elem);
+          }
         }
 
         return (
           
                 elemCollection
-                );
-               
-      }
+                );  
+}
+
+function FilterPopupListGenre(props) {
+  return (
+ 
+      <div className="filter__popup-item">
+        {tracks[props.trackNumber].trackGenre}</div> 
+    );
+}
+
+function FilterPopupListGenreElementsRender() {
+  const elemCollection = [<FilterPopupListGenre trackNumber={0} key={0}/>];
+  const items = [tracks[0].trackGenre];
+
+  for (let i = 0; i < tracks.length - 1; i += 1) {
+
+          if (items.indexOf(tracks[i + 1].trackGenre) < 0) {
             
+              items.push(tracks[i + 1].trackGenre);
+              const elem = <FilterPopupListGenre trackNumber={i + 1} key={i + 1}/>
+              elemCollection.push(elem);
+          } 
+  }
+  return (
+    
+          elemCollection
+          );  
+}
 
 function CentralBlockFilter() {
 
   const [visibleListAuthors, setVisibleListAuthors] = useState(false);
   const [visibleListYears, setVisibleListYears] = useState(false);
+  const [visibleListGenre, setVisibleListGenre] = useState(false);
+
   const listAuthors = useRef(null);
-  // const listYears = useRef(null);
+  const listYears = useRef(null);
+  const listGenre = useRef(null);
 
   const toggleVisibilityListAuthors = () => {
     setVisibleListAuthors(!visibleListAuthors);
+    setVisibleListYears(null);
+    setVisibleListGenre(null);
     listAuthors.current.classList.add('button-focus');
+    listYears.current.classList.remove('button-focus');
+    listGenre.current.classList.remove('button-focus');
   };
+
   const toggleVisibilityListYears = () => {
     setVisibleListYears(!visibleListYears);
+    setVisibleListAuthors(null);
+    setVisibleListGenre(null);
+    listYears.current.classList.add('button-focus');
     listAuthors.current.classList.remove('button-focus');
-
-
+    listGenre.current.classList.remove('button-focus');
   };
   
-  
-  
-  
-    
-    
-  
+  const toggleVisibilityListGenre = () => {
+    setVisibleListGenre(!visibleListGenre);
+    setVisibleListAuthors(null);
+    setVisibleListYears(null);
+    listGenre.current.classList.add('button-focus');
+    listYears.current.classList.remove('button-focus');
+    listAuthors.current.classList.remove('button-focus');
+  };
+
 
   return (
     
@@ -171,10 +215,12 @@ function CentralBlockFilter() {
           <div ref={listAuthors} role="presentation" className="filter__button button-author _btn-text"
            onClick={toggleVisibilityListAuthors} 
             onKeyDown={toggleVisibilityListAuthors}>исполнителю</div>
-          <div role="presentation" className="filter__button button-year _btn-text"
+          <div ref={listYears} role="presentation" className="filter__button button-year _btn-text"
            onClick={toggleVisibilityListYears}
             onKeyDown={toggleVisibilityListYears}>году выпуска</div>
-          <div className="filter__button button-genre _btn-text">жанру</div>
+          <div ref={listGenre} role="presentation" className="filter__button button-genre _btn-text"
+           onClick={toggleVisibilityListGenre}
+            onKeyDown={toggleVisibilityListGenre}>жанру</div>
 
             {visibleListAuthors && (<div className="centerblock__popup-list-authors centerblock__popup-list_overflow">
         <FilterPopupListAuthorsElementsRender />
@@ -182,6 +228,10 @@ function CentralBlockFilter() {
 
             {visibleListYears && (<div className="centerblock__popup-list-years centerblock__popup-list_overflow">
         <FilterPopupListYearsElementsRender />
+        </div>)}
+
+            {visibleListGenre && (<div className="centerblock__popup-list-genre centerblock__popup-list_overflow">
+        <FilterPopupListGenreElementsRender />
         </div>)}
 
       </div>
@@ -212,6 +262,21 @@ function CentralBlockContent(props) {
 }
 
 function CentralBlockPlayList() {
+
+ /* const elemCollection = [];
+  
+
+  for (let i = 0; i < tracks.length; i += 1) {
+
+          
+              const elem = <PlayListItem trackNumber={i} key={i}/>
+              elemCollection.push(elem);
+         
+  }
+  return (
+    
+          elemCollection
+          ); */
  
   return (
     <div className="content__playlist playlist">

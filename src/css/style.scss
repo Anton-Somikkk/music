@@ -223,7 +223,8 @@ body {
         position: relative;
     }
 
-    &__popup-list-authors, &__popup-list-years {
+    &__popup-list-authors, &__popup-list-years, 
+    &__popup-list-genre {
         width: 200px;
         height: 200px;
         position: absolute;

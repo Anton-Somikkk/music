@@ -9,7 +9,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Welcome Reality",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "4:44",
-        "trackYear": "2012"
+        "trackYear": "2012",
+        "trackGenre": "Pop"
     },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -21,7 +22,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Elektro",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "2:22",
-        "trackYear": "2021"
+        "trackYear": "2012",
+        "trackGenre": "Pop"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -33,7 +35,8 @@ const tracksJSON = [
         "trackAlbumTitle": "I’m Fire",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "2:22",
-        "trackYear": "2010"
+        "trackYear": "2010",
+        "trackGenre": "Rock"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -45,7 +48,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Non Stop",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "4:12",
-        "trackYear": "2022"
+        "trackYear": "2012",
+        "trackGenre": "R&B"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -57,7 +61,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Run Run",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "2:54",
-        "trackYear": "2013"
+        "trackYear": "2013",
+        "trackGenre": "Rock"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -69,7 +74,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Eyes on Fire",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "5:20",
-        "trackYear": "2022"
+        "trackYear": "2022",
+        "trackGenre": "Pop"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -81,7 +87,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Mucho Bien",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "3:41",
-        "trackYear": "2020"
+        "trackYear": "2020",
+        "trackGenre": "R&B"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -93,7 +100,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Captivating",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "1:48",
-        "trackYear": "2015"
+        "trackYear": "2015",
+        "trackGenre": "Rock"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -105,7 +113,8 @@ const tracksJSON = [
         "trackAlbumTitle": "How Deep Is Your Love",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "3:32",
-        "trackYear": "2021"
+        "trackYear": "2021",
+        "trackGenre": "Jaz"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -117,7 +126,8 @@ const tracksJSON = [
         "trackAlbumTitle": "Soundz Made in Romania",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "3:36",
-        "trackYear": "2002"
+        "trackYear": "2002",
+        "trackGenre": "Rap"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -129,19 +139,21 @@ const tracksJSON = [
         "trackAlbumTitle": "",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "",
-        "trackYear": ""
+        "trackYear": "",
+        "trackGenre": ""
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
         "trackTitleUrl": "http://",
-        "trackTitle": "Guilt",
+        "trackTitle": "",
         "trackAuthorUrl": "http://",
         "trackAuthorTitle": "",
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
         "trackTime": "",
-        "trackYear": ""
+        "trackYear": "",
+        "trackGenre": ""
       }
     ];
 
