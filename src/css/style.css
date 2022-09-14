@@ -268,7 +268,7 @@ body {
   width: 17px;
   height: 17px;
   margin-right: 5px;
-  stroke: #FFFFFF;
+  stroke: #FFF;
   fill: transparent;
 }
 
@@ -283,12 +283,12 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #FFFFFF;
+  color: #FFF;
 }
 
 .search__text::-webkit-input-placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -297,7 +297,7 @@ body {
 
 .search__text:-ms-input-placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -306,7 +306,7 @@ body {
 
 .search__text::-ms-input-placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -315,7 +315,7 @@ body {
 
 .search__text::placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -335,13 +335,19 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #FFF;
   border-radius: 60px;
   padding: 6px 20px;
 }
 
 .filter__button:not(:last-child) {
   margin-right: 10px;
+}
+
+.filter__popup-item:hover {
+  color: #d9b6ff;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .content__title {

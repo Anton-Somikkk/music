@@ -77,7 +77,9 @@ function CentralBlock(props) {
                       <CentralBlockTitle title="Треки" />
                       <CentralBlockFilter />
                       <CentralBlockContent iconWatchUrl="img/icon/sprite.svg#icon-watch" />
+                      <div className="content__playlist playlist">
                       <CentralBlockPlayList />
+                      </div>
                 </div>
   );
 }
@@ -211,36 +213,41 @@ function CentralBlockFilter() {
   return (
     
       <div className="centerblock__filter filter">
-          <div className="filter__title">Искать по:</div>
+
+          <div className="filter__title">Искать по:
+          </div>
+
           <div ref={listAuthors} role="presentation" className="filter__button button-author _btn-text"
-           onClick={toggleVisibilityListAuthors} 
-            onKeyDown={toggleVisibilityListAuthors}>исполнителю</div>
+                onClick={toggleVisibilityListAuthors} 
+                onKeyDown={toggleVisibilityListAuthors}>исполнителю
+          </div>
+
           <div ref={listYears} role="presentation" className="filter__button button-year _btn-text"
-           onClick={toggleVisibilityListYears}
-            onKeyDown={toggleVisibilityListYears}>году выпуска</div>
+                onClick={toggleVisibilityListYears}
+                onKeyDown={toggleVisibilityListYears}>году выпуска
+          </div>
+
           <div ref={listGenre} role="presentation" className="filter__button button-genre _btn-text"
-           onClick={toggleVisibilityListGenre}
-            onKeyDown={toggleVisibilityListGenre}>жанру</div>
+                onClick={toggleVisibilityListGenre}
+                onKeyDown={toggleVisibilityListGenre}>жанру
+          </div>
 
-            {visibleListAuthors && (<div className="centerblock__popup-list-authors centerblock__popup-list_overflow">
-        <FilterPopupListAuthorsElementsRender />
-        </div>)}
+            {visibleListAuthors && (<div role="presentation" onClick={toggleVisibilityListAuthors} 
+              onKeyDown={toggleVisibilityListAuthors} className="centerblock__popup-list-authors centerblock__popup-list_overflow">
+              <FilterPopupListAuthorsElementsRender />
+            </div>)}
 
-            {visibleListYears && (<div className="centerblock__popup-list-years centerblock__popup-list_overflow">
-        <FilterPopupListYearsElementsRender />
-        </div>)}
+            {visibleListYears && (<div role="presentation" onClick={toggleVisibilityListYears}
+              onKeyDown={toggleVisibilityListYears} className="centerblock__popup-list-years centerblock__popup-list_overflow">
+              <FilterPopupListYearsElementsRender />
+            </div>)}
 
-            {visibleListGenre && (<div className="centerblock__popup-list-genre centerblock__popup-list_overflow">
-        <FilterPopupListGenreElementsRender />
-        </div>)}
-
+            {visibleListGenre && (<div role="presentation" onClick={toggleVisibilityListGenre} 
+              onKeyDown={toggleVisibilityListGenre} className="centerblock__popup-list-genre centerblock__popup-list_overflow">
+              <FilterPopupListGenreElementsRender />
+            </div>)}
       </div>
-
-    
-      
-   
   );
-  
 }
 
 function CentralBlockContent(props) {
@@ -262,40 +269,20 @@ function CentralBlockContent(props) {
 }
 
 function CentralBlockPlayList() {
-
- /* const elemCollection = [];
   
-
+  const elemCollection = [];
   for (let i = 0; i < tracks.length; i += 1) {
-
-          
-              const elem = <PlayListItem trackNumber={i} key={i}/>
-              elemCollection.push(elem);
-         
+    const elem = <PlayListItem trackNumber={i} key={i}/>
+    elemCollection.push(elem);     
   }
+
   return (
-    
-          elemCollection
-          ); */
- 
-  return (
-    <div className="content__playlist playlist">
-        <PlayListItem trackNumber="0" />
-        <PlayListItem trackNumber="1" />
-        <PlayListItem trackNumber="2" />
-        <PlayListItem trackNumber="3" />
-        <PlayListItem trackNumber="4" />
-        <PlayListItem trackNumber="5" />
-        <PlayListItem trackNumber="6" />
-        <PlayListItem trackNumber="7" />
-        <PlayListItem trackNumber="8" />
-        <PlayListItem trackNumber="9" />
-        <PlayListItem trackNumber="10" />
-    </div>
-  ); 
+    elemCollection
+  );
 }
 
 function PlayListItem(props) {  
+
   return (
     <div className="playlist__item">
       <PlayListTrack trackImageUrl={tracks[props.trackNumber].trackImageUrl}
@@ -311,7 +298,9 @@ function PlayListItem(props) {
   ); 
 }
 
+
 function PlayListTrack(props) {
+
   return (
     <div className="playlist__track track">
           <div className="track__title">
