@@ -8,7 +8,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Welcome Reality",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "4:44"
+        "trackTime": "4:44",
+        "trackYear": "2012",
+        "trackGenre": "Pop"
     },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -19,7 +21,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Elektro",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "2:22"
+        "trackTime": "2:22",
+        "trackYear": "2012",
+        "trackGenre": "Pop"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -30,18 +34,22 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "I’m Fire",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "2:22"
+        "trackTime": "2:22",
+        "trackYear": "2010",
+        "trackGenre": "Rock"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
         "trackTitleUrl": "http://",
         "trackTitle": "Non Stop",
         "trackAuthorUrl": "http://",
-        "trackAuthorTitle": "Стоункат, Psychopath",
+        "trackAuthorTitle": "Stouncat, Psychopath",
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Non Stop",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "4:12"
+        "trackTime": "4:12",
+        "trackYear": "2012",
+        "trackGenre": "R&B"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -52,7 +60,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Run Run",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "2:54"
+        "trackTime": "2:54",
+        "trackYear": "2013",
+        "trackGenre": "Rock"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -63,7 +73,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Eyes on Fire",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "5:20"
+        "trackTime": "5:20",
+        "trackYear": "2022",
+        "trackGenre": "Pop"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -74,7 +86,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Mucho Bien",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "3:41"
+        "trackTime": "3:41",
+        "trackYear": "2020",
+        "trackGenre": "R&B"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -85,7 +99,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Captivating",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "1:48"
+        "trackTime": "1:48",
+        "trackYear": "2015",
+        "trackGenre": "Rock"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -96,7 +112,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "How Deep Is Your Love",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "3:32"
+        "trackTime": "3:32",
+        "trackYear": "2021",
+        "trackGenre": "Jaz"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -107,7 +125,9 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "Soundz Made in Romania",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": "3:36"
+        "trackTime": "3:36",
+        "trackYear": "2002",
+        "trackGenre": "Rap"
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
@@ -118,18 +138,22 @@ const tracksJSON = [
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": ""
+        "trackTime": "",
+        "trackYear": "",
+        "trackGenre": ""
       },
       {
         "trackImageUrl": "img/icon/sprite.svg#icon-note",
         "trackTitleUrl": "http://",
-        "trackTitle": "Guilt",
+        "trackTitle": "",
         "trackAuthorUrl": "http://",
         "trackAuthorTitle": "",
         "trackAlbumUrl": "http://",
         "trackAlbumTitle": "",
         "iconLikeUrl": "img/icon/sprite.svg#icon-like",
-        "trackTime": ""
+        "trackTime": "",
+        "trackYear": "",
+        "trackGenre": ""
       }
     ];
 

@@ -220,6 +220,46 @@ body {
         flex-direction: row;
         align-items: center;
         margin-bottom: 51px;
+        position: relative;
+    }
+
+    &__popup-list-authors, &__popup-list-years, 
+    &__popup-list-genre {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 50px;
+        left: 85px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #313131;
+    }
+
+    &__popup-list_overflow {
+        overflow-y: auto;
+
+    }
+
+    &__popup-list_overflow::-webkit-scrollbar {
+       
+        width: 20px;
+    }
+
+    &__popup-list_overflow::-webkit-scrollbar-track {
+        background: #313131;
+        border-radius: 10px;
+       
+    }
+
+    &__popup-list_overflow::-webkit-scrollbar-thumb {
+        background-color: #181818;
+        border-radius: 10px;
+        border: 3px solid #FFF;
+    }
+
+    &__popup-list_overflow::-webkit-scrollbar-thumb:hover {
+        background-color: #fff;
+        border: 3px solid #181818;
     }
 
     &__content {
@@ -234,7 +274,7 @@ body {
         width: 17px;
         height: 17px;
         margin-right: 5px;
-        stroke: #FFFFFF;
+        stroke: #FFF;
         fill: transparent;
     }
 
@@ -247,11 +287,11 @@ body {
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
-        color: #FFFFFF;
+        color: #FFF;
 
         &::placeholder {
             background-color: transparent;
-            color: #FFFFFF;
+            color: #FFF;
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
@@ -275,13 +315,19 @@ body {
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
-        border: 1px solid #FFFFFF;
+        border: 1px solid #FFF;
         border-radius: 60px;
         padding: 6px 20px;
 
         &:not(:last-child) {
             margin-right: 10px;
         }
+    }
+
+    &__popup-item:hover {
+        color: rgba(217, 182, 255, 1);
+        border-radius: 10px;
+        cursor: pointer;
     }
 }
 
@@ -762,4 +808,10 @@ body {
     &__progress-line {
         width: 109px;
     }
+}
+
+.button-focus {
+    color: rgba(173, 97, 255, 1);
+    border: 1px solid rgba(173, 97, 255, 1);
+    
 }

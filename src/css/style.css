@@ -216,6 +216,42 @@ body {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 51px;
+  position: relative;
+}
+
+.centerblock__popup-list-authors, .centerblock__popup-list-years, .centerblock__popup-list-genre {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50px;
+  left: 85px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #313131;
+}
+
+.centerblock__popup-list_overflow {
+  overflow-y: auto;
+}
+
+.centerblock__popup-list_overflow::-webkit-scrollbar {
+  width: 20px;
+}
+
+.centerblock__popup-list_overflow::-webkit-scrollbar-track {
+  background: #313131;
+  border-radius: 10px;
+}
+
+.centerblock__popup-list_overflow::-webkit-scrollbar-thumb {
+  background-color: #181818;
+  border-radius: 10px;
+  border: 3px solid #FFF;
+}
+
+.centerblock__popup-list_overflow::-webkit-scrollbar-thumb:hover {
+  background-color: #fff;
+  border: 3px solid #181818;
 }
 
 .centerblock__content {
@@ -232,7 +268,7 @@ body {
   width: 17px;
   height: 17px;
   margin-right: 5px;
-  stroke: #FFFFFF;
+  stroke: #FFF;
   fill: transparent;
 }
 
@@ -247,12 +283,12 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #FFFFFF;
+  color: #FFF;
 }
 
 .search__text::-webkit-input-placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -261,7 +297,7 @@ body {
 
 .search__text:-ms-input-placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -270,7 +306,7 @@ body {
 
 .search__text::-ms-input-placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -279,7 +315,7 @@ body {
 
 .search__text::placeholder {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #FFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -299,13 +335,19 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #FFF;
   border-radius: 60px;
   padding: 6px 20px;
 }
 
 .filter__button:not(:last-child) {
   margin-right: 10px;
+}
+
+.filter__popup-item:hover {
+  color: #d9b6ff;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .content__title {
@@ -868,5 +910,10 @@ body {
 
 .volume__progress-line {
   width: 109px;
+}
+
+.button-focus {
+  color: #ad61ff;
+  border: 1px solid #ad61ff;
 }
 /*# sourceMappingURL=style.css.map */

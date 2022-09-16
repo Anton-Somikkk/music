@@ -1,3 +1,4 @@
+import {useRef, useEffect, useState} from "react";
 import tracks from './tracks';
 
 function Wrapper() {
@@ -23,23 +24,6 @@ function Wrapper() {
   );
 }
 
-function MainLeftBar(props) {
-  return (
-              <nav className="main__nav nav">
-                    <div className="nav__logo logo">
-                        <img className="logo__image" src={props.logoUrl} alt="logo" />
-                    </div>
-
-                    <div className="nav__burger burger">
-                        <span className="burger__line" />
-                        <span className="burger__line" />
-                        <span className="burger__line" />
-                    </div>
-                    <MainLeftBarMenu menuItemMainUrl="http://" menuItemPlayListUrl="http://" menuItemEnterUrl="http://" />
-              </nav>
-  );
-}
-
 function MainLeftBarMenu(props) {
   return (
               <div className="nav__menu menu">
@@ -51,6 +35,33 @@ function MainLeftBarMenu(props) {
               </div>
   );
   
+}
+
+
+function MainLeftBar(props) {
+
+  const [visible, setVisible] = useState(false);
+
+  const toggleVisibility = () => setVisible(!visible);
+
+  return (
+              <nav className="main__nav nav">
+                    <div className="nav__logo logo">
+                        <img className="logo__image" src={props.logoUrl} alt="logo" />
+                    </div>
+
+                    <div role="presentation" className="nav__burger burger" onClick={toggleVisibility} onKeyDown={toggleVisibility}>
+                    <span className="burger__line" />
+                        <span className="burger__line" />
+                        <span className="burger__line" />
+                    </div>
+                    
+                    {visible && (<MainLeftBarMenu menuItemMainUrl="http://"
+                      menuItemPlayListUrl="http://" menuItemEnterUrl="http://" />
+                      )}
+                    
+              </nav>
+  );
 }
 
 function CentralBlock(props) {
@@ -65,7 +76,9 @@ function CentralBlock(props) {
                       <CentralBlockTitle title="Треки" />
                       <CentralBlockFilter />
                       <CentralBlockContent iconWatchUrl="img/icon/sprite.svg#icon-watch" />
-                      <CentralBlockPlayList />
+                      <div className="content__playlist playlist">
+                      <CentralBlockPlayList initSeconds={3}/>
+                      </div>
                 </div>
   );
 }
@@ -74,19 +87,156 @@ function CentralBlockTitle(props) {
   return (
           <h2 className="centerblock__h2">{props.title}</h2>
   );
-  
+}
+
+function FilterPopupListAuthors(props) {
+  return (
+ 
+      <div className="filter__popup-item">
+        {tracks[props.trackNumber].trackAuthorTitle}</div> 
+    );
+}
+
+function FilterPopupListAuthorsElementsRender() {
+    const elemCollection = [<FilterPopupListAuthors trackNumber={0} key={0}/>];
+    const items = [tracks[0].trackAuthorTitle];
+
+    for (let i = 0; i < tracks.length - 1; i += 1) {
+
+      if (items.indexOf(tracks[i + 1].trackAuthorTitle) < 0) {
+          items.push(tracks[i + 1].trackAuthorTitle);
+          const elem = <FilterPopupListAuthors trackNumber={i + 1} key={i + 1}/>
+          elemCollection.push(elem);
+      }
+    }
+
+    return (
+            elemCollection
+            );   
+}
+
+function FilterPopupListYears(props) {
+    return (
+ 
+      <div className="filter__popup-item">
+        {tracks[props.trackNumber].trackYear}</div> 
+    );  
+}
+
+function FilterPopupListYearsElementsRender() {
+        const elemCollection = [<FilterPopupListYears trackNumber={0} key={0}/>];
+        const items = [tracks[0].trackYear];
+
+        for (let i = 0; i < tracks.length - 1; i += 1) {
+          
+          if (items.indexOf(tracks[i + 1].trackYear) < 0) {
+              items.push(tracks[i + 1].trackYear); 
+              const elem = <FilterPopupListYears trackNumber={i + 1} key={i + 1}/>
+              elemCollection.push(elem);
+          }
+        }
+
+        return (
+                elemCollection
+                );  
+}
+
+function FilterPopupListGenre(props) {
+  return (
+ 
+      <div className="filter__popup-item">
+        {tracks[props.trackNumber].trackGenre}</div> 
+    );
+}
+
+function FilterPopupListGenreElementsRender() {
+  const elemCollection = [<FilterPopupListGenre trackNumber={0} key={0}/>];
+  const items = [tracks[0].trackGenre];
+
+  for (let i = 0; i < tracks.length - 1; i += 1) {
+
+          if (items.indexOf(tracks[i + 1].trackGenre) < 0) {
+            
+              items.push(tracks[i + 1].trackGenre);
+              const elem = <FilterPopupListGenre trackNumber={i + 1} key={i + 1}/>
+              elemCollection.push(elem);
+          } 
+  }
+  return (
+    
+          elemCollection
+          );  
 }
 
 function CentralBlockFilter() {
+
+  const [visibleListAuthors, setVisibleListAuthors] = useState(false);
+  const [visibleListYears, setVisibleListYears] = useState(false);
+  const [visibleListGenre, setVisibleListGenre] = useState(false);
+
+  const listAuthors = useRef(null);
+  const listYears = useRef(null);
+  const listGenre = useRef(null);
+
+  const toggleVisibilityListAuthors = () => {
+    setVisibleListAuthors(!visibleListAuthors);
+    setVisibleListYears(null);
+    setVisibleListGenre(null);
+    listAuthors.current.classList.add('button-focus');
+    listYears.current.classList.remove('button-focus');
+    listGenre.current.classList.remove('button-focus');
+  };
+
+  const toggleVisibilityListYears = () => {
+    setVisibleListYears(!visibleListYears);
+    setVisibleListAuthors(null);
+    setVisibleListGenre(null);
+    listYears.current.classList.add('button-focus');
+    listAuthors.current.classList.remove('button-focus');
+    listGenre.current.classList.remove('button-focus');
+  };
+  
+  const toggleVisibilityListGenre = () => {
+    setVisibleListGenre(!visibleListGenre);
+    setVisibleListAuthors(null);
+    setVisibleListYears(null);
+    listGenre.current.classList.add('button-focus');
+    listYears.current.classList.remove('button-focus');
+    listAuthors.current.classList.remove('button-focus');
+  };
+
   return (
+    
       <div className="centerblock__filter filter">
-          <div className="filter__title">Искать по:</div>
-          <div className="filter__button button-author _btn-text">исполнителю</div>
-          <div className="filter__button button-year _btn-text">году выпуска</div>
-          <div className="filter__button button-genre _btn-text">жанру</div>
+
+          <div className="filter__title">Искать по:
+          </div>
+
+          <div ref={listAuthors} role="presentation" className="filter__button button-author _btn-text"
+                onClick={toggleVisibilityListAuthors}>исполнителю</div>
+
+          <div ref={listYears} role="presentation" className="filter__button button-year _btn-text"
+                onClick={toggleVisibilityListYears}>году выпуска</div>
+
+          <div ref={listGenre} role="presentation" className="filter__button button-genre _btn-text"
+                onClick={toggleVisibilityListGenre}>жанру</div>
+
+            {visibleListAuthors && (<div role="presentation" onClick={toggleVisibilityListAuthors} 
+               className="centerblock__popup-list-authors centerblock__popup-list_overflow">
+              <FilterPopupListAuthorsElementsRender />
+            </div>)}
+
+            {visibleListYears && (<div role="presentation" onClick={toggleVisibilityListYears}
+               className="centerblock__popup-list-years centerblock__popup-list_overflow">
+              <FilterPopupListYearsElementsRender />
+            </div>)}
+
+            {visibleListGenre && (<div role="presentation" onClick={toggleVisibilityListGenre} 
+              className="centerblock__popup-list-genre centerblock__popup-list_overflow">
+              <FilterPopupListGenreElementsRender />
+            </div>)}
       </div>
   );
-  
 }
 
 function CentralBlockContent(props) {
@@ -107,26 +257,45 @@ function CentralBlockContent(props) {
   
 }
 
-function CentralBlockPlayList() {
+function CentralBlockPlayList(props) {
+
+  const elemsCollection = [];
+  const elemsSkeletonCollection = [];
+
+  for (let i = 0; i < tracks.length; i += 1) {
+    const elem = <PlayListItem trackNumber={i} key={i}/>
+    const elemSkeleton = <div className="playlist__item" key={i}>
+      <img src="../img/track-sceleton.png"  aria-label="Загрузка трека" /></div>
+
+    elemsCollection.push(elem);   
+    elemsSkeletonCollection.push(elemSkeleton);  
+  }
+
+  const { initSeconds = 10 } = props;
+  const [seconds, setSeconds] = useState(initSeconds);
+
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1)
+      } if (seconds === 0) {
+        
+          clearInterval(myInterval)
+			} 
+    }, 1000)
+
+    return () => {
+      clearInterval(myInterval)
+    }
+  });
  
   return (
-    <div className="content__playlist playlist">
-        <PlayListItem trackNumber="0" />
-        <PlayListItem trackNumber="1" />
-        <PlayListItem trackNumber="2" />
-        <PlayListItem trackNumber="3" />
-        <PlayListItem trackNumber="4" />
-        <PlayListItem trackNumber="5" />
-        <PlayListItem trackNumber="6" />
-        <PlayListItem trackNumber="7" />
-        <PlayListItem trackNumber="8" />
-        <PlayListItem trackNumber="9" />
-        <PlayListItem trackNumber="10" />
-    </div>
-  ); 
+     seconds === 0 ? elemsCollection : elemsSkeletonCollection
+  );
 }
 
 function PlayListItem(props) {  
+
   return (
     <div className="playlist__item">
       <PlayListTrack trackImageUrl={tracks[props.trackNumber].trackImageUrl}
@@ -142,7 +311,9 @@ function PlayListItem(props) {
   ); 
 }
 
+
 function PlayListTrack(props) {
+
   return (
     <div className="playlist__track track">
           <div className="track__title">
@@ -175,7 +346,7 @@ function MainSidebarRight() {
   return (
     <div className="main__sidebar sidebar">
       <SidebarPerson personName="Sergey.Ivanov" />
-      <SidebarBlock />
+      <SidebarBlock initSeconds={3} />
     </div>
   );
 }
@@ -190,13 +361,43 @@ function SidebarPerson(props) {
   );
 }
 
-function SidebarBlock() {
+function SidebarBlock(props) {
+
+  const { initSeconds = 10 } = props;
+  const [seconds, setSeconds] = useState(initSeconds);
+
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1)
+      } if (seconds === 0) {
+        
+          clearInterval(myInterval)
+			} 
+    }, 1000)
+
+    return () => {
+      clearInterval(myInterval)
+    }
+  });
+
   return (
           <div className="sidebar__block">
               <div className="sidebar__list">
-                <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist01.png" sidebarItemImageAlt="day's playlist" />
-                <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist02.png" sidebarItemImageAlt="day's playlist" />
-                <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist03.png" sidebarItemImageAlt="day's playlist" />
+
+                { seconds === 0 ? (
+                <>
+                  <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist01.png" sidebarItemImageAlt="day's playlist" />
+                  <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist02.png" sidebarItemImageAlt="day's playlist" />
+                  <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist03.png" sidebarItemImageAlt="day's playlist" />
+                </>
+                ) : (
+                  <>
+                  <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
+                  <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
+                  <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
+                  </>
+                )}
               </div>
           </div>
   );
@@ -207,7 +408,7 @@ function SidebarItem(props) {
         <div className="sidebar__item">
               <a className="sidebar__link" href={props.sidebarItemUrl}>
                 <img className="sidebar__img" src={props.sidebarItemImageUrl} alt={props.sidebarItemImageAlt} />
-            </a>
+              </a>
         </div>
   );
 }
@@ -247,7 +448,7 @@ function PlayerBlock(props) {
                                 </div>
                             </div>
                             <div className="player__track-play track-play">
-                              <TrackPlayContain />
+                              <TrackPlayContain initSeconds={3} />
                                 <div className="track-play__like-dis">
                                     <div className="track-play__like _btn-icon">
                                         <svg className="track-play__like-svg" alt="like">
@@ -281,14 +482,37 @@ function PlayerBlock(props) {
   );
 }
 
-function TrackPlayContain() {
+function TrackPlayContain(props) {
+
+  const { initSeconds = 10 } = props;
+  const [seconds, setSeconds] = useState(initSeconds);
+
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1)
+      } if (seconds === 0) {
+        
+          clearInterval(myInterval)
+			} 
+    }, 1000)
+
+    return () => {
+      clearInterval(myInterval)
+    }
+  });
+
   return (
+
     <div className="track-play__contain"> 
+
+    { seconds === 0 ? (
         <TrackPlay playTrackImageUrl="img/icon/sprite.svg#icon-note"
                    playTrackNameUrl="http://"
                    playTrackNameTitle="Ты та..."
                    playTrackAuthorUrl="http://"
                    playTrackAuthorTitle="Баста" />
+    ) : (<img src="../img/Skeleton-track-2.png"  aria-label="Загрузка трека" />)}
     </div>                         
   );
 }
@@ -313,7 +537,3 @@ function TrackPlay(props) {
 }
 
 export default Wrapper;
-
-
-
-
