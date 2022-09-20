@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import tracks from '../../tracks';
 import PlayListItem from '../PlayListItem/PlayListItem';
+import * as S from "./styles";
 
 export default function CentralBlockPlayList(props) {
 
@@ -9,8 +10,8 @@ export default function CentralBlockPlayList(props) {
   
     for (let i = 0; i < tracks.length; i += 1) {
       const elem = <PlayListItem trackNumber={i} key={i}/>
-      const elemSkeleton = <div className="playlist__item" key={i}>
-        <img src="../img/track-sceleton.png"  aria-label="Загрузка трека" /></div>
+      const elemSkeleton = <S.PlayListItem key={i}>
+        <S.PlayListItemSkeleton src="../img/track-sceleton.png"  aria-label="Загрузка трека" /></S.PlayListItem>
   
       elemsCollection.push(elem);   
       elemsSkeletonCollection.push(elemSkeleton);  

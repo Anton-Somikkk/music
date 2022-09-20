@@ -1,10 +1,11 @@
 import tracks from '../../tracks';
 import PlayListTrack from '../PlayListTrack/PlayListTrack';
+import * as S from "./styles";
 
 export default function PlayListItem(props) {  
 
     return (
-      <div className="playlist__item">
+      <S.PlayListItem>
         <PlayListTrack trackImageUrl={tracks[props.trackNumber].trackImageUrl}
          trackTitleUrl={tracks[props.trackNumber].trackTitleUrl} 
         trackTitle={tracks[props.trackNumber].trackTitle}
@@ -14,6 +15,6 @@ export default function PlayListItem(props) {
          trackAlbumTitle={tracks[props.trackNumber].trackAlbumTitle} 
         iconLikeUrl={tracks[props.trackNumber].iconLikeUrl}
          trackTime={tracks[props.trackNumber].trackTime} />
-      </div>
+      </S.PlayListItem>
     ); 
   }

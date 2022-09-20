@@ -1,10 +1,11 @@
 import tracks from '../../tracks';
+import * as S from "./styles";
 
 function FilterPopupListGenre(props) {
     return (
    
-        <div className="filter__popup-item">
-          {tracks[props.trackNumber].trackGenre}</div> 
+        <S.PopupItem>
+          {tracks[props.trackNumber].trackGenre}</S.PopupItem> 
       );
   }
   

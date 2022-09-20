@@ -1,10 +1,11 @@
 import tracks from '../../tracks';
+import * as S from "./styles";
 
 function FilterPopupListAuthors(props) {
     return (
    
-        <div className="filter__popup-item">
-          {tracks[props.trackNumber].trackAuthorTitle}</div> 
+        <S.PopupItem>
+          {tracks[props.trackNumber].trackAuthorTitle}</S.PopupItem> 
     );
 }
   

@@ -2,7 +2,7 @@ import {useRef, useState} from "react";
 import FilterPopupListAuthorsElementsRender from '../FilterPopupListAuthors/FilterPopupListAuthors';
 import FilterPopupListYearsElementsRender from '../FilterPopupListYears/FilterPopupListYears';
 import FilterPopupListGenreElementsRender from '../FilterPopupListGenre/FilterPopupListGenre';
-
+import * as S from "./styles";
 
 export default function CentralBlockFilter() {
 
@@ -43,34 +43,30 @@ export default function CentralBlockFilter() {
   
     return (
       
-        <div className="centerblock__filter filter">
+        <S.CenterBlockFilter>
   
-            <div className="filter__title">Искать по:
-            </div>
+            <S.FilterTitle>Искать по:</S.FilterTitle>
   
-            <div ref={listAuthors} role="presentation" className="filter__button button-author _btn-text"
-                  onClick={toggleVisibilityListAuthors}>исполнителю</div>
+            <S.FilterButtonAuthor ref={listAuthors} role="presentation"
+                  onClick={toggleVisibilityListAuthors}>исполнителю</S.FilterButtonAuthor>
   
-            <div ref={listYears} role="presentation" className="filter__button button-year _btn-text"
-                  onClick={toggleVisibilityListYears}>году выпуска</div>
+            <S.FilterButtonYear ref={listYears} role="presentation"
+                  onClick={toggleVisibilityListYears}>году выпуска</S.FilterButtonYear>
   
-            <div ref={listGenre} role="presentation" className="filter__button button-genre _btn-text"
-                  onClick={toggleVisibilityListGenre}>жанру</div>
+            <S.FilterButtonGenre ref={listGenre} role="presentation"
+                  onClick={toggleVisibilityListGenre}>жанру</S.FilterButtonGenre>
   
-              {visibleListAuthors && (<div role="presentation" onClick={toggleVisibilityListAuthors} 
-                 className="centerblock__popup-list-authors centerblock__popup-list_overflow">
+              {visibleListAuthors && (<S.PopupListAuthor role="presentation" onClick={toggleVisibilityListAuthors}>
                 <FilterPopupListAuthorsElementsRender />
-              </div>)}
+              </S.PopupListAuthor>)}
   
-              {visibleListYears && (<div role="presentation" onClick={toggleVisibilityListYears}
-                 className="centerblock__popup-list-years centerblock__popup-list_overflow">
+              {visibleListYears && (<S.PopupListYear role="presentation" onClick={toggleVisibilityListYears}>
                 <FilterPopupListYearsElementsRender />
-              </div>)}
+              </S.PopupListYear>)}
   
-              {visibleListGenre && (<div role="presentation" onClick={toggleVisibilityListGenre} 
-                className="centerblock__popup-list-genre centerblock__popup-list_overflow">
+              {visibleListGenre && (<S.PopupListGenre role="presentation" onClick={toggleVisibilityListGenre}>
                 <FilterPopupListGenreElementsRender />
-              </div>)}
-        </div>
+              </S.PopupListGenre>)}
+        </S.CenterBlockFilter>
     );
 }

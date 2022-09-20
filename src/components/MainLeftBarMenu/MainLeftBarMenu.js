@@ -1,14 +1,17 @@
+import * as S from "./styles";
+
+
 export default function MainLeftBarMenu(props) {
     return (
-                <div className="nav__menu menu">
-                      <ul className="menu__list">
-                          <li className="menu__item"><a href={props.menuItemMainUrl}
-                           className="menu__link">Главное</a></li>
-                          <li className="menu__item"><a href={props.menuItemListUrl}
-                           className="menu__link">Мой плейлист</a></li>
-                          <li className="menu__item"><a href={props.menuItemMainUrl}
-                           className="menu__link">Войти</a></li>
-                      </ul>
-                </div>
+                <S.NavMenu>
+                      <S.MenuList>
+                          <S.MenuItem><S.MenuLink href={props.menuItemMainUrl}>
+                            Главное</S.MenuLink></S.MenuItem>
+                          <S.MenuItem><S.MenuLink href={props.menuItemListUrl}>
+                            Мой плейлист</S.MenuLink></S.MenuItem>
+                          <S.MenuItem><S.MenuLink href={props.menuItemMainUrl}>
+                            Войти</S.MenuLink></S.MenuItem>
+                      </S.MenuList>
+                </S.NavMenu>
     );
 }

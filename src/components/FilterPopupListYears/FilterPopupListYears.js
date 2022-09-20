@@ -1,10 +1,11 @@
 import tracks from '../../tracks';
+import * as S from "./styles";
 
 function FilterPopupListYears(props) {
     return (
  
-      <div className="filter__popup-item">
-        {tracks[props.trackNumber].trackYear}</div> 
+      <S.PopupItem>
+        {tracks[props.trackNumber].trackYear}</S.PopupItem> 
     );  
 }
 

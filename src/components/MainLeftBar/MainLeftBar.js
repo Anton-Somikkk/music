@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MainLeftBarMenu from '../MainLeftBarMenu/MainLeftBarMenu';
+import * as S from "./styles";
 
 export default function MainLeftBar(props) {
 
@@ -8,21 +9,21 @@ export default function MainLeftBar(props) {
     const toggleVisibility = () => setVisible(!visible);
   
     return (
-                <nav className="main__nav nav">
-                      <div className="nav__logo logo">
-                          <img className="logo__image" src={props.logoUrl} alt="logo" />
-                      </div>
+                <S.MainNav>
+                      <S.NavLogo>
+                          <S.LogoImage src={props.logoUrl} alt="logo" />
+                      </S.NavLogo>
   
-                      <div role="presentation" className="nav__burger burger" onClick={toggleVisibility} onKeyDown={toggleVisibility}>
-                      <span className="burger__line" />
-                          <span className="burger__line" />
-                          <span className="burger__line" />
-                      </div>
+                      <S.NavBurger role="presentation" onClick={toggleVisibility} onKeyDown={toggleVisibility}>
+                      <S.BurgerLine/>
+                      <S.BurgerLine/>
+                      <S.BurgerLine/>                          
+                      </S.NavBurger>
                       
                       {visible && (<MainLeftBarMenu menuItemMainUrl="http://"
                         menuItemPlayListUrl="http://" menuItemEnterUrl="http://" />
                         )}
                       
-                </nav>
+                </S.MainNav>
     );
   }
