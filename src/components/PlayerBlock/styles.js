@@ -31,19 +31,11 @@ export const BarPlayerBlock = styled.div`
     justify-content: space-between;
 `;
 
-const barPlayer = css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-`;
-
-const player = css`
-`;
-
 export const BarPlayer = styled.div`
-    ${barPlayer}
-    ${player}
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: flex-start;
 `;
 
 export const PlayerControls = styled.div`
@@ -151,17 +143,10 @@ fill: transparent;
 stroke: #696969;
 `;
 
-const playerTrackPlay = css`
-display: flex;
-flex-direction: row;
-`;
-
-const trackPlay = css`
-`;
 
 export const PlayerTrackPlay = styled.div`
-${playerTrackPlay}
-${trackPlay}
+display: flex;
+flex-direction: row;
 `;
 
 export const TrackPlayLikeDis = styled.div`
@@ -204,19 +189,11 @@ fill: transparent;
 stroke: #696969;
 `;
 
-const volume = css`
-`;
-
-const barVolumeBlock = css`
-    width: auto;
-    display: flex;
-    align-items: center;
-    padding: 0 92px 0 0;
-`;
-
 export const BarVolumeBlock = styled.div`
-${volume}
-${barVolumeBlock}
+width: auto;
+display: flex;
+align-items: center;
+padding: 0 92px 0 0;
 `;
 
 export const VolumeContent = styled.div`

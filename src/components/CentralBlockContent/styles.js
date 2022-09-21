@@ -6,21 +6,12 @@ export const CenterBlockContent = styled.div`
     flex-direction: column;
 `;
 
-const contentTitle = css`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-`;
-
-const playListTitle = css`
-
-`;
-
 export const ContentTitle = styled.div`
-    ${contentTitle}
-    ${playListTitle}
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 24px;
 `;
 
 const playListTitleCol = css`

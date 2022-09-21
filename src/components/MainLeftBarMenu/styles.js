@@ -1,21 +1,13 @@
 /* eslint-disable import/prefer-default-export */
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const navMenu = css`
+export const NavMenu = styled.div`
     display: block;
     visibility: visible;
 `;
 
-const menu = css`
-`;
-
-export const NavMenu = styled.div`
-    ${navMenu}
-    ${menu}
-`;
-
 export const MenuList = styled.ul`
-padding: 18px 0 10px 0;
+    padding: 18px 0 10px 0;
 `;
 
 export const MenuItem = styled.li`

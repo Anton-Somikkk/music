@@ -1,34 +1,18 @@
 /* eslint-disable import/prefer-default-export */
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const mainNav = css`
+export const MainNav = styled.nav`
     width: 244px;
     background-color: #181818;
     padding: 20px 0 20px 36px;
 `;
 
-const nav = css`
-`;
-
-export const MainNav = styled.nav`
-    ${mainNav}
-    ${nav}
-`;
-
-const navLogo = css`
+export const NavLogo = styled.div`
     width: 113.33px;
     height: 43px;
     padding: 13px 0 13px 0;
     background-color: transparent;
     margin-bottom: 20px;
-`;
-
-const logo = css`
-`;
-
-export const NavLogo = styled.div`
-    ${navLogo}
-    ${logo}
 `;
 
 export const LogoImage = styled.img`
@@ -37,21 +21,13 @@ export const LogoImage = styled.img`
     color: #181818;
 `;
 
-const navBurger = css`
+export const NavBurger = styled.div`
     width: 20px;
     height: 36px;
     padding: 13px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-`;
-
-const burger = css`
-`;
-
-export const NavBurger = styled.div`
-    ${navBurger}
-    ${burger}
 `;
 
 export const BurgerLine = styled.span`

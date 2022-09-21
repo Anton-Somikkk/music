@@ -1,20 +1,11 @@
 /* eslint-disable import/prefer-default-export */
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
-const track = css`
-
-`;
-
-const playListTrack = css`
+export const PlayListTrack = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-`;
-
-export const PlayListTrack = styled.div`
-${track}
-${playListTrack}
 `;
 
 export const TrackTitle = styled.div`

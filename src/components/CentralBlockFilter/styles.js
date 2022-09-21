@@ -1,19 +1,12 @@
 import styled, { css } from "styled-components";
 
-const centerBlockFilter = css`
+
+export const CenterBlockFilter = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 51px;
     position: relative;
-`;
-
-const filter = css`
-`;
-
-export const CenterBlockFilter = styled.div`
-    ${centerBlockFilter}
-    ${filter}
 `;
 
 export const FilterTitle = styled.div`
@@ -45,31 +38,20 @@ const buttonText = css`
         cursor: pointer;
 `;
 
-const buttonAuthor = css`
-`;
-
-const buttonYear = css`
-`;
-
-const buttonGenre = css`
-`;
 
 export const FilterButtonAuthor = styled.div`
 ${filterButton}
 ${buttonText}
-${buttonAuthor}
 `;
 
 export const FilterButtonYear = styled.div`
 ${filterButton}
 ${buttonText}
-${buttonYear}
 `;
 
 export const FilterButtonGenre = styled.div`
 ${filterButton}
 ${buttonText}
-${buttonGenre}
 `;
 
 const popupList = css`
@@ -105,28 +87,17 @@ const popupListOverflow = css`
     }
 `;
 
-const popupAuthor = css`
-`;
-
-const popupYear = css`
-`;
-
-const popupGenre = css`
-`;
 
 export const PopupListAuthor = styled.div`
-    ${popupAuthor}
     ${popupListOverflow}
     ${popupList}
 `;
 
 export const PopupListYear = styled.div`
-    ${popupYear}
     ${popupListOverflow}
     ${popupList}
 `;
 export const PopupListGenre = styled.div`
-    ${popupGenre}
     ${popupListOverflow}
     ${popupList}
 `;
