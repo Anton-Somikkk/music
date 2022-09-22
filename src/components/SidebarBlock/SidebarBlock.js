@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import * as S from "./styles";
 
 import SidebarItem from '../SidebarItem/SidebarItem';
 
@@ -24,8 +24,8 @@ export default function SidebarBlock(props) {
     });
   
     return (
-            <div className="sidebar__block">
-                <div className="sidebar__list">
+            <S.SidebarBlock>
+                <S.SidebarList>
   
                   { seconds === 0 ? (
                   <>
@@ -40,7 +40,7 @@ export default function SidebarBlock(props) {
                     <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
                     </>
                   )}
-                </div>
-            </div>
+                </S.SidebarList>
+            </S.SidebarBlock>
     );
   }

@@ -1,36 +1,20 @@
 /* eslint-disable import/prefer-default-export */
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const mainCenterBlock = css`
-    width: auto;
-    flex-grow: 3;
-    padding: 20px 40px 20px 111px;
-`;
-
-const centerBlock = css`
- 
-`;
 
 export const MainCenterBlock = styled.div`
-${mainCenterBlock}
-${centerBlock}
-`;
-
-const centerBlockSearch = css`
-    width: 100%;
-    border-bottom: 1px solid #4E4E4E;
-    margin-bottom: 51px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`;
-
-const search = css`
+width: auto;
+flex-grow: 3;
+padding: 20px 40px 20px 111px;
 `;
 
 export const CenterBlockSearch  = styled.div`
-${centerBlockSearch}
-${search}
+width: 100%;
+border-bottom: 1px solid #4E4E4E;
+margin-bottom: 51px;
+display: flex;
+flex-direction: row;
+align-items: center;
 `;
 
 export const SearchSvg = styled.svg`
@@ -62,18 +46,10 @@ color: #FFF;
 }
 `;
 
-const contentPlayList = css`
+export const ContentPlayList = styled.div`
 display: flex;
 flex-direction: column;
 overflow-y: auto;
-`;
-
-const playList = css`
-`;
-
-export const ContentPlayList = styled.div`
-${contentPlayList}
-${playList}
 `;
 
 export const CenterBlockSubTitle = styled.h2`

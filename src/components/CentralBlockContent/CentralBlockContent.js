@@ -1,17 +1,19 @@
+import * as S from "./styles";
+
 export default function CentralBlockContent(props) {
     return (
-      <div className="centerblock__content">
-          <div className="content__title playlist-title">
-              <div className="playlist-title__col col01">Трек</div>
-              <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-              <div className="playlist-title__col col03">АЛЬБОМ</div>
-              <div className="playlist-title__col col04">
-                  <svg className="playlist-title__svg" alt="time">
+      <S.CenterBlockContent>
+          <S.ContentTitle>
+              <S.PlayListTitleCol01>Трек</S.PlayListTitleCol01>
+              <S.PlayListTitleCol02>ИСПОЛНИТЕЛЬ</S.PlayListTitleCol02>
+              <S.PlayListTitleCol03>АЛЬБОМ</S.PlayListTitleCol03>
+              <S.PlayListTitleCol04>
+                  <S.PlayListTitleSvg alt="time">
                       <use xlinkHref={props.iconWatchUrl} />
-                  </svg>
-              </div>
-          </div>
-      </div>
+                  </S.PlayListTitleSvg>
+              </S.PlayListTitleCol04>
+          </S.ContentTitle>
+      </S.CenterBlockContent>
     );
     
   }

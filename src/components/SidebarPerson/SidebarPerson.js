@@ -1,9 +1,11 @@
+import * as S from "./styles";
+
 export default function SidebarPerson(props) {
     return (
-            <div className="sidebar__personal">
-              <p className="sidebar__personal-name">{props.personName}</p>
-                <div className="sidebar__avatar" />
+            <S.SidebarPersonal>
+              <S.SidebarPersonalName>{props.personName}</S.SidebarPersonalName>
+                <S.SidebarAvatar />
               
-            </div>
+            </S.SidebarPersonal>
     );
   }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TrackPlay from '../TrackPlay/TrackPlay';
+import * as S from "./styles";
 
 export default function TrackPlayContain(props) {
 
@@ -23,7 +24,7 @@ export default function TrackPlayContain(props) {
   
     return (
   
-      <div className="track-play__contain"> 
+      <S.TrackPlayContain> 
   
       { seconds === 0 ? (
           <TrackPlay playTrackImageUrl="img/icon/sprite.svg#icon-note"
@@ -32,6 +33,6 @@ export default function TrackPlayContain(props) {
                      playTrackAuthorUrl="http://"
                      playTrackAuthorTitle="Баста" />
       ) : (<img src="../img/Skeleton-track-2.png"  aria-label="Загрузка трека" />)}
-      </div>                         
+      </S.TrackPlayContain>                         
     );
   }

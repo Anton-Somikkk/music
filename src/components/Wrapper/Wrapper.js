@@ -1,19 +1,69 @@
+import { createGlobalStyle } from 'styled-components';
 import MainLeftBar from '../MainLeftBar/MainLeftBar';
 import CentralBlock from '../CentralBlock/CentralBlock';
 import MainSidebarRight from '../MainSidebarRight/MainSidebarRight';
 import PlayerBlock from '../PlayerBlock/PlayerBlock';
+import * as S from "./styles";
 
+const GlobalStyle = createGlobalStyle`
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Stratos-Thin', sans-serif;
+    color: #FFFFFF;
+
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  font-family: 'Stratos-Thin', sans-serif;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul li {
+  list-style: none;
+}
+
+@font-face {
+  font-family: 'Stratos-Thin';
+  src: local('Stratos-Thin'), local('Stratos-Thin'),
+      url('../fonts/Stratos-Thin.woff2') format('woff2'),
+      url('../fonts/Stratos-Thin.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+`;
 
 export default function Wrapper() {
 
     return (
-            <div className="wrapper">
-              <div className="container">
-                    <main className="main">
+      <>
+      <GlobalStyle />
+            <S.Wrapper>
+              <S.Container>
+                    <S.Main>
                     <MainLeftBar logoUrl="img/logo.png" />
                     <CentralBlock searchImageUrl="img/icon/sprite.svg#icon-search" />
                     <MainSidebarRight />
-                    </main>
+                    </S.Main>
                     <PlayerBlock playerIconPrevUrl="img/icon/sprite.svg#icon-prev" 
                                  playerIconPlayUrl="img/icon/sprite.svg#icon-play" 
                                  playerIconNextUrl="img/icon/sprite.svg#icon-next"
@@ -22,7 +72,8 @@ export default function Wrapper() {
                                  playerIconLikeUrl="img/icon/sprite.svg#icon-like"
                                  playerIconDislikeUrl="img/icon/sprite.svg#icon-dislike"
                                  playerIconVolumeUrl="img/icon/sprite.svg#icon-volume" />
-              </div>
-            </div>
+              </S.Container>
+            </S.Wrapper>
+            </>
     );
 }

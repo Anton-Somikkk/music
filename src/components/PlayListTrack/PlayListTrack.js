@@ -1,29 +1,35 @@
+import * as S from "./styles";
+
 export default function PlayListTrack(props) {
 
     return (
-      <div className="playlist__track track">
-            <div className="track__title">
-                <div className="track__title-image">
-                    <svg className="track__title-svg" alt="music">
+      <S.PlayListTrack>
+            <S.TrackTitle>
+                <S.TrackTitleImage>
+                    <S.TrackTitleSvg alt="music">
                         <use xlinkHref={props.trackImageUrl} />
-                    </svg>
-                </div>
-                <div className="track__title-text">
-                    <a className="track__title-link" href={props.trackTitleUrl}>{props.trackTitle} <span className="track__title-span" /></a>
-                </div>
-            </div>
-            <div className="track__author">
-                <a className="track__author-link" href={props.trackAuthorUrl}>{props.trackAuthorTitle}</a>
-            </div>
-            <div className="track__album">
-                <a className="track__album-link" href={props.trackAlbumUrl}>{props.trackAlbumTitle}</a>
-            </div>
-            <div className="track__time">
-                <svg className="track__time-svg" alt="time">
+                    </S.TrackTitleSvg>
+                </S.TrackTitleImage>
+                <S.TrackTitleText>
+                    <S.TrackTitleLink href={props.trackTitleUrl}>
+                        {props.trackTitle} <S.TrackTitleSpan />
+                        </S.TrackTitleLink>
+                </S.TrackTitleText>
+            </S.TrackTitle>
+            <S.TrackAuthor>
+                <S.TrackAuthorLink href={props.trackAuthorUrl}>{props.trackAuthorTitle}
+                </S.TrackAuthorLink>
+            </S.TrackAuthor>
+            <S.TrackAlbum>
+                <S.TrackAlbumLink href={props.trackAlbumUrl}>{props.trackAlbumTitle}
+                </S.TrackAlbumLink>
+            </S.TrackAlbum>
+            <S.TrackTime>
+                <S.TrackTimeSvg alt="time">
                     <use xlinkHref={props.iconLikeUrl} />
-                </svg>
-                <span className="track__time-text">{props.trackTime}</span>
-            </div>
-        </div>
+                </S.TrackTimeSvg>
+                <S.TrackTimeText>{props.trackTime}</S.TrackTimeText>
+            </S.TrackTime>
+        </S.PlayListTrack>
     );
   }
