@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { createGlobalStyle } from 'styled-components';
 import MainLeftBar from '../MainLeftBar/MainLeftBar';
 import CentralBlock from '../CentralBlock/CentralBlock';
@@ -9,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
 * {
   margin: 0;
-  padding: 0;
+  padding: 0; 
   box-sizing: border-box;
 }
 
@@ -52,7 +53,7 @@ ul li {
 }
 `;
 
-export default function Wrapper() {
+export function Wrapper() {
 
     return (
       <>
