@@ -29,15 +29,15 @@ export default function SidebarBlock(props) {
   
                   { seconds === 0 ? (
                   <>
-                    <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist01.png" sidebarItemImageAlt="day's playlist" />
-                    <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist02.png" sidebarItemImageAlt="day's playlist" />
-                    <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="img/playlist03.png" sidebarItemImageAlt="day's playlist" />
+                    <SidebarItem sidebarItemUrl="/collection/1" sidebarItemImageUrl="img/playlist01.png" sidebarItemImageAlt="day's playlist" />
+                    <SidebarItem sidebarItemUrl="/collection/2" sidebarItemImageUrl="img/playlist02.png" sidebarItemImageAlt="day's playlist" />
+                    <SidebarItem sidebarItemUrl="/collection/3" sidebarItemImageUrl="img/playlist03.png" sidebarItemImageAlt="day's playlist" />
                   </>
                   ) : (
                     <>
-                    <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
-                    <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
-                    <SidebarItem sidebarItemUrl="#" sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
+                    <SidebarItem sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
+                    <SidebarItem sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
+                    <SidebarItem sidebarItemImageUrl="../img/Skeleton-sidebar-item.png" sidebarItemImageAlt="Загрузка плейлиста" />
                     </>
                   )}
                 </S.SidebarList>

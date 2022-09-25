@@ -1,12 +1,15 @@
+import { NavLink } from "react-router-dom";
 import * as S from "./styles";
+
+
 
 export default function SidebarItem(props) {
     return (
           <S.SidebarItem>
-                <S.SidebarLink href={props.sidebarItemUrl}>
+                <NavLink className="sidebar__link" to={props.sidebarItemUrl}>
                   <S.SidebarImage src={props.sidebarItemImageUrl}
                    alt={props.sidebarItemImageAlt} />
-                </S.SidebarLink>
+                </NavLink>
           </S.SidebarItem>
     );
   }

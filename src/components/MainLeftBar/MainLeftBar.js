@@ -21,7 +21,7 @@ export default function MainLeftBar(props) {
                       </S.NavBurger>
                       
                       {visible && (<MainLeftBarMenu menuItemMainUrl="http://"
-                        menuItemPlayListUrl="http://" menuItemEnterUrl="http://" />
+                        menuItemPlayListUrl="/my-tracks" menuItemEnterUrl="http://" />
                         )}
                       
                 </S.MainNav>
