@@ -5,7 +5,7 @@ import { NotFound } from "./not-found";
 export function Collections() {
   const { id } = useParams();
 
-  if (id !== 1 || id !== 2 || id !== 3) {
+  if (id !== "1" && id !== "2" && id !== "3") {
     return (
 <NotFound />
     );

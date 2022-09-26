@@ -17,26 +17,12 @@ export function AppRoutes() {
       <Route path="/authorization" element={<Authorization />} />
       <Route path="/registration" element={<Registration />} />
 
-      <Route path="/" element={
-          <ProtectedRoute isAllowed={document.cookie}>
-            <Wrapper />
-          </ProtectedRoute>
-        }
-      />
+      <Route element={<ProtectedRoute isAllowed={document.cookie}/>}>
+        <Route path="/" element={<Wrapper />} />
+        <Route path="/collection/:id" element={<Collections />} />
+        <Route path="/my-tracks" element={<MyTracks />} />
+      </Route>
 
-      <Route path="/collection/:id" element={
-          <ProtectedRoute isAllowed={document.cookie}>
-            <Collections />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route path="/my-tracks" element={
-          <ProtectedRoute isAllowed={document.cookie}>
-            <MyTracks />
-          </ProtectedRoute>
-        }
-      />
       <Route path="*" element={<NotFound />} />
 
     </Routes>
