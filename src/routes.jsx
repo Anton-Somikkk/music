@@ -1,9 +1,10 @@
 /* eslint-disable import/named */
-/* eslint-disable import/prefer-default-export */
+
 import { Routes, Route } from "react-router-dom";
 import { Wrapper } from "./components/Wrapper/Wrapper";
 import { Authorization } from "./pages/authorization";
-import { ProtectedRoute } from "./components/protected-route";
+import { ProtectedRoute,
+         ProtectedRouteMain } from "./components/protected-route";
 import { Registration } from "./pages/registration";
 import { Collections } from "./pages/collections";
 import { MyTracks } from "./pages/my-tracks";
@@ -21,8 +22,10 @@ export function AppRoutes() {
   return (
     <Routes>
       
-      <Route path="/authorization" element={<Authorization />} />
-      <Route path="/registration" element={<Registration />} />
+      <Route element={<ProtectedRouteMain isAllowed={checkCookies()}/>}>
+        <Route path="/authorization" element={<Authorization />} />
+        <Route path="/registration" element={<Registration />} />
+      </Route>
 
       <Route element={<ProtectedRoute isAllowed={checkCookies()}/>}>
         <Route path="/" element={<Wrapper />} />

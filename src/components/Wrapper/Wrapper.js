@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { createGlobalStyle } from 'styled-components';
 import MainLeftBar from '../MainLeftBar/MainLeftBar';
 import CentralBlock from '../CentralBlock/CentralBlock';

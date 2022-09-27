@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+
 import styled, { css } from "styled-components";
 
 export const CenterBlockContent = styled.div`
