@@ -1,9 +1,8 @@
 import * as S from "./styles";
 
 export default function PlayListTrack(props) {
-
     return (
-      <S.PlayListTrack>
+        <S.PlayListTrack>
             <S.TrackTitle>
                 <S.TrackTitleImage>
                     <S.TrackTitleSvg alt="music">
@@ -13,15 +12,17 @@ export default function PlayListTrack(props) {
                 <S.TrackTitleText>
                     <S.TrackTitleLink href={props.trackTitleUrl}>
                         {props.trackTitle} <S.TrackTitleSpan />
-                        </S.TrackTitleLink>
+                    </S.TrackTitleLink>
                 </S.TrackTitleText>
             </S.TrackTitle>
             <S.TrackAuthor>
-                <S.TrackAuthorLink href={props.trackAuthorUrl}>{props.trackAuthorTitle}
+                <S.TrackAuthorLink href={props.trackAuthorUrl}>
+                    {props.trackAuthorTitle}
                 </S.TrackAuthorLink>
             </S.TrackAuthor>
             <S.TrackAlbum>
-                <S.TrackAlbumLink href={props.trackAlbumUrl}>{props.trackAlbumTitle}
+                <S.TrackAlbumLink href={props.trackAlbumUrl}>
+                    {props.trackAlbumTitle}
                 </S.TrackAlbumLink>
             </S.TrackAlbum>
             <S.TrackTime>
@@ -32,4 +33,4 @@ export default function PlayListTrack(props) {
             </S.TrackTime>
         </S.PlayListTrack>
     );
-  }
+}

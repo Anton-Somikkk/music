@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 
 export const NavMenu = styled.div`
@@ -16,7 +15,7 @@ export const MenuItem = styled.li`
 `;
 
 export const MenuLink = styled.a`
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;

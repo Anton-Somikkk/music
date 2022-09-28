@@ -1,17 +1,17 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from 'react-router-dom';
 
-export function ProtectedRoute({ redirectPath = "/authorization", isAllowed }) {
-  if (!isAllowed) {
-    return <Navigate to={redirectPath} replace />;
-  }
+export function ProtectedRoute({ redirectPath = '/authorization', isAllowed }) {
+    if (!isAllowed) {
+        return <Navigate to={redirectPath} replace />;
+    }
 
-  return <Outlet />;
-} 
+    return <Outlet />;
+}
 
-export function ProtectedRouteMain({ redirectPath = "/", isAllowed }) {
-  if (isAllowed) {
-    return <Navigate to={redirectPath} replace />;
-  }
+export function PermittedRoute({ redirectPath = '/', isAllowed }) {
+    if (isAllowed) {
+        return <Navigate to={redirectPath} replace />;
+    }
 
-  return <Outlet />;
-} 
+    return <Outlet />;
+}

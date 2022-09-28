@@ -1,24 +1,24 @@
 ._btn-text:active {
-  border-color: #AD61FF;
-  color: #AD61FF;
+  border-color: #ad61ff;
+  color: #ad61ff;
   cursor: pointer;
 }
 
 ._btn-icon:active svg {
   fill: transparent;
-  stroke: #FFFFFF;
+  stroke: #ffffff;
   cursor: pointer;
 }
 
 ._btn-icon:active .track-play__like-svg,
 ._btn-icon:active .track-play__dislike-svg {
   fill: #696969;
-  stroke: #FFFFFF;
+  stroke: #ffffff;
   cursor: pointer;
 }
 
 .menu__link {
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
