@@ -66,6 +66,7 @@ export function Wrapper() {
                     <PlayerBlock
                         playerIconPrevUrl="img/icon/sprite.svg#icon-prev"
                         playerIconPlayUrl="img/icon/sprite.svg#icon-play"
+                        playerIconPauseUrl="img/icon/sprite.svg#icon-pause"
                         playerIconNextUrl="img/icon/sprite.svg#icon-next"
                         playerIconRepeatUrl="img/icon/sprite.svg#icon-repeat"
                         playerIconShuffleUrl="img/icon/sprite.svg#icon-shuffle"

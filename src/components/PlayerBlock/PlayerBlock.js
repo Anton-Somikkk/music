@@ -1,15 +1,17 @@
 import { useRef, useState } from "react";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
-
 import * as S from "./styles";
 
 export default function PlayerBlock(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
+    const [visible, setVisible] = useState(true);
 
+    
     const handleStart = () => {
         audioRef.current.play();
         setIsPlaying(true);
+        console.log(audioRef.current.currentTime);
     };
 
     const handleStop = () => {
@@ -17,20 +19,27 @@ export default function PlayerBlock(props) {
         setIsPlaying(false);
     };
 
-    const togglePlay = isPlaying ? handleStop : handleStart;
+    const togglePlay = () => {
+        if (isPlaying) {
+            handleStop();
+            setVisible(!visible);
+        } else {
+            handleStart();
+            setVisible(!visible);
+        }
+    };
 
     return (
         <>
             <audio controls ref={audioRef}>
-                <source
-                    src="./Bobby_Marleni_Dropin.mp3"
-                    type="audio/mpeg"
-                />
+                <source src="./Bobby_Marleni_Dropin.mp3" type="audio/mpeg" />
                 <track kind="captions" />
             </audio>
             <S.Bar>
                 <S.BarContent>
-                    <S.BarPlayerProgress />
+                    <S.BarPlayerProgress>
+                        <S.BarPlayerProgressMoving progressWidth isPlaying />
+                    </S.BarPlayerProgress>
                     <S.BarPlayerBlock>
                         <S.BarPlayer>
                             <S.PlayerControls>
@@ -43,9 +52,19 @@ export default function PlayerBlock(props) {
                                 </S.PlayerBtnPrev>
                                 <S.PlayerBtnPlay onClick={togglePlay}>
                                     <S.PlayerBtnPlaySvg alt="play">
-                                        <use
-                                            xlinkHref={props.playerIconPlayUrl}
-                                        />
+                                        {visible ? (
+                                            <use
+                                                xlinkHref={
+                                                    props.playerIconPlayUrl
+                                                }
+                                            />
+                                        ) : (
+                                            <use
+                                                xlinkHref={
+                                                    props.playerIconPauseUrl
+                                                }
+                                            />
+                                        )}
                                     </S.PlayerBtnPlaySvg>
                                 </S.PlayerBtnPlay>
                                 <S.PlayerBtnNext>

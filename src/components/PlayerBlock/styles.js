@@ -23,6 +23,12 @@ export const BarPlayerProgress = styled.div`
     background: #2e2e2e;
 `;
 
+export const BarPlayerProgressMoving = styled.div`
+    width: ${props => (props.isPlaying ? "10px" : "0")};
+    height: 5px;
+    background: rgba(173, 97, 255, 1);
+`;
+
 export const BarPlayerBlock = styled.div`
     height: 73px;
     display: flex;
