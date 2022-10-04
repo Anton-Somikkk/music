@@ -24,7 +24,7 @@ export const BarPlayerProgress = styled.div`
 `;
 
 export const BarPlayerProgressMoving = styled.div`
-    width: ${props => (props.isPlaying ? `${props.onProgress}px` : "0")};
+    width: ${props => (props.progress > 0 ? `${props.progress}%` : "0")};
     height: 5px;
     background: rgba(173, 97, 255, 1);
 `;

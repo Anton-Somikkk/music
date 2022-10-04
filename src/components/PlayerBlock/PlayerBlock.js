@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
 import * as S from "./styles";
 
@@ -6,42 +6,64 @@ export default function PlayerBlock(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
     const [visible, setVisible] = useState(true);
+    const [count, setCount] = useState(0);
 
-    const progress = (progressCurrentTime, trackDuraton) => {
-        let progressWidth = 0;
-        const interval = setInterval(() => {
-            if (progressCurrentTime < trackDuraton) {
-                // eslint-disable-next-line no-plusplus
-                progressWidth++;
-            } else {
-                progressWidth = 100;
-                clearInterval(interval);
-            }
-        }, 100);
-        return progressWidth;
-    };
+    // const progressBar = (progressWidth) => {
+    //     console.log(progressWidth);
+    //     return progressWidth;
+    // };
 
-    const handleStart = () => {
-        audioRef.current.play();
-        setIsPlaying(true);
+    // const handleStart = () => {
+    //     audioRef.current.play();
+    //     setIsPlaying(true);
+    // };
 
-        progress(audioRef.current.currentTime, audioRef.current.duration);
-    };
+    useEffect(() => {
 
-    const handleStop = () => {
-        audioRef.current.pause();
-        setIsPlaying(false);
-    };
-
-    const togglePlay = () => {
-        if (isPlaying) {
-            handleStop();
-            setVisible(!visible);
-        } else {
-            handleStart();
-            setVisible(!visible);
+        function handleStart() {
+            audioRef.current.play();
+            setIsPlaying(true);
         }
-    };
+
+        function handleStop() {
+            audioRef.current.pause();
+            setIsPlaying(false);
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                handleStop();
+                setVisible(!visible);
+            } else {
+                handleStart();
+                setVisible(!visible);
+            }
+        }
+
+        const timerId = setInterval(() => {
+            setCount(count + 1);
+        }, 1000);
+        console.log(count);
+        return () => {
+            clearInterval(timerId),
+            togglePlay;
+        };
+    });
+
+    // const handleStop = () => {
+    //     audioRef.current.pause();
+    //     setIsPlaying(false);
+    // };
+
+    // const togglePlay = () => {
+    //     if (isPlaying) {
+    //         handleStop();
+    //         setVisible(!visible);
+    //     } else {
+    //         handleStart();
+    //         setVisible(!visible);
+    //     }
+    // };
 
     return (
         <>
@@ -52,10 +74,7 @@ export default function PlayerBlock(props) {
             <S.Bar>
                 <S.BarContent>
                     <S.BarPlayerProgress>
-                        <S.BarPlayerProgressMoving
-                            onProgress={progress()}
-                            isPlaying
-                        />
+                        <S.BarPlayerProgressMoving progress={count} />
                     </S.BarPlayerProgress>
                     <S.BarPlayerBlock>
                         <S.BarPlayer>
