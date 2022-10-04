@@ -7,11 +7,25 @@ export default function PlayerBlock(props) {
     const audioRef = useRef(null);
     const [visible, setVisible] = useState(true);
 
-    
+    const progress = (progressCurrentTime, trackDuraton) => {
+        let progressWidth = 0;
+        const interval = setInterval(() => {
+            if (progressCurrentTime < trackDuraton) {
+                // eslint-disable-next-line no-plusplus
+                progressWidth++;
+            } else {
+                progressWidth = 100;
+                clearInterval(interval);
+            }
+        }, 100);
+        return progressWidth;
+    };
+
     const handleStart = () => {
         audioRef.current.play();
         setIsPlaying(true);
-        console.log(audioRef.current.currentTime);
+
+        progress(audioRef.current.currentTime, audioRef.current.duration);
     };
 
     const handleStop = () => {
@@ -38,7 +52,10 @@ export default function PlayerBlock(props) {
             <S.Bar>
                 <S.BarContent>
                     <S.BarPlayerProgress>
-                        <S.BarPlayerProgressMoving progressWidth isPlaying />
+                        <S.BarPlayerProgressMoving
+                            onProgress={progress()}
+                            isPlaying
+                        />
                     </S.BarPlayerProgress>
                     <S.BarPlayerBlock>
                         <S.BarPlayer>
