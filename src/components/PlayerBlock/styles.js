@@ -4,8 +4,8 @@ const btn = css`
     cursor: pointer;
 `;
 
-export const Audio  = styled.audio`
-display:none;
+export const Audio = styled.audio`
+    display: none;
 `;
 
 export const Bar = styled.div`
@@ -28,7 +28,7 @@ export const BarPlayerProgress = styled.div`
 `;
 
 export const BarPlayerProgressMoving = styled.div`
-    width: ${props => (props.progress > 0 ? `${props.progress}%` : "0")};
+    width: ${(props) => (props.progress > 0 ? `${props.progress}%` : "0")};
     height: 5px;
     background: rgba(173, 97, 255, 1);
 `;
