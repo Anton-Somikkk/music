@@ -4,6 +4,10 @@ const btn = css`
     cursor: pointer;
 `;
 
+export const Audio  = styled.audio`
+display:none;
+`;
+
 export const Bar = styled.div`
     position: absolute;
     bottom: 0;

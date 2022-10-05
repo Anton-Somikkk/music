@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
 import * as S from "./styles";
 
@@ -6,71 +6,55 @@ export default function PlayerBlock(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
     const [visible, setVisible] = useState(true);
-    const [count, setCount] = useState(0);
+    // eslint-disable-next-line prefer-const
+    let [count, setCount] = useState(0);
 
-    // const progressBar = (progressWidth) => {
-    //     console.log(progressWidth);
-    //     return progressWidth;
-    // };
+    const handleStop = () => {
+        audioRef.current.pause();
+        setIsPlaying(false);
+    };
 
-    // const handleStart = () => {
-    //     audioRef.current.play();
-    //     setIsPlaying(true);
-    // };
-
-    useEffect(() => {
-
-        function handleStart() {
-            audioRef.current.play();
-            setIsPlaying(true);
-        }
-
-        function handleStop() {
-            audioRef.current.pause();
-            setIsPlaying(false);
-        }
-
-        function togglePlay() {
-            if (isPlaying) {
-                handleStop();
-                setVisible(!visible);
-            } else {
-                handleStart();
-                setVisible(!visible);
-            }
-        }
+    const handleStart = () => {
+        audioRef.current.play();
+        setIsPlaying(true);
 
         const timerId = setInterval(() => {
-            setCount(count + 1);
-        }, 1000);
-        console.log(count);
+            count =
+                (audioRef.current.currentTime / audioRef.current.duration) *
+                100;
+            setCount(count);
+
+            if (audioRef.current.currentTime === audioRef.current.duration) {
+                count = 0;
+                setCount(count);
+                audioRef.current.currentTime = 0;
+                handleStop();
+                setVisible(visible);
+                clearInterval(timerId);
+            }
+        }, audioRef.current.duration / 100);
+
         return () => {
-            clearInterval(timerId),
-            togglePlay;
+            clearInterval(timerId);
         };
-    });
+    };
 
-    // const handleStop = () => {
-    //     audioRef.current.pause();
-    //     setIsPlaying(false);
-    // };
-
-    // const togglePlay = () => {
-    //     if (isPlaying) {
-    //         handleStop();
-    //         setVisible(!visible);
-    //     } else {
-    //         handleStart();
-    //         setVisible(!visible);
-    //     }
-    // };
+    const togglePlay = () => {
+        if (isPlaying) {
+            handleStop();
+            setVisible(!visible);
+        } else {
+            handleStart();
+            setVisible(!visible);
+        }
+    };
 
     return (
         <>
-            <audio controls ref={audioRef}>
+            <S.Audio controls ref={audioRef}>
                 <source src="./Bobby_Marleni_Dropin.mp3" type="audio/mpeg" />
                 <track kind="captions" />
-            </audio>
+            </S.Audio>
             <S.Bar>
                 <S.BarContent>
                     <S.BarPlayerProgress>
