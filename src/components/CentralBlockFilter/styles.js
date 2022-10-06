@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 
-
 export const CenterBlockFilter = styled.div`
     display: flex;
     flex-direction: row;
@@ -22,7 +21,7 @@ const filterButton = css`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    border: 1px solid #FFF;
+    border: 1px solid #fff;
     border-radius: 60px;
     padding: 6px 20px;
 
@@ -38,20 +37,19 @@ const buttonText = css`
         cursor: pointer;
 `;
 
-
 export const FilterButtonAuthor = styled.div`
-${filterButton}
-${buttonText}
+    ${filterButton}
+    ${buttonText}
 `;
 
 export const FilterButtonYear = styled.div`
-${filterButton}
-${buttonText}
+    ${filterButton}
+    ${buttonText}
 `;
 
 export const FilterButtonGenre = styled.div`
-${filterButton}
-${buttonText}
+    ${filterButton}
+    ${buttonText}
 `;
 
 const popupList = css`
@@ -68,25 +66,22 @@ const popupList = css`
 const popupListOverflow = css`
     overflow-y: auto;
     ::-webkit-scrollbar {
-       
         width: 20px;
     }
     ::-webkit-scrollbar-track {
         background: #313131;
         border-radius: 10px;
-       
     }
     ::-webkit-scrollbar-thumb {
         background-color: #181818;
         border-radius: 10px;
-        border: 3px solid #FFF;
+        border: 3px solid #fff;
     }
     ::-webkit-scrollbar-thumb:hover {
         background-color: #fff;
         border: 3px solid #181818;
     }
 `;
-
 
 export const PopupListAuthor = styled.div`
     ${popupListOverflow}

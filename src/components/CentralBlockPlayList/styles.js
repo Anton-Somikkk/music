@@ -6,6 +6,4 @@ export const PlayListItem = styled.div`
     margin-bottom: 12px;
 `;
 
-export const PlayListItemSkeleton = styled.img`
-   
-`;
+export const PlayListItemSkeleton = styled.img``;

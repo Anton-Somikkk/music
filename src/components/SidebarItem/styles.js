@@ -1,21 +1,20 @@
-/* eslint-disable import/prefer-default-export */
 import styled from "styled-components";
 
 export const SidebarItem = styled.div`
-width: 250px;
-height: 150px;
+    width: 250px;
+    height: 150px;
 
-&:not(:last-child) {
-    margin-bottom: 30px;
-}
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
 `;
 
 export const SidebarLink = styled.a`
-width: 100%;
-height: 100%;
+    width: 100%;
+    height: 100%;
 `;
 
 export const SidebarImage = styled.img`
-width: 100%;
-height: auto;
+    width: 100%;
+    height: auto;
 `;
