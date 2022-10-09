@@ -94,7 +94,7 @@ export const PlayerBtnPrev = styled.div`
 export const PlayerBtnPlay = styled.div`
     ${playerBtnPlay}
     ${btnPlay}
-${btn}
+    ${btn}
 `;
 
 export const PlayerBtnNext = styled.div`
@@ -113,13 +113,13 @@ const btnIcon = css`
 export const PlayerBtnRepeat = styled.div`
     ${playerBtnRepeat}
     ${btnRepeat}
-${btnIcon}
+    ${btnIcon}
 `;
 
 export const PlayerBtnShuffle = styled.div`
     ${playerBtnShuffle}
     ${btnShuffle}
-${btnIcon}
+    ${btnIcon}
 `;
 
 export const PlayerBtnPrevSvg = styled.svg`

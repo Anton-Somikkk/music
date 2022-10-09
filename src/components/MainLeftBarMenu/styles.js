@@ -20,3 +20,9 @@ export const MenuLink = styled.a`
     font-size: 16px;
     line-height: 24px;
 `;
+
+export const MenuImage = styled.div`
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+`;
