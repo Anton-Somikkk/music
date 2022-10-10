@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import * as S from "./styles";
-import { ThemeContext, useThemeContext } from "../../count-context";
+import { useThemeContext } from "../../count-context";
 
 export default function MainLeftBarMenu(props) {
     const { theme } = useThemeContext();
@@ -14,7 +14,12 @@ export default function MainLeftBarMenu(props) {
         <S.NavMenu>
             <S.MenuList>
                 <S.MenuItem>
-                    <S.MenuLink href={props.menuItemMainUrl}>
+                    <S.MenuLink
+                        href={props.menuItemMainUrl}
+                        style={{
+                            color: theme.color,
+                        }}
+                    >
                         Главное
                     </S.MenuLink>
                 </S.MenuItem>
@@ -22,31 +27,32 @@ export default function MainLeftBarMenu(props) {
                     <NavLink
                         className="menu__link"
                         to={props.menuItemPlayListUrl}
+                        style={{
+                            color: theme.color,
+                        }}
                     >
                         Мой плейлист
                     </NavLink>
                 </S.MenuItem>
                 <S.MenuItem>
-                    <S.MenuLink href={props.menuItemMainUrl}>Войти</S.MenuLink>
+                    <S.MenuLink
+                        href={props.menuItemMainUrl}
+                        style={{
+                            color: theme.color,
+                        }}
+                    >
+                        Войти
+                    </S.MenuLink>
                 </S.MenuItem>
-                <ThemeContext.Consumer>
-                    <S.MenuItem>
-                        <S.MenuImage
-                            onClick={toggleTheme}
-                            alt="Сменить тему"
-                            style={{
-                                backgroundImage: theme.backgroundImage,
-                                color: theme.color,
-                            }}
-                        >
-                            {/* {visible ? (
-                            <use xlinkHref={props.light} />
-                        ) : (
-                            <use xlinkHref={props.dark} />
-                        )} */}
-                        </S.MenuImage>
-                    </S.MenuItem>
-                </ThemeContext.Consumer>
+
+                <S.MenuItem>
+                    <S.MenuImage
+                        onClick={toggleTheme}
+                        style={{
+                            backgroundImage: theme.backgroundImageThemeSwitcher,
+                        }}
+                    />
+                </S.MenuItem>
             </S.MenuList>
         </S.NavMenu>
     );

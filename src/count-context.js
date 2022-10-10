@@ -2,14 +2,20 @@ import React, { useContext } from "react";
 
 export const themes = {
     light: {
-        color: "#282c34",
+        color: "#000",
+        colorPale: "#B1B1B1",
         background: "#fff",
-        backgroundImage: "url('img/icon/change-theme-dark.svg')",
+        backgroundBurgerButton: "#000",
+        backgroundLeftBar: "#F6F5F3 ",
+        backgroundImageThemeSwitcher: "url('img/icon/change-theme-light.svg')",
     },
     dark: {
         color: "#fff",
-        background: "#282c34",
-        backgroundImage: "url('img/icon/change-theme-light.svg')",
+        colorPale: "#4E4E4E",
+        background: "#181818",
+        backgroundBurgerButton: "#D3D3D3",
+        backgroundLeftBar: "#1C1C1C",
+        backgroundImageThemeSwitcher: "url('img/icon/change-theme-dark.svg')",
     },
 };
 

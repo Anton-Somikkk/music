@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { createGlobalStyle } from "styled-components";
 import MainLeftBar from "../MainLeftBar/MainLeftBar";
 import CentralBlock from "../CentralBlock/CentralBlock";
 import MainSidebarRight from "../MainSidebarRight/MainSidebarRight";
 import PlayerBlock from "../PlayerBlock/PlayerBlock";
-import { ThemeContext, themes } from "../../count-context";
+import { ThemeContext, themes, useThemeContext } from "../../count-context";
+
 import * as S from "./styles";
 
 const GlobalStyle = createGlobalStyle`
@@ -55,7 +56,7 @@ ul li {
 `;
 
 export function Wrapper() {
-    const [currentTheme, setCurrentTheme] = useState(themes.light);
+    const [currentTheme, setCurrentTheme] = useState(themes.dark);
 
     const toggleTheme = () => {
         if (currentTheme === themes.dark) {
@@ -65,31 +66,41 @@ export function Wrapper() {
 
         setCurrentTheme(themes.dark);
     };
+
+    const themeContextProviderValue = useMemo(
+        () => ({ theme: currentTheme, toggleTheme }),
+        [{ theme: currentTheme, toggleTheme }]
+    );
+
+    const { theme } = useThemeContext();
+
     return (
-        <>
+        <ThemeContext.Provider value={themeContextProviderValue}>
             <GlobalStyle />
-            <ThemeContext.Provider value={{ theme: currentTheme, toggleTheme }}>
-                <S.Wrapper>
-                    <S.Container>
-                        <S.Main>
-                            <MainLeftBar logoUrl="img/logo.png" />
-                            <CentralBlock searchImageUrl="img/icon/sprite.svg#icon-search" />
-                            <MainSidebarRight />
-                        </S.Main>
-                        <PlayerBlock
-                            playerIconPrevUrl="img/icon/sprite.svg#icon-prev"
-                            playerIconPlayUrl="img/icon/sprite.svg#icon-play"
-                            playerIconPauseUrl="img/icon/sprite.svg#icon-pause"
-                            playerIconNextUrl="img/icon/sprite.svg#icon-next"
-                            playerIconRepeatUrl="img/icon/sprite.svg#icon-repeat"
-                            playerIconShuffleUrl="img/icon/sprite.svg#icon-shuffle"
-                            playerIconLikeUrl="img/icon/sprite.svg#icon-like"
-                            playerIconDislikeUrl="img/icon/sprite.svg#icon-dislike"
-                            playerIconVolumeUrl="img/icon/sprite.svg#icon-volume"
-                        />
-                    </S.Container>
-                </S.Wrapper>
-            </ThemeContext.Provider>
-        </>
+            <S.Wrapper>
+                <S.Container
+                    style={{
+                        backgroundColor: theme.background,
+                    }}
+                >
+                    <S.Main>
+                        <MainLeftBar logoUrl="img/logo.png" />
+                        <CentralBlock searchImageUrl="img/icon/sprite.svg#icon-search" />
+                        <MainSidebarRight />
+                    </S.Main>
+                    <PlayerBlock
+                        playerIconPrevUrl="img/icon/sprite.svg#icon-prev"
+                        playerIconPlayUrl="img/icon/sprite.svg#icon-play"
+                        playerIconPauseUrl="img/icon/sprite.svg#icon-pause"
+                        playerIconNextUrl="img/icon/sprite.svg#icon-next"
+                        playerIconRepeatUrl="img/icon/sprite.svg#icon-repeat"
+                        playerIconShuffleUrl="img/icon/sprite.svg#icon-shuffle"
+                        playerIconLikeUrl="img/icon/sprite.svg#icon-like"
+                        playerIconDislikeUrl="img/icon/sprite.svg#icon-dislike"
+                        playerIconVolumeUrl="img/icon/sprite.svg#icon-volume"
+                    />
+                </S.Container>
+            </S.Wrapper>
+        </ThemeContext.Provider>
     );
 }
