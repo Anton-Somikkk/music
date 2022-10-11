@@ -2,9 +2,12 @@ import { useRef, useState } from "react";
 import FilterPopupListAuthorsElementsRender from "../FilterPopupListAuthors/FilterPopupListAuthors";
 import FilterPopupListYearsElementsRender from "../FilterPopupListYears/FilterPopupListYears";
 import FilterPopupListGenreElementsRender from "../FilterPopupListGenre/FilterPopupListGenre";
+import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function CentralBlockFilter() {
+    const { theme } = useThemeContext();
+
     const [visibleListAuthors, setVisibleListAuthors] = useState(false);
     const [visibleListYears, setVisibleListYears] = useState(false);
     const [visibleListGenre, setVisibleListGenre] = useState(false);
@@ -42,9 +45,19 @@ export default function CentralBlockFilter() {
 
     return (
         <S.CenterBlockFilter>
-            <S.FilterTitle>Искать по:</S.FilterTitle>
+            <S.FilterTitle
+                style={{
+                    color: theme.colorButtonFilter,
+                }}
+            >
+                Искать по:
+            </S.FilterTitle>
 
             <S.FilterButtonAuthor
+                style={{
+                    color: theme.colorButtonFilter,
+                    borderColor: theme.colorButtonFilter,
+                }}
                 ref={listAuthors}
                 role="presentation"
                 onClick={toggleVisibilityListAuthors}
@@ -53,6 +66,10 @@ export default function CentralBlockFilter() {
             </S.FilterButtonAuthor>
 
             <S.FilterButtonYear
+                style={{
+                    color: theme.colorButtonFilter,
+                    borderColor: theme.colorButtonFilter,
+                }}
                 ref={listYears}
                 role="presentation"
                 onClick={toggleVisibilityListYears}
@@ -61,6 +78,10 @@ export default function CentralBlockFilter() {
             </S.FilterButtonYear>
 
             <S.FilterButtonGenre
+                style={{
+                    color: theme.colorButtonFilter,
+                    borderColor: theme.colorButtonFilter,
+                }}
                 ref={listGenre}
                 role="presentation"
                 onClick={toggleVisibilityListGenre}

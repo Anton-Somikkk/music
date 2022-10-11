@@ -1,18 +1,41 @@
 import CentralBlockPlayList from "../CentralBlockPlayList/CentralBlockPlayList";
 import CentralBlockFilter from "../CentralBlockFilter/CentralBlockFilter";
 import CentralBlockContent from "../CentralBlockContent/CentralBlockContent";
+import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function CentralBlock(props) {
+    const { theme } = useThemeContext();
+
     return (
         <S.MainCenterBlock>
-            <S.CenterBlockSearch>
-                <S.SearchSvg>
+            <S.CenterBlockSearch
+                style={{
+                    borderBottom: theme.borderBottom,
+                }}
+            >
+                <S.SearchSvg
+                    style={{
+                        stroke: theme.stroke,
+                    }}
+                >
                     <use xlinkHref={props.searchImageUrl} />
                 </S.SearchSvg>
-                <S.SearchText type="search" placeholder="Поиск" name="search" />
+                <S.SearchText
+                    type="search"
+                    placeholder="Поиск"
+                    name="search"
+                    style={{
+                        color: theme.color,
+                    }}
+                />
             </S.CenterBlockSearch>
-            <CentralBlockTitle title="Треки" />
+            <CentralBlockTitle
+                style={{
+                    color: theme.color,
+                }}
+                title="Треки"
+            />
             <CentralBlockFilter />
             <CentralBlockContent iconWatchUrl="img/icon/sprite.svg#icon-watch" />
             <S.ContentPlayList>
