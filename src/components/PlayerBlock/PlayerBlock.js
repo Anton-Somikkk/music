@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
+import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function PlayerBlock(props) {
+    const { theme } = useThemeContext();
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
     const [visible, setVisible] = useState(true);
@@ -55,7 +57,11 @@ export default function PlayerBlock(props) {
                 <source src="./Bobby_Marleni_Dropin.mp3" type="audio/mpeg" />
                 <track kind="captions" />
             </S.Audio>
-            <S.Bar>
+            <S.Bar
+                style={{
+                    backgroundColor: theme.backgroundColorPlayer,
+                }}
+            >
                 <S.BarContent>
                     <S.BarPlayerProgress>
                         <S.BarPlayerProgressMoving progress={count} />

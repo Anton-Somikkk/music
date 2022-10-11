@@ -54,10 +54,7 @@ export default function CentralBlockFilter() {
             </S.FilterTitle>
 
             <S.FilterButtonAuthor
-                style={{
-                    color: theme.colorButtonFilter,
-                    borderColor: theme.colorButtonFilter,
-                }}
+               
                 ref={listAuthors}
                 role="presentation"
                 onClick={toggleVisibilityListAuthors}
@@ -67,8 +64,8 @@ export default function CentralBlockFilter() {
 
             <S.FilterButtonYear
                 style={{
-                    color: theme.colorButtonFilter,
-                    borderColor: theme.colorButtonFilter,
+                    colorText: theme.colorButtonFilter,
+                    border: theme.borderButtonFilter,
                 }}
                 ref={listYears}
                 role="presentation"
@@ -79,8 +76,8 @@ export default function CentralBlockFilter() {
 
             <S.FilterButtonGenre
                 style={{
-                    color: theme.colorButtonFilter,
-                    borderColor: theme.colorButtonFilter,
+                    colorText: theme.colorButtonFilter,
+                    border: theme.borderButtonFilter,
                 }}
                 ref={listGenre}
                 role="presentation"

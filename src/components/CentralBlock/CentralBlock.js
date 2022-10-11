@@ -30,12 +30,7 @@ export default function CentralBlock(props) {
                     }}
                 />
             </S.CenterBlockSearch>
-            <CentralBlockTitle
-                style={{
-                    color: theme.color,
-                }}
-                title="Треки"
-            />
+            <CentralBlockTitle title="Треки" />
             <CentralBlockFilter />
             <CentralBlockContent iconWatchUrl="img/icon/sprite.svg#icon-watch" />
             <S.ContentPlayList>
@@ -46,5 +41,15 @@ export default function CentralBlock(props) {
 }
 
 function CentralBlockTitle(props) {
-    return <S.CenterBlockSubTitle>{props.title}</S.CenterBlockSubTitle>;
+
+    const { theme } = useThemeContext();
+    return (
+        <S.CenterBlockSubTitle
+            style={{
+                color: theme.color,
+            }}
+        >
+            {props.title}
+        </S.CenterBlockSubTitle>
+    );
 }

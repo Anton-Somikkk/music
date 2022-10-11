@@ -31,6 +31,7 @@ const filterButton = css`
 `;
 
 const buttonText = css`
+   
     :hover {
         border-color: #D9B6FF;
         color: #D9B6FF;

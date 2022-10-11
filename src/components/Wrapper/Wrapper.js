@@ -1,11 +1,9 @@
-import { useState, useMemo } from "react";
 import { createGlobalStyle } from "styled-components";
 import MainLeftBar from "../MainLeftBar/MainLeftBar";
 import CentralBlock from "../CentralBlock/CentralBlock";
 import MainSidebarRight from "../MainSidebarRight/MainSidebarRight";
 import PlayerBlock from "../PlayerBlock/PlayerBlock";
-import { ThemeContext, themes, useThemeContext } from "../../count-context";
-
+import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
 const GlobalStyle = createGlobalStyle`
@@ -56,26 +54,10 @@ ul li {
 `;
 
 export function Wrapper() {
-    const [currentTheme, setCurrentTheme] = useState(themes.dark);
-
-    const toggleTheme = () => {
-        if (currentTheme === themes.dark) {
-            setCurrentTheme(themes.light);
-            return;
-        }
-
-        setCurrentTheme(themes.dark);
-    };
-
-    const themeContextProviderValue = useMemo(
-        () => ({ theme: currentTheme, toggleTheme }),
-        [{ theme: currentTheme, toggleTheme }]
-    );
-
     const { theme } = useThemeContext();
 
     return (
-        <ThemeContext.Provider value={themeContextProviderValue}>
+        <>
             <GlobalStyle />
             <S.Wrapper>
                 <S.Container
@@ -84,7 +66,7 @@ export function Wrapper() {
                     }}
                 >
                     <S.Main>
-                        <MainLeftBar logoUrl="img/logo.png" />
+                        <MainLeftBar logoUrl={theme.logoURL} />
                         <CentralBlock searchImageUrl="img/icon/sprite.svg#icon-search" />
                         <MainSidebarRight />
                     </S.Main>
@@ -101,6 +83,6 @@ export function Wrapper() {
                     />
                 </S.Container>
             </S.Wrapper>
-        </ThemeContext.Provider>
+        </>
     );
 }
