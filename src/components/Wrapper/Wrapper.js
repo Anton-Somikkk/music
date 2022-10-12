@@ -3,6 +3,7 @@ import MainLeftBar from "../MainLeftBar/MainLeftBar";
 import CentralBlock from "../CentralBlock/CentralBlock";
 import MainSidebarRight from "../MainSidebarRight/MainSidebarRight";
 import PlayerBlock from "../PlayerBlock/PlayerBlock";
+import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
 const GlobalStyle = createGlobalStyle`
@@ -53,13 +54,19 @@ ul li {
 `;
 
 export function Wrapper() {
+    const { theme } = useThemeContext();
+
     return (
         <>
             <GlobalStyle />
             <S.Wrapper>
-                <S.Container>
+                <S.Container
+                    style={{
+                        backgroundColor: theme.background,
+                    }}
+                >
                     <S.Main>
-                        <MainLeftBar logoUrl="img/logo.png" />
+                        <MainLeftBar logoUrl={theme.logoURL} />
                         <CentralBlock searchImageUrl="img/icon/sprite.svg#icon-search" />
                         <MainSidebarRight />
                     </S.Main>

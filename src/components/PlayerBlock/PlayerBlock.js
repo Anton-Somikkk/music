@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
+import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function PlayerBlock(props) {
+    const { theme } = useThemeContext();
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
     const [visible, setVisible] = useState(true);
@@ -55,23 +57,37 @@ export default function PlayerBlock(props) {
                 <source src="./Bobby_Marleni_Dropin.mp3" type="audio/mpeg" />
                 <track kind="captions" />
             </S.Audio>
-            <S.Bar>
+            <S.Bar
+                style={{
+                    backgroundColor: theme.backgroundColorPlayer,
+                }}
+            >
                 <S.BarContent>
-                    <S.BarPlayerProgress>
+                    <S.BarPlayerProgress
+                        style={{
+                            background: theme.backgroundProgressBar,
+                        }}
+                    >
                         <S.BarPlayerProgressMoving progress={count} />
                     </S.BarPlayerProgress>
                     <S.BarPlayerBlock>
                         <S.BarPlayer>
                             <S.PlayerControls>
                                 <S.PlayerBtnPrev>
-                                    <S.PlayerBtnPrevSvg alt="prev">
+                                    <svg
+                                        alt="prev"
+                                        className={theme.playerBtnPrevNextSvg}
+                                    >
                                         <use
                                             xlinkHref={props.playerIconPrevUrl}
                                         />
-                                    </S.PlayerBtnPrevSvg>
+                                    </svg>
                                 </S.PlayerBtnPrev>
                                 <S.PlayerBtnPlay onClick={togglePlay}>
-                                    <S.PlayerBtnPlaySvg alt="play">
+                                    <svg
+                                        alt="play"
+                                        className={theme.playerBtnPlaySvg}
+                                    >
                                         {visible ? (
                                             <use
                                                 xlinkHref={
@@ -85,54 +101,69 @@ export default function PlayerBlock(props) {
                                                 }
                                             />
                                         )}
-                                    </S.PlayerBtnPlaySvg>
+                                    </svg>
                                 </S.PlayerBtnPlay>
                                 <S.PlayerBtnNext>
-                                    <S.PlayerBtnNextSvg alt="next">
+                                    <svg
+                                        alt="next"
+                                        className={theme.playerBtnPrevNextSvg}
+                                    >
                                         <use
                                             xlinkHref={props.playerIconNextUrl}
                                         />
-                                    </S.PlayerBtnNextSvg>
+                                    </svg>
                                 </S.PlayerBtnNext>
                                 <S.PlayerBtnRepeat>
-                                    <S.PlayerBtnRepeatSvg alt="repeat">
+                                    <svg
+                                        alt="repeat"
+                                        className={theme.playerBtnSvg}
+                                    >
                                         <use
                                             xlinkHref={
                                                 props.playerIconRepeatUrl
                                             }
                                         />
-                                    </S.PlayerBtnRepeatSvg>
+                                    </svg>
                                 </S.PlayerBtnRepeat>
                                 <S.PlayerBtnShuffle>
-                                    <S.PlayerBtnShuffleSvg alt="shuffle">
+                                    <svg
+                                        alt="shuffle"
+                                        className={theme.playerBtnSvg}
+                                    >
                                         <use
                                             xlinkHref={
                                                 props.playerIconShuffleUrl
                                             }
                                         />
-                                    </S.PlayerBtnShuffleSvg>
+                                    </svg>
                                 </S.PlayerBtnShuffle>
                             </S.PlayerControls>
                             <S.PlayerTrackPlay>
                                 <TrackPlayContain initSeconds={3} />
                                 <S.TrackPlayLikeDis>
                                     <S.TrackPlayLike>
-                                        <S.TrackPlayLikeSvg alt="like">
+                                        <svg
+                                            alt="like"
+                                            className={theme.playerBtnLikeSvg}
+                                        >
                                             <use
                                                 xlinkHref={
                                                     props.playerIconLikeUrl
                                                 }
                                             />
-                                        </S.TrackPlayLikeSvg>
+                                        </svg>
                                     </S.TrackPlayLike>
                                     <S.TrackPlayDislike>
-                                        <S.TrackPlayDislikeSvg alt="dislike">
+                                        <svg
+                                            alt="dislike"
+                                            className={theme.playerBtnLikeSvg}
+                                        >
                                             <use
                                                 xlinkHref={
                                                     props.playerIconDislikeUrl
                                                 }
                                             />
-                                        </S.TrackPlayDislikeSvg>
+                                        </svg>
                                     </S.TrackPlayDislike>
                                 </S.TrackPlayLikeDis>
                             </S.PlayerTrackPlay>
@@ -140,7 +171,12 @@ export default function PlayerBlock(props) {
                         <S.BarVolumeBlock>
                             <S.VolumeContent>
                                 <S.VolumeImage>
-                                    <S.VolumeSvg alt="volume">
+                                    <S.VolumeSvg
+                                        alt="volume"
+                                        style={{
+                                            stroke: theme.strokeIcon,
+                                        }}
+                                    >
                                         <use
                                             xlinkHref={
                                                 props.playerIconVolumeUrl

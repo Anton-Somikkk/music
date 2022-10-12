@@ -2,9 +2,12 @@ import { useRef, useState } from "react";
 import FilterPopupListAuthorsElementsRender from "../FilterPopupListAuthors/FilterPopupListAuthors";
 import FilterPopupListYearsElementsRender from "../FilterPopupListYears/FilterPopupListYears";
 import FilterPopupListGenreElementsRender from "../FilterPopupListGenre/FilterPopupListGenre";
+import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function CentralBlockFilter() {
+    const { theme } = useThemeContext();
+
     const [visibleListAuthors, setVisibleListAuthors] = useState(false);
     const [visibleListYears, setVisibleListYears] = useState(false);
     const [visibleListGenre, setVisibleListGenre] = useState(false);
@@ -42,31 +45,40 @@ export default function CentralBlockFilter() {
 
     return (
         <S.CenterBlockFilter>
-            <S.FilterTitle>Искать по:</S.FilterTitle>
+            <S.FilterTitle
+                style={{
+                    color: theme.colorButtonFilter,
+                }}
+            >
+                Искать по:
+            </S.FilterTitle>
 
-            <S.FilterButtonAuthor
+            <div
+                className={theme.filterButtonAuthor}
                 ref={listAuthors}
                 role="presentation"
                 onClick={toggleVisibilityListAuthors}
             >
                 исполнителю
-            </S.FilterButtonAuthor>
+            </div>
 
-            <S.FilterButtonYear
+            <div
+                className={theme.filterButtonYear}
                 ref={listYears}
                 role="presentation"
                 onClick={toggleVisibilityListYears}
             >
                 году выпуска
-            </S.FilterButtonYear>
+            </div>
 
-            <S.FilterButtonGenre
+            <div
+                className={theme.filterButtonGenre}
                 ref={listGenre}
                 role="presentation"
                 onClick={toggleVisibilityListGenre}
             >
                 жанру
-            </S.FilterButtonGenre>
+            </div>
 
             {visibleListAuthors && (
                 <S.PopupListAuthor
