@@ -1,21 +1,146 @@
-._btn-text:active {
-  border-color: #ad61ff;
-  color: #ad61ff;
-  cursor: pointer;
+.player__btn-prev-next-svg_dark {
+  width: 15px;
+  height: 14px;
+  stroke: #d9d9d9;
+  fill: #d9d9d9;
 }
 
-._btn-icon:active svg {
-  fill: transparent;
-  stroke: #ffffff;
-  cursor: pointer;
-}
-
-._btn-icon:active,
-.track-play__like-svg,
-._btn-icon:active,
-.track-play__dislike-svg {
+.player__btn-prev-next-svg_dark:hover {
   fill: #696969;
-  stroke: #ffffff;
+  stroke: #696969;
+  cursor: pointer;
+}
+
+.player__btn-prev-next-svg_dark:active {
+  fill: #d9d9d9;
+  stroke: #d9d9d9;
+  cursor: pointer;
+}
+
+.player__btn-prev-next-svg_light {
+  width: 15px;
+  height: 14px;
+  stroke: #b1b1b1;
+  fill: #b1b1b1;
+}
+
+.player__btn-prev-next-svg_light:hover {
+  fill: #707070;
+  stroke: #707070;
+  cursor: pointer;
+}
+
+.player__btn-prev-next-svg_light:active {
+  fill: #b1b1b1;
+  stroke: #b1b1b1;
+  cursor: pointer;
+}
+
+.player__btn-play-svg_dark {
+  width: 22px;
+  height: 20px;
+  fill: #d9d9d9;
+}
+
+.player__btn-play-svg_dark:hover {
+  fill: #696969;
+  cursor: pointer;
+}
+
+.player__btn-play-svg_dark:active {
+  fill: #d9d9d9;
+  cursor: pointer;
+}
+
+.player__btn-play-svg_light {
+  width: 22px;
+  height: 20px;
+  fill: #b1b1b1;
+}
+
+.player__btn-play-svg_light:hover {
+  fill: #707070;
+  cursor: pointer;
+}
+
+.player__btn-play-svg_light:active {
+  fill: #b1b1b1;
+  cursor: pointer;
+}
+
+.player__btn-svg_dark {
+  width: 19px;
+  height: 12px;
+  fill: transparent;
+  stroke: #696969;
+}
+
+.player__btn-svg_dark:hover {
+  fill: transparent;
+  stroke: #acacac;
+  cursor: pointer;
+}
+
+.player__btn-svg_dark:active {
+  fill: transparent;
+  stroke: #fff;
+  cursor: pointer;
+}
+
+.player__btn-svg_light {
+  width: 19px;
+  height: 12px;
+  fill: transparent;
+  stroke: #b1b1b1;
+}
+
+.player__btn-svg_light:hover {
+  fill: transparent;
+  stroke: #707070;
+  cursor: pointer;
+}
+
+.player__btn-svg_light:active {
+  fill: transparent;
+  stroke: #000;
+  cursor: pointer;
+}
+
+.player__btn-like-svg_dark {
+  width: 14px;
+  height: 12px;
+  fill: transparent;
+  stroke: #696969;
+}
+
+.player__btn-like-svg_dark:hover {
+  fill: transparent;
+  stroke: #acacac;
+  cursor: pointer;
+}
+
+.player__btn-like-svg_dark:active {
+  fill: #696969;
+  stroke: #fff;
+  cursor: pointer;
+}
+
+.player__btn-like-svg_light {
+  width: 14px;
+  height: 12px;
+  fill: transparent;
+  stroke: #b1b1b1;
+}
+
+.player__btn-like-svg_light:hover {
+  fill: transparent;
+  stroke: #707070;
+  cursor: pointer;
+}
+
+.player__btn-like-svg_light:active {
+  fill: #AD61FF;
+  stroke: #000;
   cursor: pointer;
 }
 
@@ -31,9 +156,9 @@
   height: 100%;
 }
 
-.filter__button-author__light,
-.filter__button-year__light,
-.filter__button-genre__light {
+.filter__button-author_light,
+.filter__button-year_light,
+.filter__button-genre_light {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -44,23 +169,23 @@
   color: #000;
 }
 
-.filter__button-author__light:not(:last-child),
-.filter__button-year__light:not(:last-child),
-.filter__button-genre__light:not(:last-child) {
+.filter__button-author_light:not(:last-child),
+.filter__button-year_light:not(:last-child),
+.filter__button-genre_light:not(:last-child) {
   margin-right: 10px;
 }
 
-.filter__button-author__light:hover,
-.filter__button-year__light:hover,
-.filter__button-genre__light:hover {
+.filter__button-author_light:hover,
+.filter__button-year_light:hover,
+.filter__button-genre_light:hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
 }
 
-.filter__button-author__dark,
-.filter__button-year__dark,
-.filter__button-genre__dark {
+.filter__button-author_dark,
+.filter__button-year_dark,
+.filter__button-genre_dark {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -71,15 +196,15 @@
   color: #fff;
 }
 
-.filter__button-author__dark:not(:last-child),
-.filter__button-year__dark:not(:last-child),
-.filter__button-genre__dark:not(:last-child) {
+.filter__button-author_dark:not(:last-child),
+.filter__button-year_dark:not(:last-child),
+.filter__button-genre_dark:not(:last-child) {
   margin-right: 10px;
 }
 
-.filter__button-author__dark:hover,
-.filter__button-year__dark:hover,
-.filter__button-genre__dark:hover {
+.filter__button-author_dark:hover,
+.filter__button-year_dark:hover,
+.filter__button-genre_dark:hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;

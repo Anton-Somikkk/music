@@ -50,6 +50,7 @@ export const BarPlayer = styled.div`
 export const PlayerControls = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 0 27px 0 31px;
 `;
 
@@ -60,7 +61,6 @@ const {
     playerBtnRepeat,
     playerBtnShuffle,
 } = css`
-    padding: 5px;
     display: flex;
     align-items: center;
 `;
@@ -102,58 +102,14 @@ export const PlayerBtnNext = styled.div`
     ${btnNext}
 `;
 
-const btnIcon = css`
-    :hover svg {
-        fill: transparent;
-        stroke: #acacac;
-        cursor: pointer;
-    }
-`;
-
 export const PlayerBtnRepeat = styled.div`
     ${playerBtnRepeat}
     ${btnRepeat}
-    ${btnIcon}
 `;
 
 export const PlayerBtnShuffle = styled.div`
     ${playerBtnShuffle}
     ${btnShuffle}
-    ${btnIcon}
-`;
-
-export const PlayerBtnPrevSvg = styled.svg`
-    width: 15px;
-    height: 14px;
-    stroke: #d9d9d9;
-    fill: #d9d9d9;
-`;
-
-export const PlayerBtnPlaySvg = styled.svg`
-    width: 22px;
-    height: 20px;
-    fill: #d9d9d9;
-`;
-
-export const PlayerBtnNextSvg = styled.svg`
-    width: 15px;
-    height: 14px;
-    stroke: #d9d9d9;
-    fill: #d9d9d9;
-`;
-
-export const PlayerBtnRepeatSvg = styled.svg`
-    width: 18px;
-    height: 12px;
-    fill: transparent;
-    stroke: #696969;
-`;
-
-export const PlayerBtnShuffleSvg = styled.svg`
-    width: 19px;
-    height: 12px;
-    fill: transparent;
-    stroke: #696969;
 `;
 
 export const PlayerTrackPlay = styled.div`
@@ -177,28 +133,13 @@ const marginDislike = css`
 `;
 
 export const TrackPlayLike = styled.div`
-    ${btnIcon}
     ${trackPlayLike}
 `;
 
 export const TrackPlayDislike = styled.div`
-    ${btnIcon}
+   
     ${trackPlayDislike}
-${marginDislike}
-`;
-
-export const TrackPlayLikeSvg = styled.svg`
-    width: 14px;
-    height: 12px;
-    fill: transparent;
-    stroke: #696969;
-`;
-
-export const TrackPlayDislikeSvg = styled.svg`
-    width: 14.34px;
-    height: 13px;
-    fill: transparent;
-    stroke: #696969;
+    ${marginDislike}
 `;
 
 export const BarVolumeBlock = styled.div`

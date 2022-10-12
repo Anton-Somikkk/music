@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import * as S from "./styles";
 import { useThemeContext } from "../../count-context";
@@ -6,9 +5,6 @@ import { useThemeContext } from "../../count-context";
 export default function MainLeftBarMenu(props) {
     const { theme } = useThemeContext();
     const { toggleTheme } = useThemeContext();
-    // const [visible, setVisible] = useState(false);
-
-    // const toggleVisibility = () => setVisible(!visible);
 
     return (
         <S.NavMenu>
