@@ -70,14 +70,25 @@ export default function PlayerBlock(props) {
                         <S.BarPlayer>
                             <S.PlayerControls>
                                 <S.PlayerBtnPrev>
-                                    <S.PlayerBtnPrevSvg alt="prev">
+                                    <S.PlayerBtnPrevSvg
+                                        alt="prev"
+                                        style={{
+                                            fill: theme.playerButtons,
+                                            stroke: theme.playerButtons,
+                                        }}
+                                    >
                                         <use
                                             xlinkHref={props.playerIconPrevUrl}
                                         />
                                     </S.PlayerBtnPrevSvg>
                                 </S.PlayerBtnPrev>
                                 <S.PlayerBtnPlay onClick={togglePlay}>
-                                    <S.PlayerBtnPlaySvg alt="play">
+                                    <S.PlayerBtnPlaySvg
+                                        alt="play"
+                                        style={{
+                                            fill: theme.playerButtons,
+                                        }}
+                                    >
                                         {visible ? (
                                             <use
                                                 xlinkHref={
@@ -94,7 +105,13 @@ export default function PlayerBlock(props) {
                                     </S.PlayerBtnPlaySvg>
                                 </S.PlayerBtnPlay>
                                 <S.PlayerBtnNext>
-                                    <S.PlayerBtnNextSvg alt="next">
+                                    <S.PlayerBtnNextSvg
+                                        alt="next"
+                                        style={{
+                                            fill: theme.playerButtons,
+                                            stroke: theme.playerButtons,
+                                        }}
+                                    >
                                         <use
                                             xlinkHref={props.playerIconNextUrl}
                                         />

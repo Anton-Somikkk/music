@@ -10,8 +10,10 @@
     cursor: pointer;
 }
 
-._btn-icon:active .track-play__like-svg,
-._btn-icon:active .track-play__dislike-svg {
+._btn-icon:active,
+.track-play__like-svg,
+._btn-icon:active,
+.track-play__dislike-svg {
     fill: #696969;
     stroke: #ffffff;
     cursor: pointer;
@@ -29,7 +31,54 @@
     height: 100%;
 }
 
+
+.filter__button-author__light,
+.filter__button-year__light,
+.filter__button-genre__light {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #000;
+    border-radius: 60px;
+    padding: 6px 20px;
+    color: #000;
+
+    &:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    &:hover {
+        border-color: #d9b6ff;
+        color: #d9b6ff;
+        cursor: pointer;
+    }
+}
+
+.filter__button-author__dark,
+.filter__button-year__dark,
+.filter__button-genre__dark {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #fff;
+    border-radius: 60px;
+    padding: 6px 20px;
+    color: #fff;
+
+    &:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    &:hover {
+        border-color: #d9b6ff;
+        color: #d9b6ff;
+        cursor: pointer;
+    }
+}
+
 .button-focus {
     color: rgba(173, 97, 255, 1);
-    border: 1px solid rgba(173, 97, 255, 1);
+    border-color: rgba(173, 97, 255, 1);
 }

@@ -125,6 +125,8 @@ export const PlayerBtnShuffle = styled.div`
 export const PlayerBtnPrevSvg = styled.svg`
     width: 15px;
     height: 14px;
+    stroke: #d9d9d9;
+    fill: #d9d9d9;
 `;
 
 export const PlayerBtnPlaySvg = styled.svg`
@@ -136,8 +138,8 @@ export const PlayerBtnPlaySvg = styled.svg`
 export const PlayerBtnNextSvg = styled.svg`
     width: 15px;
     height: 14px;
-    fill: inherit;
     stroke: #d9d9d9;
+    fill: #d9d9d9;
 `;
 
 export const PlayerBtnRepeatSvg = styled.svg`

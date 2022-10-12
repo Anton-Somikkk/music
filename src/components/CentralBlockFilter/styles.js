@@ -16,42 +16,6 @@ export const FilterTitle = styled.div`
     margin-right: 15px;
 `;
 
-const filterButton = css`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    border: 1px solid #fff;
-    border-radius: 60px;
-    padding: 6px 20px;
-
-    &:not(:last-child) {
-        margin-right: 10px;
-    }
-`;
-
-const buttonText = css`
-   
-    :hover {
-        border-color: #D9B6FF;
-        color: #D9B6FF;
-        cursor: pointer;
-`;
-
-export const FilterButtonAuthor = styled.div`
-    ${filterButton}
-    ${buttonText}
-`;
-
-export const FilterButtonYear = styled.div`
-    ${filterButton}
-    ${buttonText}
-`;
-
-export const FilterButtonGenre = styled.div`
-    ${filterButton}
-    ${buttonText}
-`;
 
 const popupList = css`
     width: 200px;

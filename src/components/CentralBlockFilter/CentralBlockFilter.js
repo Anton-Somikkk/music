@@ -53,38 +53,32 @@ export default function CentralBlockFilter() {
                 Искать по:
             </S.FilterTitle>
 
-            <S.FilterButtonAuthor
-               
+            <div
+                className={theme.filterButtonAuthor}
                 ref={listAuthors}
                 role="presentation"
                 onClick={toggleVisibilityListAuthors}
             >
                 исполнителю
-            </S.FilterButtonAuthor>
+            </div>
 
-            <S.FilterButtonYear
-                style={{
-                    colorText: theme.colorButtonFilter,
-                    border: theme.borderButtonFilter,
-                }}
+            <div
+                className={theme.filterButtonYear}
                 ref={listYears}
                 role="presentation"
                 onClick={toggleVisibilityListYears}
             >
                 году выпуска
-            </S.FilterButtonYear>
+            </div>
 
-            <S.FilterButtonGenre
-                style={{
-                    colorText: theme.colorButtonFilter,
-                    border: theme.borderButtonFilter,
-                }}
+            <div
+                className={theme.filterButtonGenre}
                 ref={listGenre}
                 role="presentation"
                 onClick={toggleVisibilityListGenre}
             >
                 жанру
-            </S.FilterButtonGenre>
+            </div>
 
             {visibleListAuthors && (
                 <S.PopupListAuthor
