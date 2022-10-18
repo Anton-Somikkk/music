@@ -1,3 +1,5 @@
+import request from "./req";
+
 const tracksJSON = [
     {
         trackImageUrl: "img/icon/sprite.svg#icon-note",
@@ -159,5 +161,17 @@ const tracksJSON = [
 
 const tracksStringify = JSON.stringify(tracksJSON);
 const tracks = JSON.parse(tracksStringify);
+
+const apiBaseUrl = "http://51.250.95.23:8000/catalog/track";
+
+request({
+    url: `${apiBaseUrl}/all`,
+    onSuccess: (data) => {
+        console.log(data);
+    },
+    onError: (statusText) => {
+        console.log(statusText);
+    },
+});
 
 export default tracks;

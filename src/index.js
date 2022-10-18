@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./css/style.css";
+import "./req";
 import "./tracks";
 import App from "./App";
 
