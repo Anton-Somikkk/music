@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import tracks from "../../tracks";
+import getTracks from "../../tracks";
 import PlayListItem from "../PlayListItem/PlayListItem";
 import * as S from "./styles";
 
 export default function CentralBlockPlayList(props) {
     const elemsCollection = [];
     const elemsSkeletonCollection = [];
-
-    for (let i = 0; i < tracks.length; i += 1) {
+    getTracks();
+    for (let i = 0; i < window.application.tracks.length; i += 1) {
         const elem = <PlayListItem trackNumber={i} key={i} />;
         const elemSkeleton = (
             <S.PlayListItem key={i}>
