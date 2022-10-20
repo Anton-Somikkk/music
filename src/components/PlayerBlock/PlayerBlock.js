@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
 import { useThemeContext } from "../../count-context";
+
 import * as S from "./styles";
 
 export default function PlayerBlock(props) {
@@ -8,6 +9,7 @@ export default function PlayerBlock(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
     const [visible, setVisible] = useState(true);
+
     // eslint-disable-next-line prefer-const
     let [count, setCount] = useState(0);
 
@@ -50,17 +52,38 @@ export default function PlayerBlock(props) {
             setVisible(!visible);
         }
     };
+    function timeout() {
+        // eslint-disable-next-line no-use-before-define
+        setTimeout(() => checkTracks(), 100);
+    }
 
+    function checkTracks() {
+        if (window.application.tracks.length > 0) {
+            window.application.trackPlay =
+                window.application.tracks[1].track_file;
+        } else {
+            timeout();
+        }
+    }
+    timeout();
+    console.log(window.application.trackPlay);
     return (
         <>
             <S.Audio controls ref={audioRef}>
-                <source src={window.application.tracks[1].track_file} type="audio/mpeg" />
+                <source
+                    src={
+                        window.application.tracks.length > 0
+                            ? window.application.trackPlay
+                            : "444"
+                    }
+                    type="audio/mpeg"
+                />
                 <track kind="captions" />
             </S.Audio>
             <S.Bar
                 style={{
                     backgroundColor: theme.backgroundColorPlayer,
-                    // display: 'none',
+                    // display: "none",
                 }}
             >
                 <S.BarContent>

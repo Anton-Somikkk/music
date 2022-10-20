@@ -1,9 +1,5 @@
 import request from "./req";
-
-
-window.application = {
-    tracks: [],
-};
+import "./vars";
 
 function getTracks() {
     const apiBaseUrl = "http://51.250.95.23:8000/catalog/track";
@@ -12,9 +8,10 @@ function getTracks() {
         url: `${apiBaseUrl}/all`,
         onSuccess: (data) => {
             window.application.tracks = data.results;
+            
         },
-        onError: (statusText) => {
-            console.log(statusText);
+        onError: () => {
+            console.log("error");
         },
     });
 }
