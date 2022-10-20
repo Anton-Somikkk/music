@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import MainLeftBar from "../MainLeftBar/MainLeftBar";
 import CentralBlock from "../CentralBlock/CentralBlock";
 import MainSidebarRight from "../MainSidebarRight/MainSidebarRight";
-// import PlayerBlock from "../PlayerBlock/PlayerBlock";
+import PlayerBlock from "../PlayerBlock/PlayerBlock";
 import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
@@ -70,7 +70,7 @@ export function Wrapper() {
                         <CentralBlock searchImageUrl="img/icon/sprite.svg#icon-search" />
                         <MainSidebarRight />
                     </S.Main>
-                    {/* <PlayerBlock
+                    <PlayerBlock 
                         playerIconPrevUrl="img/icon/sprite.svg#icon-prev"
                         playerIconPlayUrl="img/icon/sprite.svg#icon-play"
                         playerIconPauseUrl="img/icon/sprite.svg#icon-pause"
@@ -80,7 +80,7 @@ export function Wrapper() {
                         playerIconLikeUrl="img/icon/sprite.svg#icon-like"
                         playerIconDislikeUrl="img/icon/sprite.svg#icon-dislike"
                         playerIconVolumeUrl="img/icon/sprite.svg#icon-volume"
-                    /> */}
+                    />
                 </S.Container>
             </S.Wrapper>
         </>

@@ -54,12 +54,13 @@ export default function PlayerBlock(props) {
     return (
         <>
             <S.Audio controls ref={audioRef}>
-                <source src="./Bobby_Marleni_Dropin.mp3" type="audio/mpeg" />
+                <source src={window.application.tracks[1].track_file} type="audio/mpeg" />
                 <track kind="captions" />
             </S.Audio>
             <S.Bar
                 style={{
                     backgroundColor: theme.backgroundColorPlayer,
+                    // display: 'none',
                 }}
             >
                 <S.BarContent>
