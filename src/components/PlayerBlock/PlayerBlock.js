@@ -52,11 +52,12 @@ export default function PlayerBlock(props) {
             setVisible(!visible);
         }
     };
+
     function timeout() {
         // eslint-disable-next-line no-use-before-define
         setTimeout(() => checkTracks(), 100);
     }
-
+    timeout();
     function checkTracks() {
         if (window.application.tracks.length > 0) {
             window.application.trackPlay =
@@ -65,8 +66,7 @@ export default function PlayerBlock(props) {
             timeout();
         }
     }
-    timeout();
-    console.log(window.application.trackPlay);
+
     return (
         <>
             <S.Audio controls ref={audioRef}>
@@ -74,7 +74,7 @@ export default function PlayerBlock(props) {
                     src={
                         window.application.tracks.length > 0
                             ? window.application.trackPlay
-                            : "444"
+                            : console.log("no data")
                     }
                     type="audio/mpeg"
                 />
