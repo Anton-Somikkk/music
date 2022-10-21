@@ -7,7 +7,7 @@ export default function CentralBlockPlayList(props) {
     const elemsCollection = [];
     const elemsSkeletonCollection = [];
     getTracks();
-    
+
     for (let i = 0; i < window.application.tracks.length; i += 1) {
         const elem = <PlayListItem trackNumber={i} key={i} />;
         const elemSkeleton = (

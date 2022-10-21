@@ -53,31 +53,12 @@ export default function PlayerBlock(props) {
         }
     };
 
-    function timeout() {
-        // eslint-disable-next-line no-use-before-define
-        setTimeout(() => checkTracks(), 100);
-    }
-    timeout();
-    function checkTracks() {
-        if (window.application.tracks.length > 0) {
-            window.application.trackPlay =
-                window.application.tracks[1].track_file;
-        } else {
-            timeout();
-        }
-    }
+   
 
     return (
         <>
             <S.Audio controls ref={audioRef}>
-                <source
-                    src={
-                        window.application.tracks.length > 0
-                            ? window.application.trackPlay
-                            : console.log("no data")
-                    }
-                    type="audio/mpeg"
-                />
+                <source src={window.application.trackPlay} type="audio/mpeg" />
                 <track kind="captions" />
             </S.Audio>
             <S.Bar
