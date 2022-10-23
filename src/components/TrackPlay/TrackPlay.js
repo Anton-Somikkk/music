@@ -1,8 +1,9 @@
-import { useThemeContext } from "../../count-context";
+import { useThemeContext, usePlayerContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function TrackPlay(props) {
     const { theme } = useThemeContext();
+    const { playersOption } = usePlayerContext();
 
     return (
         <>
@@ -22,6 +23,7 @@ export default function TrackPlay(props) {
             </S.TrackPlayImage>
             <S.TrackPlayAuthor>
                 <S.TrackPlayAuthorLink
+                    id={playersOption.statusChange}
                     href={props.playTrackNameUrl}
                     style={{
                         color: theme.color,

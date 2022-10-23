@@ -1,10 +1,18 @@
 // eslint-disable-next-line import/no-cycle
 import { useState, useMemo } from "react";
 import { AppRoutes } from "./routes";
-import { ThemeContext, themes } from "./count-context";
+import {
+    ThemeContext,
+    themes,
+    PlayerContext,
+    playersOptions,
+} from "./count-context";
 
 function App() {
     const [currentTheme, setCurrentTheme] = useState(themes.dark);
+    const [currentPlayerStatus, setCurrentPlayerStatus] = useState(
+        playersOptions.stopOptions
+    );
 
     const toggleTheme = () => {
         if (currentTheme === themes.dark) {
@@ -15,13 +23,28 @@ function App() {
         setCurrentTheme(themes.dark);
     };
 
+    const togglePlayer = () => {
+        if (currentPlayerStatus === playersOptions.stopOptions) {
+            setCurrentPlayerStatus(playersOptions.playOptions);
+            return;
+        }
+
+        setCurrentPlayerStatus(playersOptions.stopOptions);
+    };
+
     const themeContextProviderValue = useMemo(
         () => ({ theme: currentTheme, toggleTheme }),
         [{ theme: currentTheme, toggleTheme }]
     );
+    const playerContextProviderValue = useMemo(
+        () => ({ playersOption: currentPlayerStatus, togglePlayer }),
+        [{ playersOption: currentPlayerStatus, togglePlayer }]
+    );
     return (
         <ThemeContext.Provider value={themeContextProviderValue}>
-            <AppRoutes />;
+            <PlayerContext.Provider value={playerContextProviderValue}>
+                <AppRoutes />;
+            </PlayerContext.Provider>
         </ThemeContext.Provider>
     );
 }

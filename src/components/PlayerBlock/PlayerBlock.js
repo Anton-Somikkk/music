@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
-import { useThemeContext } from "../../count-context";
+import { useThemeContext, usePlayerContext } from "../../count-context";
 
 import * as S from "./styles";
 
 export default function PlayerBlock(props) {
+    const { playersOption } = usePlayerContext();
     const { theme } = useThemeContext();
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
@@ -21,7 +22,7 @@ export default function PlayerBlock(props) {
     const handleStart = () => {
         audioRef.current.play();
         setIsPlaying(true);
-
+        console.log(window.application.trackPlayUrl);
         const timerId = setInterval(() => {
             count =
                 (audioRef.current.currentTime / audioRef.current.duration) *
@@ -53,18 +54,20 @@ export default function PlayerBlock(props) {
         }
     };
 
-   
-
     return (
         <>
             <S.Audio controls ref={audioRef}>
-                <source src={window.application.trackPlay} type="audio/mpeg" />
+                <source
+                    src={window.application.trackPlayUrl}
+                    type="audio/mpeg"
+                />
                 <track kind="captions" />
             </S.Audio>
             <S.Bar
+                
                 style={{
                     backgroundColor: theme.backgroundColorPlayer,
-                    // display: "none",
+                    visibility: playersOption.playerStatus,
                 }}
             >
                 <S.BarContent>

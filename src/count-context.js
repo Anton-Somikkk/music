@@ -61,3 +61,27 @@ export const useThemeContext = () => {
 
     return theme;
 };
+
+export const playersOptions = {
+    playOptions: {
+        playerStatus: "visible",
+        statusChange: "status-change",
+    },
+    stopOptions: {
+        playerStatus: "hidden",
+        statusChange: "status-change#",
+    },
+};
+
+export const PlayerContext = React.createContext({
+    playersOption: playersOptions.options,
+    togglePlayer: () => {},
+});
+
+export const usePlayerContext = () => {
+    const playersOption = useContext(PlayerContext);
+
+    if (!playersOption) return playersOption.stopOptions;
+
+    return playersOption;
+};
