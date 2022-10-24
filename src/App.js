@@ -24,12 +24,17 @@ function App() {
     };
 
     const togglePlayer = () => {
-        if (currentPlayerStatus === playersOptions.stopOptions) {
+        if (
+            currentPlayerStatus === playersOptions.stopOptions ||
+            currentPlayerStatus === playersOptions.playAgainOptions
+        ) {
             setCurrentPlayerStatus(playersOptions.playOptions);
             return;
         }
 
-        setCurrentPlayerStatus(playersOptions.stopOptions);
+        if (currentPlayerStatus === playersOptions.playOptions) {
+            setCurrentPlayerStatus(playersOptions.playAgainOptions);
+        }
     };
 
     const themeContextProviderValue = useMemo(

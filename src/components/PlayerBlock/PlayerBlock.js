@@ -64,7 +64,6 @@ export default function PlayerBlock(props) {
                 <track kind="captions" />
             </S.Audio>
             <S.Bar
-                
                 style={{
                     backgroundColor: theme.backgroundColorPlayer,
                     visibility: playersOption.playerStatus,

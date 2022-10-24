@@ -71,10 +71,14 @@ export const playersOptions = {
         playerStatus: "hidden",
         statusChange: "status-change#",
     },
+    playAgainOptions: {
+        playerStatus: "visible",
+        statusChange: "status-change#",
+    },
 };
 
 export const PlayerContext = React.createContext({
-    playersOption: playersOptions.options,
+    playersOption: playersOptions.stopOptions,
     togglePlayer: () => {},
 });
 
