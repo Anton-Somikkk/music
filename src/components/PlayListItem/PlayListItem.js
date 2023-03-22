@@ -6,39 +6,32 @@ import * as S from "./styles";
 export default function PlayListItem(props) {
     const { togglePlayer } = usePlayerContext();
 
-    const togglePlayTrack = () => {
-        window.application.trackPlayUrl =
-            window.application.tracks[props.trackNumber].track_file;
-        window.application.trackPlayName =
-            window.application.tracks[props.trackNumber].name;
-        window.application.trackPlayAuthor =
-            window.application.tracks[props.trackNumber].author;
-    };
+    // const togglePlayTrack = () => {
+    //     window.application.trackPlayUrl =
+    //         window.application.tracks[props.trackNumber].track_file;
+    //     window.application.trackPlayName =
+    //         window.application.tracks[props.trackNumber].name;
+    //     window.application.trackPlayAuthor =
+    //         window.application.tracks[props.trackNumber].author;
+    // };
 
     return (
         <S.PlayListItem
             onClick={() => {
                 togglePlayer();
-                togglePlayTrack();
+                // togglePlayTrack();
             }}
         >
             <PlayListTrack
                 trackImageUrl="img/icon/sprite.svg#icon-note"
                 trackTitleUrl=""
-                trackTitle={window.application.tracks[props.trackNumber].name}
+                trackTitle={props.track.name}
                 trackAuthorUrl=""
-                trackAuthorTitle={
-                    window.application.tracks[props.trackNumber].author
-                }
+                trackAuthorTitle={props.track.author}
                 trackAlbumUrl=""
-                trackAlbumTitle={
-                    window.application.tracks[props.trackNumber].album
-                }
+                trackAlbumTitle={props.track.album}
                 iconLikeUrl="img/icon/sprite.svg#icon-like"
-                trackTime={
-                    window.application.tracks[props.trackNumber]
-                        .duration_in_seconds
-                }
+                trackTime={props.track.duration_in_seconds}
             />
         </S.PlayListItem>
     );

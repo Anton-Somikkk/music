@@ -22,7 +22,7 @@ export default function PlayerBlock(props) {
     const handleStart = () => {
         audioRef.current.play();
         setIsPlaying(true);
-        console.log(window.application.trackPlayUrl);
+       
         const timerId = setInterval(() => {
             count =
                 (audioRef.current.currentTime / audioRef.current.duration) *
@@ -58,7 +58,7 @@ export default function PlayerBlock(props) {
         <>
             <S.Audio controls ref={audioRef}>
                 <source
-                    src={window.application.trackPlayUrl}
+                    src={props.trackPlayUrl}
                     type="audio/mpeg"
                 />
                 <track kind="captions" />

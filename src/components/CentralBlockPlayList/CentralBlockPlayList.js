@@ -1,45 +1,42 @@
-import { useEffect, useState } from "react";
-
 import PlayListItem from "../PlayListItem/PlayListItem";
 import * as S from "./styles";
+import { useGetAllTracksQuery } from "../../services/track";
 
-export default function CentralBlockPlayList(props) {
-    const elemsCollection = [];
-    const elemsSkeletonCollection = [];
-    
+export default function CentralBlockPlayList() {
+    const { data, error, isLoading } = useGetAllTracksQuery();
 
-    for (let i = 0; i < window.application.tracks.length; i += 1) {
-        const elem = <PlayListItem trackNumber={i} key={i} />;
-        const elemSkeleton = (
-            <S.PlayListItem key={i}>
-                <S.PlayListItemSkeleton
-                    src="../img/track-sceleton.png"
-                    aria-label="Загрузка трека"
-                />
-            </S.PlayListItem>
-        );
+    const isEmptyList = !isLoading && !data?.length;
 
-        elemsCollection.push(elem);
-        elemsSkeletonCollection.push(elemSkeleton);
+    if (isLoading) {
+        const elemsSkeletonCollection = [];
+
+        for (let i = 0; i < 10; i += 1) {
+            const elemSkeleton = (
+                <S.PlayListItem key={i}>
+                    <S.PlayListItemSkeleton
+                        src="../img/track-sceleton.png"
+                        aria-label="Загрузка трека"
+                    />
+                </S.PlayListItem>
+            );
+            elemsSkeletonCollection.push(elemSkeleton);
+        }
+        return elemsSkeletonCollection;
     }
 
-    const { initSeconds = 10 } = props;
-    const [seconds, setSeconds] = useState(initSeconds);
+    if (error) {
+        return <p>{error.message}</p>;
+    }
 
-    useEffect(() => {
-        const myInterval = setInterval(() => {
-            if (seconds > 0) {
-                setSeconds(seconds - 1);
-            }
-            if (seconds === 0) {
-                clearInterval(myInterval);
-            }
-        }, 1000);
+    if (isEmptyList) {
+        return <p>No todos, yay!</p>;
+    }
 
-        return () => {
-            clearInterval(myInterval);
-        };
-    });
-
-    return seconds === 0 ? elemsCollection : elemsSkeletonCollection;
+    return (
+        <>
+            {data.map((track) => (
+                <PlayListItem key={track.id} track={track} />
+            ))}
+        </>
+    );
 }

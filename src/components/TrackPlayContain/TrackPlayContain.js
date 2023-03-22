@@ -26,10 +26,10 @@ export default function TrackPlayContain(props) {
             {seconds === 0 ? (
                 <TrackPlay
                     playTrackImageUrl="img/icon/sprite.svg#icon-note"
-                    playTrackNameUrl={window.application.trackPlayUrl}
-                    playTrackNameTitle={window.application.trackPlayName}
-                    playTrackAuthorUrl={window.application.trackPlayUrl}
-                    playTrackAuthorTitle={window.application.trackPlayAuthor}
+                    playTrackNameUrl="/"
+                    playTrackNameTitle="Беспечный ангел"
+                    playTrackAuthorUrl="/"
+                    playTrackAuthorTitle="Ария"
                 />
             ) : (
                 <img
