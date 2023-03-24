@@ -13,4 +13,22 @@ export const trackApi = createApi({
     }),
 });
 
+export const favoriteTrackApi = createApi({
+    reducerPath: "favoriteTrackApi",
+    baseQuery: fetchBaseQuery({
+        baseUrl: "https://painassasin.online/catalog/track/",
+    }),
+
+    endpoints: (builder) => ({
+        addFavoriteTrack: builder.mutation({
+            query: ({ id }) => ({
+                url: `${id}/favorite/`,
+                method: "POST",
+            }),
+        }),
+    }),
+});
+
 export const { useGetAllTracksQuery } = trackApi;
+export const { useGetAllFavoriteTracksQuery, useAddFavoriteTrackMutation } =
+    favoriteTrackApi;
