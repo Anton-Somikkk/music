@@ -4,6 +4,7 @@ import { usePlayerContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function PlayListItem(props) {
+    // console.log(track.name);
     const { togglePlayer } = usePlayerContext();
 
     // const togglePlayTrack = () => {
@@ -32,6 +33,7 @@ export default function PlayListItem(props) {
                 trackAlbumTitle={props.track.album}
                 iconLikeUrl="img/icon/sprite.svg#icon-like"
                 trackTime={props.track.duration_in_seconds}
+                id={props.track.id}
             />
         </S.PlayListItem>
     );

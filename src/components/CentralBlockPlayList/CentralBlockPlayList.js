@@ -1,10 +1,10 @@
 import PlayListItem from "../PlayListItem/PlayListItem";
 import * as S from "./styles";
-import { useGetAllTracksQuery } from "../../services/track";
+import { useGetAllTracksQuery } from "../../services/musicApi";
 
 export default function CentralBlockPlayList() {
     const { data, error, isLoading } = useGetAllTracksQuery();
-
+    
     const isEmptyList = !isLoading && !data?.length;
 
     if (isLoading) {
@@ -36,7 +36,10 @@ export default function CentralBlockPlayList() {
         <>
             {data.map((track) => (
                 <PlayListItem key={track.id} track={track} />
+                
             ))}
         </>
+        
     );
+    
 }

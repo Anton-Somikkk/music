@@ -1,8 +1,34 @@
+// import { useDispatch } from "react-redux";
 import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
+import { useAddFavoriteTrackMutation } from "../../services/musicApi";
+// import { removeTrack, addTrack } from "../../TracksApi/favoriteSlice";
+// import { addTrack } from "../../Slices/favoriteSlice";
 
 export default function PlayListTrack(props) {
+
     const { theme } = useThemeContext();
+    const [addFavoriteTrack] = useAddFavoriteTrackMutation();
+
+    // const dispatch = useDispatch();
+
+    const handleToggleFavorite = (id) => {
+        try {
+            if (!id) {
+                throw new Error("id is undefined");
+            }
+            console.log(props.id);
+            addFavoriteTrack( props.id );
+            // dispatch(addTrack({ id }));
+            // if (id) {
+            //     dispatch(addTrack({ id: track.id }));
+            // } else {
+            //     dispatch(removeTrack({ id: track.id }));
+            // }
+        } catch (error) {
+            console.error("Failed to toggle favorite", error);
+        }
+    };
 
     return (
         <S.PlayListTrack>
@@ -60,6 +86,7 @@ export default function PlayListTrack(props) {
             <S.TrackTime>
                 <S.TrackTimeSvg
                     alt="time"
+                    onClick={(id) => handleToggleFavorite(id)}
                     style={{
                         stroke: theme.strokeTrackTitleImage,
                     }}
