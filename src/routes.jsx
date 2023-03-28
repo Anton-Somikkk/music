@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Wrapper } from "./components/Wrapper/Wrapper";
 import { Authorization } from "./pages/authorization/authorization";
 import { ProtectedRoute, PermittedRoute } from "./components/protected-route";
-import { Registration } from "./pages/registration";
+import Registration from "./pages/registration/registration";
 import { Collections } from "./pages/collections";
 import { MyTracks } from "./pages/my-tracks";
 import { NotFound } from "./pages/not-found";

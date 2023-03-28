@@ -44,6 +44,14 @@ export const trackApi = createApi({
                 body: payload,
             }),
         }),
+
+        userRegistration: builder.mutation({
+            query: ({ ...payload }) => ({
+                url: '/user/signup/',
+                method: 'POST',
+                body: payload,
+            }),
+        }),
     }),
 });
 
@@ -53,5 +61,5 @@ export const {
     useAddFavoriteTrackMutation,
     useGetTokenMutation,
     useUserLoginMutation,
-
+    useUserRegistrationMutation,
 } = trackApi;
