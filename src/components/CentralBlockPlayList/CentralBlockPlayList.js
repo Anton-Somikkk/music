@@ -10,7 +10,7 @@ export default function CentralBlockPlayList() {
     if (isLoading) {
         const elemsSkeletonCollection = [];
 
-        for (let i = 0; i < 10; i += 1) {
+        for (let i = 0; i < 20; i += 1) {
             const elemSkeleton = (
                 <S.PlayListItem key={i}>
                     <S.PlayListItemSkeleton

@@ -4,7 +4,7 @@ import CentralBlockContent from "../CentralBlockContent/CentralBlockContent";
 import { useThemeContext } from "../../count-context";
 import * as S from "./styles";
 
-export default function CentralBlock(props) {
+export default function CentralBlock() {
     const { theme } = useThemeContext();
 
     return (
@@ -19,7 +19,7 @@ export default function CentralBlock(props) {
                         stroke: theme.stroke,
                     }}
                 >
-                    <use xlinkHref={props.searchImageUrl} />
+                    <use xlinkHref="img/icon/sprite.svg#icon-search" />
                 </S.SearchSvg>
                 <S.SearchText
                     type="search"

@@ -5,20 +5,27 @@ import { useAddFavoriteTrackMutation } from "../../services/musicApi";
 // import { removeTrack, addTrack } from "../../TracksApi/favoriteSlice";
 // import { addTrack } from "../../Slices/favoriteSlice";
 
-export default function PlayListTrack(props) {
-
+export default function PlayListTrack({
+    id,
+    trackImageUrl,
+    trackTitle,
+    trackAuthorTitle,
+    trackAlbumTitle,
+    trackTime,
+    iconLikeUrl,
+}) {
     const { theme } = useThemeContext();
     const [addFavoriteTrack] = useAddFavoriteTrackMutation();
 
     // const dispatch = useDispatch();
 
-    const handleToggleFavorite = (id) => {
+    const handleToggleFavorite = (e) => {
         try {
-            if (!id) {
+            if (!e.target.id) {
                 throw new Error("id is undefined");
             }
-            console.log(props.id);
-            addFavoriteTrack( props.id );
+            console.log(id);
+            addFavoriteTrack(e.target.id);
             // dispatch(addTrack({ id }));
             // if (id) {
             //     dispatch(addTrack({ id: track.id }));
@@ -44,17 +51,17 @@ export default function PlayListTrack(props) {
                             stroke: theme.strokeTrackTitleImage,
                         }}
                     >
-                        <use xlinkHref={props.trackImageUrl} />
+                        <use xlinkHref={trackImageUrl} />
                     </S.TrackTitleSvg>
                 </S.TrackTitleImage>
                 <S.TrackTitleText>
                     <S.TrackTitleLink
-                        href={props.trackTitleUrl}
+                        href=""
                         style={{
                             color: theme.color,
                         }}
                     >
-                        {props.trackTitle}{" "}
+                        {trackTitle}{" "}
                         <S.TrackTitleSpan
                             style={{
                                 color: theme.colorPale,
@@ -65,40 +72,40 @@ export default function PlayListTrack(props) {
             </S.TrackTitle>
             <S.TrackAuthor>
                 <S.TrackAuthorLink
-                    href={props.trackAuthorUrl}
+                    href=""
                     style={{
                         color: theme.color,
                     }}
                 >
-                    {props.trackAuthorTitle}
+                    {trackAuthorTitle}
                 </S.TrackAuthorLink>
             </S.TrackAuthor>
             <S.TrackAlbum>
                 <S.TrackAlbumLink
-                    href={props.trackAlbumUrl}
+                    href=""
                     style={{
                         color: theme.colorPale,
                     }}
                 >
-                    {props.trackAlbumTitle}
+                    {trackAlbumTitle}
                 </S.TrackAlbumLink>
             </S.TrackAlbum>
             <S.TrackTime>
                 <S.TrackTimeSvg
                     alt="time"
-                    onClick={(id) => handleToggleFavorite(id)}
+                    onClick={(e) => handleToggleFavorite(e)}
                     style={{
                         stroke: theme.strokeTrackTitleImage,
                     }}
                 >
-                    <use xlinkHref={props.iconLikeUrl} />
+                    <use xlinkHref={iconLikeUrl} />
                 </S.TrackTimeSvg>
                 <S.TrackTimeText
                     style={{
                         color: theme.colorPale,
                     }}
                 >
-                    {props.trackTime}
+                    {trackTime}
                 </S.TrackTimeText>
             </S.TrackTime>
         </S.PlayListTrack>

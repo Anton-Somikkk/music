@@ -22,7 +22,7 @@ export default function PlayerBlock(props) {
     const handleStart = () => {
         audioRef.current.play();
         setIsPlaying(true);
-       
+
         const timerId = setInterval(() => {
             count =
                 (audioRef.current.currentTime / audioRef.current.duration) *
@@ -57,10 +57,7 @@ export default function PlayerBlock(props) {
     return (
         <>
             <S.Audio controls ref={audioRef}>
-                <source
-                    src={props.trackPlayUrl}
-                    type="audio/mpeg"
-                />
+                <source src={props.trackPlayUrl} type="audio/mpeg" />
                 <track kind="captions" />
             </S.Audio>
             <S.Bar
@@ -85,9 +82,7 @@ export default function PlayerBlock(props) {
                                         alt="prev"
                                         className={theme.playerBtnPrevNextSvg}
                                     >
-                                        <use
-                                            xlinkHref={props.playerIconPrevUrl}
-                                        />
+                                        <use xlinkHref="img/icon/sprite.svg#icon-prev" />
                                     </svg>
                                 </S.PlayerBtnPrev>
                                 <S.PlayerBtnPlay onClick={togglePlay}>
@@ -96,17 +91,9 @@ export default function PlayerBlock(props) {
                                         className={theme.playerBtnPlaySvg}
                                     >
                                         {visible ? (
-                                            <use
-                                                xlinkHref={
-                                                    props.playerIconPlayUrl
-                                                }
-                                            />
+                                            <use xlinkHref="img/icon/sprite.svg#icon-play" />
                                         ) : (
-                                            <use
-                                                xlinkHref={
-                                                    props.playerIconPauseUrl
-                                                }
-                                            />
+                                            <use xlinkHref="img/icon/sprite.svg#icon-pause" />
                                         )}
                                     </svg>
                                 </S.PlayerBtnPlay>
@@ -115,9 +102,7 @@ export default function PlayerBlock(props) {
                                         alt="next"
                                         className={theme.playerBtnPrevNextSvg}
                                     >
-                                        <use
-                                            xlinkHref={props.playerIconNextUrl}
-                                        />
+                                        <use xlinkHref="img/icon/sprite.svg#icon-next" />
                                     </svg>
                                 </S.PlayerBtnNext>
                                 <S.PlayerBtnRepeat>
@@ -125,11 +110,7 @@ export default function PlayerBlock(props) {
                                         alt="repeat"
                                         className={theme.playerBtnSvg}
                                     >
-                                        <use
-                                            xlinkHref={
-                                                props.playerIconRepeatUrl
-                                            }
-                                        />
+                                        <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                                     </svg>
                                 </S.PlayerBtnRepeat>
                                 <S.PlayerBtnShuffle>
@@ -137,11 +118,7 @@ export default function PlayerBlock(props) {
                                         alt="shuffle"
                                         className={theme.playerBtnSvg}
                                     >
-                                        <use
-                                            xlinkHref={
-                                                props.playerIconShuffleUrl
-                                            }
-                                        />
+                                        <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
                                     </svg>
                                 </S.PlayerBtnShuffle>
                             </S.PlayerControls>
@@ -153,11 +130,7 @@ export default function PlayerBlock(props) {
                                             alt="like"
                                             className={theme.playerBtnLikeSvg}
                                         >
-                                            <use
-                                                xlinkHref={
-                                                    props.playerIconLikeUrl
-                                                }
-                                            />
+                                            <use xlinkHref="img/icon/sprite.svg#icon-like" />
                                         </svg>
                                     </S.TrackPlayLike>
                                     <S.TrackPlayDislike>
@@ -165,11 +138,7 @@ export default function PlayerBlock(props) {
                                             alt="dislike"
                                             className={theme.playerBtnLikeSvg}
                                         >
-                                            <use
-                                                xlinkHref={
-                                                    props.playerIconDislikeUrl
-                                                }
-                                            />
+                                            <use xlinkHref="img/icon/sprite.svg#icon-dislike" />
                                         </svg>
                                     </S.TrackPlayDislike>
                                 </S.TrackPlayLikeDis>
@@ -184,11 +153,7 @@ export default function PlayerBlock(props) {
                                             stroke: theme.strokeIcon,
                                         }}
                                     >
-                                        <use
-                                            xlinkHref={
-                                                props.playerIconVolumeUrl
-                                            }
-                                        />
+                                        <use xlinkHref="img/icon/sprite.svg#icon-dislike" />
                                     </S.VolumeSvg>
                                 </S.VolumeImage>
                                 <S.VolumeProgress>

@@ -7,6 +7,13 @@ export const trackApi = createApi({
     tagTypes: ["Tracks"],
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
+        prepareHeaders: (headers, { getState }) => {
+            const { token } = getState().authorization;
+            if (token) {
+                headers.set("Authorization", `Bearer ${token}`);
+            }
+            return headers;
+        },
     }),
 
     endpoints: (builder) => ({
@@ -31,26 +38,33 @@ export const trackApi = createApi({
 
         getToken: builder.mutation({
             query: ({ ...payload }) => ({
-                url: '/user/token/',
-                method: 'POST',
+                url: "/user/token/",
+                method: "POST",
                 body: payload,
             }),
         }),
 
         userLogin: builder.mutation({
             query: ({ ...payload }) => ({
-                url: '/user/login/',
-                method: 'POST',
+                url: "/user/login/",
+                method: "POST",
                 body: payload,
             }),
         }),
 
         userRegistration: builder.mutation({
             query: ({ ...payload }) => ({
-                url: '/user/signup/',
-                method: 'POST',
+                url: "/user/signup/",
+                method: "POST",
                 body: payload,
             }),
+        }),
+
+        getPlaylistById: builder.query({
+            query: ({id}) => ({
+                url: `/catalog/selection/${id}/`,
+            }),
+            providesTags: ["Tracks"],
         }),
     }),
 });
@@ -62,4 +76,5 @@ export const {
     useGetTokenMutation,
     useUserLoginMutation,
     useUserRegistrationMutation,
+    useGetPlaylistByIdQuery,
 } = trackApi;

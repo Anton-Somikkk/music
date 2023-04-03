@@ -4,23 +4,13 @@ import { usePlayerContext } from "../../count-context";
 import * as S from "./styles";
 
 export default function PlayListItem(props) {
-    // console.log(track.name);
+   
     const { togglePlayer } = usePlayerContext();
-
-    // const togglePlayTrack = () => {
-    //     window.application.trackPlayUrl =
-    //         window.application.tracks[props.trackNumber].track_file;
-    //     window.application.trackPlayName =
-    //         window.application.tracks[props.trackNumber].name;
-    //     window.application.trackPlayAuthor =
-    //         window.application.tracks[props.trackNumber].author;
-    // };
 
     return (
         <S.PlayListItem
             onClick={() => {
                 togglePlayer();
-                // togglePlayTrack();
             }}
         >
             <PlayListTrack
@@ -32,7 +22,7 @@ export default function PlayListItem(props) {
                 trackAlbumUrl=""
                 trackAlbumTitle={props.track.album}
                 iconLikeUrl="img/icon/sprite.svg#icon-like"
-                trackTime={props.track.duration_in_seconds}
+                trackTime={props.track.durationInSeconds}
                 id={props.track.id}
             />
         </S.PlayListItem>
