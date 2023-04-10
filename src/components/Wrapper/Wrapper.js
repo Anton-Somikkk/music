@@ -1,5 +1,5 @@
 import MainLeftBar from "../MainLeftBar/MainLeftBar";
-import CentralBlock from "../CentralBlock/CentralBlock";
+import CentralBlock from "../MainCenterBlock/CentralBlock/CentralBlock";
 import MainSidebarRight from "../MainSidebarRight/MainSidebarRight";
 import PlayerBlock from "../PlayerBlock/PlayerBlock";
 import { useThemeContext } from "../../count-context";

@@ -10,14 +10,15 @@ export default function MainLeftBarMenu(props) {
         <S.NavMenu>
             <S.MenuList>
                 <S.MenuItem>
-                    <S.MenuLink
-                        href={props.menuItemMainUrl}
+                    <NavLink
+                    className="menu__link"
+                        to={props.menuItemMainUrl}
                         style={{
                             color: theme.color,
                         }}
                     >
-                        Главное
-                    </S.MenuLink>
+                        Главная
+                    </NavLink>
                 </S.MenuItem>
                 <S.MenuItem>
                     <NavLink

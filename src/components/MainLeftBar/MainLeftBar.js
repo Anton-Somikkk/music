@@ -47,7 +47,7 @@ export default function MainLeftBar(props) {
 
             {visible && (
                 <MainLeftBarMenu
-                    menuItemMainUrl="http://"
+                    menuItemMainUrl="/"
                     menuItemPlayListUrl="/my-tracks"
                     menuItemEnterUrl="http://"
                     light="img/icon/sprite.svg#icon-light-theme"

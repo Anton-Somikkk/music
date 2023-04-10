@@ -1,43 +1,12 @@
-import { useParams } from "react-router-dom";
 import { useThemeContext } from "../../count-context";
-import { NotFound } from "../not-found";
-import SelectPlayList from "../../components/SelectPlayList/SelectPlayList";
+import MyPlayList from "../../components/MyPlayList/MyPlayList";
 import CentralBlockFilter from "../../components/MainCenterBlock/CentralBlockFilter/CentralBlockFilter";
 import * as S from "./styles";
 
-export function Collections(props) {
+export function MyTracks(props) {
     const { theme } = useThemeContext();
-    const { id } = useParams();
-    const musicCollection = [
-        "Плейлист дня",
-        "100 танцевальных хитов",
-        "Инди заряд",
-    ];
 
-    if (id !== "1" && id !== "2" && id !== "3") {
-        return <NotFound />;
-    }
     return (
-        // <div>
-        //     <S.CenterBlock>
-        //         <S.CenterBlockContent>
-        //             {/* <Search /> */}
-        //             <S.CenterBlockTitle>
-        //                 {musicCollection[id - 1]}
-        //             </S.CenterBlockTitle>
-        //             <S.TitleWrapper>
-        //                 <S.TitleTrack>ТРЕК</S.TitleTrack>
-        //                 <S.TitleAuthor>ИСПОЛНИТЕЛЬ</S.TitleAuthor>
-        //                 <S.TitleAlbum>АЛЬБОМ</S.TitleAlbum>
-        //                 <S.TitleTime>
-        //                     {/* <S.WatchIcon src={watch} alt="time" /> */}
-        //                 </S.TitleTime>
-        //             </S.TitleWrapper>
-        //             <SelectPlayList id={id} />
-        //         </S.CenterBlockContent>
-        //     </S.CenterBlock>
-        // </div>
-
         <S.MainCenterBlock>
             <S.CenterBlockSearch
                 style={{
@@ -60,9 +29,13 @@ export function Collections(props) {
                     }}
                 />
             </S.CenterBlockSearch>
-            <S.CenterBlockTitle style={{
-                color: theme.color,
-            }}  >{musicCollection[id - 1]}</S.CenterBlockTitle>
+            <S.CenterBlockTitle
+                style={{
+                    color: theme.color,
+                }}
+            >
+                Избранное
+            </S.CenterBlockTitle>
             <CentralBlockFilter />
             <S.CenterBlockContent>
                 <S.ContentTitle>
@@ -100,7 +73,7 @@ export function Collections(props) {
                 </S.ContentTitle>
             </S.CenterBlockContent>
             <S.ContentPlayList>
-                <SelectPlayList id={id} />
+                <MyPlayList />
             </S.ContentPlayList>
         </S.MainCenterBlock>
     );

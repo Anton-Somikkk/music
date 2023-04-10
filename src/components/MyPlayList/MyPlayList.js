@@ -1,24 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-
 import PlayListTrack from "../MainCenterBlock/PlayListTrack/PlayListTrack";
-import { useGetPlaylistByIdQuery } from "../../services/musicApi";
-import { getPlayListName } from "../../Slices/playListSlice";
+import { useGetFavoriteTracksQuery } from "../../services/musicApi";
 
 import * as S from "./styles";
 
-export default function SelectPlayList(idCollection) {
-    
-    const dispatch = useDispatch();
-    
-    const { data, isLoading, isSuccess } =
-        useGetPlaylistByIdQuery(idCollection);
-        
-    useEffect(() => {
-        if (isSuccess) {
-            dispatch(getPlayListName(data.name));
-        }
-    }, [idCollection, data]);
+export default function MyPlayList() {
+    const { data, isLoading, isSuccess } = useGetFavoriteTracksQuery("");
 
     if (isLoading) {
         const elemsSkeletonCollection = [];
@@ -39,8 +25,8 @@ export default function SelectPlayList(idCollection) {
 
     if (isSuccess) {
         return (
-            <S.SelectPlayList>
-                {data?.items.map(
+            <S.MyPlayList>
+                {data.map(
                     ({
                         id,
                         name,
@@ -57,12 +43,12 @@ export default function SelectPlayList(idCollection) {
                             trackAuthorTitle={author}
                             trackAlbumTitle={album}
                             trackTime={durationInSeconds}
-                            iconLikeUrl="img/icon/sprite.svg#icon-like"
+                            isLike="true"
                         />
                     )
                 )}
-            </S.SelectPlayList>
+            </S.MyPlayList>
         );
     }
-    return <S.SelectPlayList />;
+    return <S.MyPlayList />;
 }

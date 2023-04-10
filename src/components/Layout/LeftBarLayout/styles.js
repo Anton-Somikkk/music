@@ -5,18 +5,21 @@ export const Wrapper = styled.div`
     min-height: 100%;
     overflow: hidden;
     background-color: #383838;
+    transition: background-color 0.5s ease;
 `;
 
 export const Container = styled.div`
-    max-width: 1920px;
+    max-width: 100vw;
     height: 100vh;
     margin: 0 auto;
     position: relative;
     background-color: #181818;
+    overflow: hidden;
+    transition: background-color 0.5s ease;
 `;
 
 export const Main = styled.main`
-    flex: 1 1 auto;
+    min-height: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

@@ -4,7 +4,7 @@ const BASE_URL = "https://painassasin.online";
 
 export const trackApi = createApi({
     reducerPath: "trackApi",
-    tagTypes: ["Tracks"],
+    tagTypes: ["AllTracks", "FavoriteTracks"],
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
         prepareHeaders: (headers, { getState }) => {
@@ -12,6 +12,7 @@ export const trackApi = createApi({
             if (token) {
                 headers.set("Authorization", `Bearer ${token}`);
             }
+
             return headers;
         },
     }),
@@ -19,13 +20,14 @@ export const trackApi = createApi({
     endpoints: (builder) => ({
         getAllTracks: builder.query({
             query: () => "/catalog/track/all",
+            providesTags: ["AllTracks"],
         }),
 
         getFavoriteTracks: builder.query({
             query: () => ({
                 url: "/catalog/track/favorite/all/",
             }),
-            providesTags: ["Tracks"],
+            providesTags: ["FavoriteTracks"],
         }),
 
         addFavoriteTrack: builder.mutation({
@@ -33,7 +35,7 @@ export const trackApi = createApi({
                 url: `/catalog/track/${id}/favorite/`,
                 method: "POST",
             }),
-            invalidatesTags: ["Tracks"],
+            invalidatesTags: ["FavoriteTracks", "AllTracks"],
         }),
 
         getToken: builder.mutation({
@@ -61,10 +63,33 @@ export const trackApi = createApi({
         }),
 
         getPlaylistById: builder.query({
-            query: ({id}) => ({
+            query: ({ id }) => ({
                 url: `/catalog/selection/${id}/`,
             }),
-            providesTags: ["Tracks"],
+            providesTags: ["AllTracks"],
+        }),
+
+        refreshToken: builder.mutation({
+            query: ({ ...payload }) => ({
+                url: "/user/token/refresh/",
+                method: "POST",
+                body: payload,
+            }),
+        }),
+
+        deleteFavoriteTrack: builder.mutation({
+            query: (payload) => ({
+                url: `/catalog/track/${payload}/favorite/`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["FavoriteTracks", "AllTracks"],
+        }),
+
+        getTrackById: builder.query({
+            query: (id) => ({
+                url: `/catalog/track/${id}`,
+            }),
+            providesTags: ['AllTracks'],
         }),
     }),
 });
@@ -77,4 +102,7 @@ export const {
     useUserLoginMutation,
     useUserRegistrationMutation,
     useGetPlaylistByIdQuery,
+    useRefreshTokenMutation,
+    useDeleteFavoriteTrackMutation,
+    useGetTrackByIdQuery,
 } = trackApi;

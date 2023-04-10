@@ -10,7 +10,7 @@ import * as S from "./styles";
 // import logo from "../../img/LogoBlack.png";
 import { setLogin, setToken } from "../../Slices/authorizationSlice";
 
-// let path = "/authorization";
+
 // eslint-disable-next-line import/prefer-default-export
 export function Authorization() {
     const navigate = useNavigate();
@@ -46,11 +46,12 @@ export function Authorization() {
 
     useEffect(() => {
         if (isSuccess) {
+            navigate("/tracks");
             document.cookie = `username=${data?.username}`;
             dispatch(setToken(token?.access));
             document.cookie = `token=${token?.refresh}`;
             dispatch(setLogin());
-            navigate("/");
+
             console.log(token);
         }
     }, [token]);

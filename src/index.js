@@ -26,6 +26,7 @@ body {
     height: 100%;
     font-family: 'Stratos-Thin', sans-serif;
     color: #FFFFFF;
+    overflow: hidden;
 
 }
 
@@ -42,6 +43,13 @@ button {
 
 ul li {
   list-style: none;
+}
+
+main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 @font-face {
