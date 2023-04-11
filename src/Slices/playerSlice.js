@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: "error" */
 import { createSlice } from "@reduxjs/toolkit";
 
 const playerSlice = createSlice({
@@ -16,6 +17,7 @@ const playerSlice = createSlice({
 
         getTrack: (state, action) => {
             state.trackLink = action.payload;
+            console.log(state.trackLink);
         },
 
         getTrackId: (state, action) => {

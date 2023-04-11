@@ -39,15 +39,17 @@ export default function PlayerBlock() {
     let [count, setCount] = useState(0);
 
     const handleStop = () => {
-        audioRef.current.pause();
+        track.pause();
+        // audioRef.current.pause();
         // setIsPlaying(false);
-        dispatch(play.isPlaying(false));
+        // dispatch(play(!isPlaying));
     };
 
     const handleStart = () => {
-        audioRef.current.play();
+        track.play();
+        // audioRef.current.play();
         // setIsPlaying(true);
-        dispatch(play.isPlaying(true));
+        // dispatch(play(!isPlaying));
 
         const timerId = setInterval(() => {
             count =
@@ -71,12 +73,17 @@ export default function PlayerBlock() {
     };
 
     const togglePlay = () => {
-        if (isPlaying) {
-            handleStop();
-        } else {
-            handleStart();
-        }
+
+        dispatch(play(!isPlaying));
+       
+        
     };
+
+    if (isPlaying) {
+        handleStop();
+    } else {
+        handleStart();
+    }
 
     return (
         <>
@@ -114,7 +121,7 @@ export default function PlayerBlock() {
                                         alt="play"
                                         className={theme.playerBtnPlaySvg}
                                     >
-                                        {isVisible ? (
+                                        {isPlaying ? (
                                             <use xlinkHref="img/icon/sprite.svg#icon-play" />
                                         ) : (
                                             <use xlinkHref="img/icon/sprite.svg#icon-pause" />
