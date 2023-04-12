@@ -4,18 +4,15 @@ const btn = css`
     cursor: pointer;
 `;
 
-export const Audio = styled.audio`
-    display: none;
-`;
+
 
 export const Bar = styled.div`
     position: absolute;
-    bottom: ${(props) => (props.isPlaying ? '0' : '-100%')};
+    bottom: ${(props) => (props.isPlaying ? "0" : "-100%")};
     left: 0;
     width: 100%;
     background-color: rgba(28, 28, 28, 0.5);
     transition: background-color, bottom 0.5s ease;
-    
 `;
 
 export const BarContent = styled.div`
@@ -23,16 +20,29 @@ export const BarContent = styled.div`
     flex-direction: column;
 `;
 
-export const BarPlayerProgress = styled.div`
+export const BarPlayerProgressMoving = styled.input`
     width: 100%;
-    height: 5px;
-    background: #2e2e2e;
-`;
-
-export const BarPlayerProgressMoving = styled.div`
-    width: ${(props) => (props.progress > 0 ? `${props.progress}%` : "0")};
-    height: 5px;
-    background: rgba(173, 97, 255, 1);
+    height: 6px;
+    -webkit-appearance: none;
+    background: linear-gradient(
+        90deg,
+        #57459d
+            ${(props) =>
+                props.backgroundValue !== "" ? props.backgroundValue : "0"}%,
+        rgba(46, 46, 46, 1)
+            ${(props) =>
+                props.backgroundValue !== "" ? props.backgroundValue : "0"}%
+    );
+    cursor: pointer;
+    ::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: transparent;
+        border: 0;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
 `;
 
 export const BarPlayerBlock = styled.div`
@@ -139,7 +149,6 @@ export const TrackPlayLike = styled.div`
 `;
 
 export const TrackPlayDislike = styled.div`
-   
     ${trackPlayDislike}
     ${marginDislike}
 `;
