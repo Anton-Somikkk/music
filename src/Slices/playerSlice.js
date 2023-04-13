@@ -28,16 +28,17 @@ const playerSlice = createSlice({
 
         playNextTrack: (state, action) => {
             if (state.ids.indexOf(state.id) > state.ids.length) {
-                state.id = state.ids[0]
+                state.id = state.ids[0];
             }
-            state.id = state.ids[action.payload + 1]
+            state.id = state.ids[action.payload + 1];
         },
 
         playPrevTrack: (state, action) => {
-            state.id = state.ids[action.payload - 1]
+            state.id = state.ids[action.payload - 1];
         },
     },
 });
-export const { play, getTrack, getTrackId, playNextTrack, playPrevTrack } = playerSlice.actions;
+export const { play, getTrack, getTrackId, playNextTrack, playPrevTrack } =
+    playerSlice.actions;
 
 export default playerSlice.reducer;
