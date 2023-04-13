@@ -4,8 +4,6 @@ const btn = css`
     cursor: pointer;
 `;
 
-
-
 export const Bar = styled.div`
     position: absolute;
     bottom: ${(props) => (props.isPlaying ? "0" : "-100%")};
@@ -75,6 +73,7 @@ const {
 } = css`
     display: flex;
     align-items: center;
+    padding: 5px;
 `;
 const btnPrev = css`
     margin-right: 23px;
@@ -93,9 +92,21 @@ const btnRepeat = css`
     margin-right: 24px;
 `;
 
-const btnShuffle = css`
-    display: flex;
-    align-items: center;
+export const PlayerShuffleIcon = styled.div`
+    width: 19px;
+    height: 12px;
+    fill: transparent;
+    margin-right: 24px;
+    cursor: pointer;
+    color: ${(props) => (props.isShuffle ? "#FFFFFF" : "#696969")};
+    :hover {
+        color: #acacac;
+    }
+    :active {
+        fill: #696969;
+        cursor: pointer;
+        color: #696969;
+    }
 `;
 
 export const PlayerBtnPrev = styled.div`
@@ -121,7 +132,7 @@ export const PlayerBtnRepeat = styled.div`
 
 export const PlayerBtnShuffle = styled.div`
     ${playerBtnShuffle}
-    ${btnShuffle}
+   
 `;
 
 export const PlayerTrackPlay = styled.div`

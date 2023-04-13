@@ -89,6 +89,7 @@ export const trackApi = createApi({
             query: (id) => ({
                 url: `/catalog/track/${id}`,
             }),
+            
             providesTags: ['AllTracks'],
         }),
     }),

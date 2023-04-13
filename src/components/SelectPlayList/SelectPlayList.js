@@ -4,16 +4,21 @@ import { useDispatch } from "react-redux";
 import PlayListTrack from "../MainCenterBlock/PlayListTrack/PlayListTrack";
 import { useGetPlaylistByIdQuery } from "../../services/musicApi";
 import { getPlayListName } from "../../Slices/playListSlice";
+import { clearTracksId, getTracksId } from "../../Slices/playerSlice";
 
 import * as S from "./styles";
 
 export default function SelectPlayList(idCollection) {
-    
     const dispatch = useDispatch();
-    
+
     const { data, isLoading, isSuccess } =
         useGetPlaylistByIdQuery(idCollection);
-        
+
+    useEffect(() => {
+        dispatch(clearTracksId());
+        data?.items.map((track) => dispatch(getTracksId(track.id)));
+    }, [data]);
+
     useEffect(() => {
         if (isSuccess) {
             dispatch(getPlayListName(data.name));

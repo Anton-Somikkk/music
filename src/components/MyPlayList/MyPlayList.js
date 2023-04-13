@@ -1,10 +1,21 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PlayListTrack from "../MainCenterBlock/PlayListTrack/PlayListTrack";
 import { useGetFavoriteTracksQuery } from "../../services/musicApi";
+import { clearTracksId, getTracksId } from "../../Slices/playerSlice";
 
 import * as S from "./styles";
 
 export default function MyPlayList() {
+    const dispatch = useDispatch();
     const { data, isLoading, isSuccess } = useGetFavoriteTracksQuery("");
+
+    useEffect(() => {
+        dispatch(clearTracksId());
+        if (isSuccess) {
+            data?.map((track) => dispatch(getTracksId(track.id)));
+        }
+    }, [data]);
 
     if (isLoading) {
         const elemsSkeletonCollection = [];

@@ -1,10 +1,23 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PlayListItem from "../PlayListItem/PlayListItem";
 import * as S from "./styles";
 import { useGetAllTracksQuery } from "../../../services/musicApi";
+import { clearTracksId, getTracksId } from "../../../Slices/playerSlice";
 
 export default function CentralBlockPlayList() {
-    const { data, error, isLoading } = useGetAllTracksQuery();
-    
+    const dispatch = useDispatch();
+
+    const { data, error, isLoading, isSuccess } = useGetAllTracksQuery();
+
+    useEffect(() => {
+        dispatch(clearTracksId());
+
+        if (isSuccess) {
+            data?.map((track) => dispatch(getTracksId(track.id)));
+        }
+    }, [data]);
+
     const isEmptyList = !isLoading && !data?.length;
 
     if (isLoading) {
@@ -36,10 +49,7 @@ export default function CentralBlockPlayList() {
         <>
             {data.map((track) => (
                 <PlayListItem key={track.id} track={track} />
-                
             ))}
         </>
-        
     );
-    
 }

@@ -9,7 +9,10 @@ import {
     playPrevTrack,
     playNextTrack,
     getTrackId,
+    shuffleTracks,
+    sortTracks,
 } from "../../../Slices/playerSlice";
+import { ReactComponent as ShuffleIcon } from "../../../img/icon/shuffle.svg";
 
 import * as S from "./styles";
 
@@ -22,6 +25,7 @@ export default function PlayerBlock() {
     const trackId = useSelector((state) => state.player.id);
     const isVisible = useSelector((state) => state.player.isVisible);
     const trackIds = useSelector((state) => state.player.ids);
+    const isShuffle = useSelector((state) => state.player.isShuffle);
 
     const { data } = useGetTrackByIdQuery(trackId);
 
@@ -83,6 +87,7 @@ export default function PlayerBlock() {
             dispatch(getTrackId(trackIds[0]));
             return;
         }
+
         dispatch(playNextTrack(currentTrack));
     };
 
@@ -93,6 +98,14 @@ export default function PlayerBlock() {
             return;
         }
         dispatch(playPrevTrack(currentTrack));
+    };
+
+    const onShuffle = () => {
+        if (isShuffle) {
+            dispatch(sortTracks());
+        } else {
+            dispatch(shuffleTracks());
+        }
     };
 
     useEffect(() => {
@@ -164,13 +177,13 @@ export default function PlayerBlock() {
                                     <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
                                 </svg>
                             </S.PlayerBtnRepeat>
-                            <S.PlayerBtnShuffle>
-                                <svg
-                                    alt="shuffle"
-                                    className={theme.playerBtnSvg}
-                                >
-                                    <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
-                                </svg>
+                            <S.PlayerBtnShuffle onClick={onShuffle}>
+                                <S.PlayerShuffleIcon isShuffle={isShuffle}>
+                                    <ShuffleIcon
+                                        aria-label="shuffle"
+                                        className={theme.playerBtnSvg}
+                                    />
+                                </S.PlayerShuffleIcon>
                             </S.PlayerBtnShuffle>
                         </S.PlayerControls>
                         <S.PlayerTrackPlay>
