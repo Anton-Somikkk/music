@@ -89,11 +89,11 @@ export default function Registration() {
                         type="password"
                         onChange={handleValidatePassword}
                     />
-                    
-                        <S.FormButton onClick={(evt) => onRegistration(evt)}>
-                            Зарегистрироваться
-                        </S.FormButton>
-                    
+
+                    <S.FormButton onClick={(evt) => onRegistration(evt)}>
+                        Зарегистрироваться
+                    </S.FormButton>
+
                     {isSuccess && <Navigate to="/authorization" replace />}
                 </S.Form>
             </S.FormWrapper>

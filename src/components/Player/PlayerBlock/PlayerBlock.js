@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetTrackByIdQuery } from "../../../services/musicApi";
 import TrackPlayContain from "../TrackPlayContain/TrackPlayContain";
 import { useThemeContext } from "../../../count-context";
-import { play, getTrack } from "../../../Slices/playerSlice";
+import {
+    play,
+    getTrack,
+    playPrevTrack,
+    playNextTrack,
+    getTrackId,
+} from "../../../Slices/playerSlice";
 
 import * as S from "./styles";
 
@@ -15,6 +21,7 @@ export default function PlayerBlock() {
     const trackLink = useSelector((state) => state.player.trackLink);
     const trackId = useSelector((state) => state.player.id);
     const isVisible = useSelector((state) => state.player.isVisible);
+    const trackIds = useSelector((state) => state.player.ids);
 
     const { data } = useGetTrackByIdQuery(trackId);
 
@@ -39,7 +46,6 @@ export default function PlayerBlock() {
     const { duration } = track;
     const [trackProgress, setTrackProgress] = useState(0);
     const progressPercent = (trackProgress / duration) * 100;
-    
 
     const clearBarProgress = () => {
         if (typeof barProgress.current === "number") {
@@ -65,18 +71,29 @@ export default function PlayerBlock() {
     };
 
     if (isPlaying) {
-        startProgressTimer()
+        startProgressTimer();
     }
     const togglePlay = () => {
         dispatch(play(!isPlaying));
     };
 
-    // if (isPlaying) {
-    //     handleStop();
-    //     startProgressTimer();
-    // } else {
-    //     handleStart();
-    // }
+    const onNextTrack = () => {
+        const currentTrack = +trackIds.indexOf(trackId);
+        if (currentTrack + 1 === trackIds.length) {
+            dispatch(getTrackId(trackIds[0]));
+            return;
+        }
+        dispatch(playNextTrack(currentTrack));
+    };
+
+    const onPrevTrack = () => {
+        const currentTrack = +trackIds.indexOf(trackId);
+        if (!currentTrack) {
+            dispatch(getTrackId(trackIds[0]));
+            return;
+        }
+        dispatch(playPrevTrack(currentTrack));
+    };
 
     useEffect(() => {
         if (isPlaying) {
@@ -111,7 +128,7 @@ export default function PlayerBlock() {
                 <S.BarPlayerBlock>
                     <S.BarPlayer>
                         <S.PlayerControls>
-                            <S.PlayerBtnPrev>
+                            <S.PlayerBtnPrev onClick={onPrevTrack}>
                                 <svg
                                     alt="prev"
                                     className={theme.playerBtnPrevNextSvg}
@@ -131,7 +148,7 @@ export default function PlayerBlock() {
                                     )}
                                 </svg>
                             </S.PlayerBtnPlay>
-                            <S.PlayerBtnNext>
+                            <S.PlayerBtnNext onClick={onNextTrack}>
                                 <svg
                                     alt="next"
                                     className={theme.playerBtnPrevNextSvg}

@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import "./css/style.css";
-import "./tracks";
+
 import App from "./App";
 
 const GlobalStyle = createGlobalStyle`

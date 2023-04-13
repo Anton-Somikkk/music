@@ -1,4 +1,5 @@
 /* eslint no-param-reassign: "error" */
+/* eslint-disable prefer-destructuring */
 import { createSlice } from "@reduxjs/toolkit";
 
 const playerSlice = createSlice({
@@ -8,6 +9,7 @@ const playerSlice = createSlice({
         isPlaying: false,
         trackLink: "",
         id: 8,
+        ids: [],
     },
     reducers: {
         play: (state, action) => {
@@ -23,8 +25,19 @@ const playerSlice = createSlice({
         getTrackId: (state, action) => {
             state.id = action.payload;
         },
+
+        playNextTrack: (state, action) => {
+            if (state.ids.indexOf(state.id) > state.ids.length) {
+                state.id = state.ids[0]
+            }
+            state.id = state.ids[action.payload + 1]
+        },
+
+        playPrevTrack: (state, action) => {
+            state.id = state.ids[action.payload - 1]
+        },
     },
 });
-export const { play, getTrack, getTrackId } = playerSlice.actions;
+export const { play, getTrack, getTrackId, playNextTrack, playPrevTrack } = playerSlice.actions;
 
 export default playerSlice.reducer;

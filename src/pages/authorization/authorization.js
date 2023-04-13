@@ -10,7 +10,6 @@ import * as S from "./styles";
 // import logo from "../../img/LogoBlack.png";
 import { setLogin, setToken } from "../../Slices/authorizationSlice";
 
-
 // eslint-disable-next-line import/prefer-default-export
 export function Authorization() {
     const navigate = useNavigate();
