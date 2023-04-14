@@ -92,21 +92,13 @@ const btnRepeat = css`
     margin-right: 24px;
 `;
 
-export const PlayerShuffleIcon = styled.div`
+export const ShuffleIconWrapper = styled.div`
     width: 19px;
     height: 12px;
     fill: transparent;
     margin-right: 24px;
     cursor: pointer;
-    color: ${(props) => (props.isShuffle ? "#FFFFFF" : "#696969")};
-    :hover {
-        color: #acacac;
-    }
-    :active {
-        fill: #696969;
-        cursor: pointer;
-        color: #696969;
-    }
+    
 `;
 
 export const PlayerBtnPrev = styled.div`
@@ -132,7 +124,6 @@ export const PlayerBtnRepeat = styled.div`
 
 export const PlayerBtnShuffle = styled.div`
     ${playerBtnShuffle}
-   
 `;
 
 export const PlayerTrackPlay = styled.div`

@@ -115,6 +115,10 @@ export default function PlayerBlock() {
             track.pause();
         }
     }, [isPlaying]);
+   
+    
+
+   
 
     return (
         <S.Bar
@@ -178,12 +182,12 @@ export default function PlayerBlock() {
                                 </svg>
                             </S.PlayerBtnRepeat>
                             <S.PlayerBtnShuffle onClick={onShuffle}>
-                                <S.PlayerShuffleIcon isShuffle={isShuffle}>
+                                <S.ShuffleIconWrapper>
                                     <ShuffleIcon
+                                        fill={isShuffle ? "#FFFFFF" : "#696969"}
                                         aria-label="shuffle"
-                                        className={theme.playerBtnSvg}
                                     />
-                                </S.PlayerShuffleIcon>
+                                </S.ShuffleIconWrapper>
                             </S.PlayerBtnShuffle>
                         </S.PlayerControls>
                         <S.PlayerTrackPlay>

@@ -23,6 +23,8 @@ export const themes = {
         playerBtnPlaySvg: "player__btn-play-svg_light",
         playerBtnSvg: "player__btn-svg_light",
         playerBtnLikeSvg: "player__btn-like-svg_light",
+        appearance: "light",
+
     },
     dark: {
         color: "#fff",
@@ -46,6 +48,7 @@ export const themes = {
         playerBtnPlaySvg: "player__btn-play-svg_dark",
         playerBtnSvg: "player__btn-svg_dark",
         playerBtnLikeSvg: "player__btn-like-svg_dark",
+        appearance: "dark",
     },
 };
 
