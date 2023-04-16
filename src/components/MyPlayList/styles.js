@@ -5,6 +5,9 @@ export const MyPlayList = styled.div`
     flex-direction: column;
     overflow-y: auto;
     max-height: 64vh;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `;
 export const PlayListItemSkeleton = styled.img``;
 

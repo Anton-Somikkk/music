@@ -20,7 +20,7 @@ export default function MainLeftBar(props) {
                     color: theme.color,
                 }}
             >
-                <S.LogoImage src={props.logoUrl} alt="logo" />
+                <S.LogoImage src={props.logo} alt="logo" />
             </S.NavLogo>
 
             <S.NavBurger
@@ -50,8 +50,8 @@ export default function MainLeftBar(props) {
                     menuItemMainUrl="/"
                     menuItemPlayListUrl="/my-tracks"
                     menuItemEnterUrl="http://"
-                    light="img/icon/sprite.svg#icon-light-theme"
-                    dark="img/icon/sprite.svg#icon-dark-theme"
+                    light="/img/icon/sprite.svg#icon-light-theme"
+                    dark="/img/icon/sprite.svg#icon-dark-theme"
                 />
             )}
         </S.MainNav>

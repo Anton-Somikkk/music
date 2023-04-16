@@ -17,7 +17,7 @@ export const NavLogo = styled.div`
 export const LogoImage = styled.img`
     width: 113.33px;
     height: 17px;
-    color: #181818;
+    
 `;
 
 export const NavBurger = styled.div`
@@ -27,6 +27,7 @@ export const NavBurger = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
 `;
 
 export const BurgerLine = styled.span`

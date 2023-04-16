@@ -14,7 +14,7 @@ export default function LeftBarLayout() {
                 }}
             >
                 <S.Main>
-                    <MainLeftBar logoUrl={theme.logoURL} />
+                    <MainLeftBar logo={theme.logoURL} />
                     <Outlet />
                 </S.Main>
             </S.Container>

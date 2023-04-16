@@ -1,10 +1,20 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useThemeContext } from "../../count-context";
 import MyPlayList from "../../components/MyPlayList/MyPlayList";
-import CentralBlockFilter from "../../components/MainCenterBlock/CentralBlockFilter/CentralBlockFilter";
+import CentralBlockFilter from "../../components/Filter/CentralBlockFilter/CentralBlockFilter";
+import { search } from "../../Slices/searchSlice";
 import * as S from "./styles";
 
-export function MyTracks(props) {
+export function MyTracks() {
     const { theme } = useThemeContext();
+
+    const dispatch = useDispatch();
+
+    const onChangeHandler = (e) => {
+        dispatch(search(e.target.value));
+    };
+
+    const trackTitle = useSelector((state) => state.search.searchValue);
 
     return (
         <S.MainCenterBlock>
@@ -18,12 +28,14 @@ export function MyTracks(props) {
                         stroke: theme.stroke,
                     }}
                 >
-                    <use xlinkHref={props.searchImageUrl} />
+                    <use xlinkHref="/img/icon/sprite.svg#icon-search" />
                 </S.SearchSvg>
                 <S.SearchText
+                    onChange={onChangeHandler}
                     type="search"
                     placeholder="Поиск"
                     name="search"
+                    value={trackTitle}
                     style={{
                         color: theme.color,
                     }}

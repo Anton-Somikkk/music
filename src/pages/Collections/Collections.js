@@ -1,12 +1,24 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useThemeContext } from "../../count-context";
-import { NotFound } from "../not-found";
+import NotFound from "../NotFound/NotFound";
 import SelectPlayList from "../../components/SelectPlayList/SelectPlayList";
-import CentralBlockFilter from "../../components/MainCenterBlock/CentralBlockFilter/CentralBlockFilter";
+import CentralBlockFilter from "../../components/Filter/CentralBlockFilter/CentralBlockFilter";
+import { search } from "../../Slices/searchSlice";
+
 import * as S from "./styles";
 
-export function Collections(props) {
+export function Collections() {
     const { theme } = useThemeContext();
+
+    const dispatch = useDispatch();
+
+    const onChangeHandler = (e) => {
+        dispatch(search(e.target.value));
+    };
+
+    const trackTitle = useSelector((state) => state.search.searchValue);
+
     const { id } = useParams();
     const musicCollection = [
         "Плейлист дня",
@@ -18,26 +30,6 @@ export function Collections(props) {
         return <NotFound />;
     }
     return (
-        // <div>
-        //     <S.CenterBlock>
-        //         <S.CenterBlockContent>
-        //             {/* <Search /> */}
-        //             <S.CenterBlockTitle>
-        //                 {musicCollection[id - 1]}
-        //             </S.CenterBlockTitle>
-        //             <S.TitleWrapper>
-        //                 <S.TitleTrack>ТРЕК</S.TitleTrack>
-        //                 <S.TitleAuthor>ИСПОЛНИТЕЛЬ</S.TitleAuthor>
-        //                 <S.TitleAlbum>АЛЬБОМ</S.TitleAlbum>
-        //                 <S.TitleTime>
-        //                     {/* <S.WatchIcon src={watch} alt="time" /> */}
-        //                 </S.TitleTime>
-        //             </S.TitleWrapper>
-        //             <SelectPlayList id={id} />
-        //         </S.CenterBlockContent>
-        //     </S.CenterBlock>
-        // </div>
-
         <S.MainCenterBlock>
             <S.CenterBlockSearch
                 style={{
@@ -49,20 +41,27 @@ export function Collections(props) {
                         stroke: theme.stroke,
                     }}
                 >
-                    <use xlinkHref={props.searchImageUrl} />
+                    <use xlinkHref="/img/icon/sprite.svg#icon-search" />
                 </S.SearchSvg>
                 <S.SearchText
+                    onChange={onChangeHandler}
                     type="search"
                     placeholder="Поиск"
+                    placeholderColor={theme.color}
                     name="search"
+                    value={trackTitle}
                     style={{
                         color: theme.color,
                     }}
                 />
             </S.CenterBlockSearch>
-            <S.CenterBlockTitle style={{
-                color: theme.color,
-            }}  >{musicCollection[id - 1]}</S.CenterBlockTitle>
+            <S.CenterBlockTitle
+                style={{
+                    color: theme.color,
+                }}
+            >
+                {musicCollection[id - 1]}
+            </S.CenterBlockTitle>
             <CentralBlockFilter />
             <S.CenterBlockContent>
                 <S.ContentTitle>

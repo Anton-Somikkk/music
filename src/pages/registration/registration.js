@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import { useUserRegistrationMutation } from "../../services/musicApi";
-// import logo from '../../img/LogoBlack.png'
+import logo from "../../img/icon/logo-black.png";
 import * as S from "./styles";
 
 export default function Registration() {
@@ -53,7 +53,7 @@ export default function Registration() {
         <S.Container>
             <S.FormWrapper>
                 <S.Form>
-                    <S.Logo src="" alt="logo" />
+                    <S.Logo src={logo} alt="logo" />
                     <S.Input
                         placeholder="Имя"
                         type="text"

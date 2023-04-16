@@ -43,4 +43,5 @@ export const TrackPlayAlbumLink = styled.a`
     font-size: 13px;
     line-height: 24px;
     color: #fff;
+    white-space: nowrap;
 `;

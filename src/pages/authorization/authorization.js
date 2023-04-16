@@ -7,7 +7,7 @@ import {
     useUserLoginMutation,
 } from "../../services/musicApi";
 import * as S from "./styles";
-// import logo from "../../img/LogoBlack.png";
+import logo from "../../img/icon/logo-black.png";
 import { setLogin, setToken } from "../../Slices/authorizationSlice";
 
 // eslint-disable-next-line import/prefer-default-export
@@ -60,7 +60,7 @@ export function Authorization() {
             <S.Container>
                 <S.FormWrapper>
                     <S.Form>
-                        <S.Logo src="" alt="logo" />
+                        <S.Logo src={logo} alt="logo" />
                         <S.Input
                             placeholder="Email"
                             type="text"

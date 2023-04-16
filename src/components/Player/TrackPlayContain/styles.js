@@ -6,4 +6,5 @@ export const TrackPlayContain = styled.div`
     grid-template-columns: auto 1fr;
     grid-template-areas: "image author" "image album";
     align-items: center;
+    margin-right: 15px;
 `;

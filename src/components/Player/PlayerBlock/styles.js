@@ -92,15 +92,6 @@ const btnRepeat = css`
     margin-right: 24px;
 `;
 
-export const ShuffleIconWrapper = styled.div`
-    width: 19px;
-    height: 12px;
-    fill: transparent;
-    margin-right: 24px;
-    cursor: pointer;
-    
-`;
-
 export const PlayerBtnPrev = styled.div`
     ${playerBtnPrev}
     ${btnPrev}
@@ -120,10 +111,12 @@ export const PlayerBtnNext = styled.div`
 export const PlayerBtnRepeat = styled.div`
     ${playerBtnRepeat}
     ${btnRepeat}
+    ${btn}
 `;
 
 export const PlayerBtnShuffle = styled.div`
     ${playerBtnShuffle}
+    ${btn}
 `;
 
 export const PlayerTrackPlay = styled.div`
@@ -179,6 +172,7 @@ export const VolumeSvg = styled.svg`
     width: 13px;
     height: 18px;
     fill: transparent;
+    cursor: pointer;
 `;
 
 const volumeProgress = css`
@@ -186,15 +180,57 @@ const volumeProgress = css`
 `;
 
 export const VolumeProgress = styled.div`
-    ${btn}
+   
     ${volumeProgress}
 `;
 
-const volumeProgressLine = css`
-    width: 109px;
-`;
+
 
 export const VolumeProgressLine = styled.input`
-    ${btn}
-    ${volumeProgressLine}
+    
+-webkit-appearance: none;
+background: transparent;
+cursor: pointer;
+::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #1a1a1a;
+    border: 2px solid #ffffff;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+}
+::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0;
+    border: 2px solid #797979;
+    background: #ffffff;
+    border-radius: 2px;
+}
+`;
+
+export const IconLikeSvg = styled.svg`
+    width: 14px;
+    height: 12px;
+    margin-right: 17px;
+    fill: #696969;
+    stroke: #696969;
+    cursor: pointer;
+`;
+
+export const IconNotLikeSvg = styled.svg`
+    width: 14px;
+    height: 12px;
+    margin-right: 17px;
+    fill: transparent;
+    stroke: #696969;
+    cursor: pointer;
 `;

@@ -1,4 +1,5 @@
 export const checkFavorites = (tracks) => {
+  
     const userName = document.cookie.split(";")[0].split("=")[1];
 
     const favoriteTracks = [tracks].filter((track) =>

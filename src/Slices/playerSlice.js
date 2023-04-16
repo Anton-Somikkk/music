@@ -19,7 +19,6 @@ const playerSlice = createSlice({
 
         getTrack: (state, action) => {
             state.trackLink = action.payload;
-            console.log(state.trackLink);
         },
 
         getTrackId: (state, action) => {
@@ -49,13 +48,20 @@ const playerSlice = createSlice({
             state.isShuffle = true;
             for (let i = state.ids.length - 1; i > 0; i -= 1) {
                 const iRandom = Math.floor(Math.random() * (i + 1));
-                [state.ids[i], state.ids[iRandom]] = [state.ids[iRandom], state.ids[i]];
+                [state.ids[i], state.ids[iRandom]] = [
+                    state.ids[iRandom],
+                    state.ids[i],
+                ];
             }
         },
 
         sortTracks: (state) => {
             state.isShuffle = false;
             state.ids = state.ids.sort((a, b) => a - b);
+        },
+
+        repeatTrack: (state) => {
+            state.isRepeat = !state.isRepeat;
         },
     },
 });
@@ -69,6 +75,7 @@ export const {
     clearTracksId,
     shuffleTracks,
     sortTracks,
+    repeatTrack,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;
