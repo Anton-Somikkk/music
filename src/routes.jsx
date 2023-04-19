@@ -17,7 +17,7 @@ export function AppRoutes() {
     if (token) {
         isLogin = true;
     }
-    console.log(isLogin);
+   
     return (
         <Routes>
             <Route element={<ProtectedRoute isAllowed={isLogin} />}>

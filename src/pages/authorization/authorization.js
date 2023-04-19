@@ -50,8 +50,6 @@ export function Authorization() {
             dispatch(setToken(token?.access));
             document.cookie = `token=${token?.refresh}`;
             dispatch(setLogin());
-
-            console.log(token);
         }
     }, [token]);
 
