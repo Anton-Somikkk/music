@@ -45,11 +45,11 @@ export function Authorization() {
 
     useEffect(() => {
         if (isSuccess) {
-            navigate("/tracks");
             document.cookie = `username=${data?.username}`;
             dispatch(setToken(token?.access));
             document.cookie = `token=${token?.refresh}`;
             dispatch(setLogin());
+            navigate("/tracks");
         }
     }, [token]);
 
