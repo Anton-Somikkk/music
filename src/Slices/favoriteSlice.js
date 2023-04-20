@@ -15,7 +15,7 @@ export const favoriteSlice = createSlice({
             ),
         }),
         addTrack: (state, action) => {
-            console.log(action.payload.id);
+          
             const index = state.favoritesTracks.findIndex(
                 (track) => track.id === action.payload.id
             );

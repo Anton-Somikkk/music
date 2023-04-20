@@ -15,6 +15,7 @@ export default function refreshToken() {
             getToken({ refresh: tokenCookie });
 
             dispatch(setLogin());
+
             setInterval(() => {
                 getToken({ refresh: tokenCookie });
             }, 60000);

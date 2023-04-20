@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import PlayerBlock from "../../Player/PlayerBlock/PlayerBlock";
-// import refreshToken from '../../../utils/refreshToken'
+import refreshToken from "../../../scripts/refreshToken";
 
 export default function PlayerLayout() {
-    // refreshToken()
+    refreshToken();
 
     return (
         <main>

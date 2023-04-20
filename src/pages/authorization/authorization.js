@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 
@@ -14,7 +15,7 @@ import { setLogin, setToken } from "../../Slices/authorizationSlice";
 export function Authorization() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [login, { data, isSuccess }] = useUserLoginMutation();
+    const [login, { data, isSuccess, isLoading }] = useUserLoginMutation();
     const [getToken, { data: token }] = useGetTokenMutation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -43,17 +44,28 @@ export function Authorization() {
         }
     };
 
-    useEffect(() => {
-        if (isSuccess) {
-            navigate("/tracks");
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         if (isSuccess) {
+    //             console.log(isSuccess);
+    //             document.cookie = `username=${data?.username}`;
+    //             dispatch(setToken(token?.access));
+    //             document.cookie = `token=${token?.refresh}`;
+    //             dispatch(setLogin());
+    //             navigate("/tracks");
+    //         }
+    //     }, 500);
+    // }, [token]);
+
+    setTimeout(() => {
+        if (isSuccess && token) {
             document.cookie = `username=${data?.username}`;
             dispatch(setToken(token?.access));
             document.cookie = `token=${token?.refresh}`;
             dispatch(setLogin());
-
-            console.log(token);
+            navigate("/tracks");
         }
-    }, [token]);
+    }, 500);
 
     return (
         <div>
@@ -72,12 +84,22 @@ export function Authorization() {
                             onChange={handlePassword}
                         />
 
-                        <S.FormButton
-                            type="button"
-                            onClick={(evt) => onSubmitForm(evt)}
-                        >
-                            Войти
-                        </S.FormButton>
+                        {!isLoading && (
+                            <S.FormButton
+                                type="button"
+                                onClick={(evt) => onSubmitForm(evt)}
+                            >
+                                Войти
+                            </S.FormButton>
+                        )}
+                        {isLoading && (
+                            <S.FormButton
+                                type="button"
+                                onClick={(evt) => onSubmitForm(evt)}
+                            >
+                                Выполняем вход ...
+                            </S.FormButton>
+                        )}
 
                         <NavLink className="link" to="/registration">
                             <S.SignupButton type="button">
