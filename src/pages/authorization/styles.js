@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
     max-width: 100%;
@@ -6,7 +6,7 @@ export const Container = styled.div`
     margin: 0 auto;
     position: relative;
     background-color: rgba(0, 0, 0, 0.85);
-`
+`;
 
 export const FormWrapper = styled.div`
     position: absolute;
@@ -14,7 +14,7 @@ export const FormWrapper = styled.div`
     left: calc(50% - (366px / 2));
     top: calc(50% - (439px / 2));
     opacity: 1;
-`
+`;
 
 export const Form = styled.form`
     width: 366px;
@@ -26,11 +26,11 @@ export const Form = styled.form`
     padding: 35px 40px;
     background-color: white;
     border-radius: 12px;
-`
+`;
 
 export const Input = styled.input`
     width: 278px;
-    font-family: 'StratosSkyeng', serif;
+    font-family: "StratosSkyeng", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -47,12 +47,12 @@ export const Input = styled.input`
     ::placeholder {
         color: rgb(123 120 120);
     }
-`
+`;
 
 export const SignupButton = styled.button`
     width: 278px;
     height: 52px;
-    font-family: 'StratosSkyeng', serif;
+    font-family: "StratosSkyeng", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -62,18 +62,18 @@ export const SignupButton = styled.button`
     border: 1px rgb(123 120 120) solid;
     border-radius: 6px;
     cursor: pointer;
-`
+`;
 
 export const Logo = styled.img`
     width: 140px;
     height: 21px;
     margin-bottom: 24px;
     background-color: transparent;
-`
+`;
 export const FormButton = styled.button`
     width: 278px;
     height: 52px;
-    font-family: 'StratosSkyeng', serif;
+    font-family: "StratosSkyeng", serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -91,4 +91,4 @@ export const FormButton = styled.button`
     :active {
         background-color: rgb(43 10 77);
     }
-`
+`;

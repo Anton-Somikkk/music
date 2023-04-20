@@ -12,7 +12,7 @@ import NotFound from "./pages/NotFound/NotFound";
 
 export function AppRoutes() {
     const token = useSelector((state) => state.authorization.token);
-
+    console.log(token);
     let isLogin = false;
 
     if (token) {
